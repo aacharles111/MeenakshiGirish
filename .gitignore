@@ -27,4 +27,7 @@ dist-ssr
 audit_shots/
 audit_shots_postfix/
 audit_shots_v2/
+audit_screenshots/
+ss_*.png
+screenshot_*.png
 *.py

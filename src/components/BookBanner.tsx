@@ -9,12 +9,12 @@ export default function BookBanner() {
     <section className="bg-background py-20 relative overflow-hidden">
       {/* Abstract Decorations */}
       <AbstractDeco
-        src="/abstract/Teal shape 2.svg"
+        src="/abstract/teal-shape-2.svg"
         className="-left-40 -top-32 w-[500px] h-[500px]"
         opacity={0.9}
       />
       <AbstractDeco
-        src="/abstract/Leaf1.svg"
+        src="/abstract/leaf-1.svg"
         className="-right-12 bottom-0 w-[220px] h-[220px]"
         opacity={0.9}
         style={{ transform: 'rotate(45deg)' }}

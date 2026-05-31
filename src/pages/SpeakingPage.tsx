@@ -89,8 +89,8 @@ export default function SpeakingPage() {
 
       {/* ─── Speaking Intro — Full-width text + floating portrait ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Brown shape 2.svg" className="-left-32 bottom-10 w-[400px] h-[400px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Leaf2.svg" className="-right-16 -top-10 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(-20deg)' }} />
+        <AbstractDeco src="/abstract/brown-shape-2.svg" className="-left-32 bottom-10 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/leaf-2.svg" className="-right-16 -top-10 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(-20deg)' }} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           {/* Full-width text reveal heading */}
@@ -129,8 +129,8 @@ export default function SpeakingPage() {
 
       {/* ─── Speaking Topics — Expandable cards (NOT icon grid) ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Teal shape 1.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Brown shape 1.svg" className="-left-24 top-16 w-[300px] h-[300px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-left-24 top-16 w-[300px] h-[300px]" opacity={0.9} />
 
         <div className="max-w-[800px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Topics" heading="What I talk about." />
@@ -177,7 +177,7 @@ export default function SpeakingPage() {
 
       {/* ─── Audience — Pill tags in a flowing layout ─── */}
       <section className="py-20 lg:py-28 relative overflow-hidden bg-background">
-        <AbstractDeco src="/abstract/Leaf1.svg" className="-left-16 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(30deg)' }} />
+        <AbstractDeco src="/abstract/leaf-1.svg" className="-left-16 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(30deg)' }} />
 
         <div className="max-w-[1000px] mx-auto px-6 lg:px-10 relative z-10 text-center">
           <SectionHeader label="My audience" heading="Who I've been talking to." />
@@ -213,7 +213,7 @@ export default function SpeakingPage() {
 
       {/* ─── Mentoring — Two side-by-side list cards with different bg ─── */}
       <section className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(170deg, hsl(175 30% 92%) 0%, hsl(40 30% 97%) 100%)' }}>
-        <AbstractDeco src="/abstract/Teal shape 2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
 
         <div className="max-w-[1000px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="1-on-1" heading="1-on-1 Mentoring (Let's get specific)." />
@@ -284,7 +284,7 @@ export default function SpeakingPage() {
         <div className="max-w-[800px] mx-auto px-6 lg:px-10 relative z-10">
           <FadeUp>
             <div className="rounded-[2rem] p-8 md:p-10 border border-[hsl(35_40%_70%)]/40 shadow-[0_4px_20px_hsl(30_15%_80%_/_0.15)] text-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, hsl(40 40% 92%) 0%, hsl(35 35% 88%) 100%)' }}>
-              <AbstractDeco src="/abstract/Leaf2.svg" className="-right-12 -bottom-10 w-[200px] h-[200px]" opacity={0.3} style={{ transform: 'rotate(25deg)' }} />
+              <AbstractDeco src="/abstract/leaf-2.svg" className="-right-12 -bottom-10 w-[200px] h-[200px]" opacity={0.3} style={{ transform: 'rotate(25deg)' }} />
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                   <Award size={28} className="text-primary" />
@@ -303,7 +303,7 @@ export default function SpeakingPage() {
 
       {/* ─── Testimonials — Overlapping card layout ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Teal shape 2.svg" className="-left-32 -top-20 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 -top-20 w-[400px] h-[400px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Feedback" heading="What the crowd says." />
@@ -348,8 +348,8 @@ export default function SpeakingPage() {
             gradientTo="rgba(255, 255, 255, 0.35)"
           />
         </div>
-        <AbstractDeco src="/abstract/Leaf1.svg" className="-left-20 -top-16 w-[300px] h-[300px]" opacity={0.12} style={{ filter: 'brightness(0) invert(1)' }} />
-        <AbstractDeco src="/abstract/Brown shape 1.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)' }} />
+        <AbstractDeco src="/abstract/leaf-1.svg" className="-left-20 -top-16 w-[300px] h-[300px]" opacity={0.12} style={{ filter: 'brightness(0) invert(1)' }} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)' }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="font-bold italic text-white mb-4" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
             Let's get you moving.

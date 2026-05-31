@@ -92,15 +92,15 @@ export default function FreelancingPage() {
 
       {/* ─── Intro with portrait — IMAGE LEFT, text RIGHT (opposite of About) ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Brown shape 1.svg" className="-right-32 -top-20 w-[350px] h-[350px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Teal shape 2.svg" className="-left-28 bottom-10 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-32 -top-20 w-[350px] h-[350px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-28 bottom-10 w-[400px] h-[400px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-16 items-center">
             {/* Portrait LEFT */}
             <FadeUp>
               <div className="relative mx-auto lg:mx-0">
-                <AbstractDeco src="/abstract/Leaf2.svg" className="-left-14 -top-10 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} />
+                <AbstractDeco src="/abstract/leaf-2.svg" className="-left-14 -top-10 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} />
                 <div className="relative w-[280px] h-[350px] md:w-[320px] md:h-[400px] rounded-[2rem] overflow-hidden border-[3px] border-primary/20 shadow-[0_10px_40px_hsl(210_25%_15%_/_0.06)]">
                   <img src="/images/meenakshi-hero.png" alt="Meenakshi writing" className="object-cover w-full h-full" />
                 </div>
@@ -122,8 +122,8 @@ export default function FreelancingPage() {
 
       {/* ─── Services — Bento grid (3+2+3+2 layout, NOT uniform grid) ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Teal shape 1.svg" className="-right-40 -bottom-32 w-[500px] h-[500px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Brown shape 2.svg" className="-left-24 top-1/4 w-[300px] h-[300px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-right-40 -bottom-32 w-[500px] h-[500px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/brown-shape-2.svg" className="-left-24 top-1/4 w-[300px] h-[300px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="My services" heading="How I Can Help You." />
@@ -191,8 +191,8 @@ export default function FreelancingPage() {
 
       {/* ─── Niches — Hexagonal-ish scattered layout ─── */}
       <section className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(170deg, hsl(175 30% 92%) 0%, hsl(40 30% 97%) 50%, hsl(40 30% 97%) 100%)' }}>
-        <AbstractDeco src="/abstract/Leaf1.svg" className="-left-16 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(-30deg)' }} />
-        <AbstractDeco src="/abstract/Teal shape 2.svg" className="-right-20 bottom-0 w-[350px] h-[350px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/leaf-1.svg" className="-left-16 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(-30deg)' }} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-20 bottom-0 w-[350px] h-[350px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10 text-center">
           <SectionHeader label="Niches" heading="Where I've Been Hanging Out (Industries)." />
@@ -220,7 +220,7 @@ export default function FreelancingPage() {
 
       {/* ─── Process — Horizontal progress steps with connecting line ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Brown shape 1.svg" className="-left-32 -top-24 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-left-32 -top-24 w-[400px] h-[400px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="My process" heading="How This Whole Thing Goes Down." />
@@ -254,8 +254,8 @@ export default function FreelancingPage() {
 
       {/* ─── Testimonials — Staggered masonry, NOT uniform 3-col ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Teal shape 1.svg" className="-right-28 top-20 w-[380px] h-[380px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Leaf1.svg" className="-left-20 -bottom-16 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(-15deg)' }} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-right-28 top-20 w-[380px] h-[380px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/leaf-1.svg" className="-left-20 -bottom-16 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(-15deg)' }} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Social proof" heading="Don't Just Take My Word For It." />
@@ -299,8 +299,8 @@ export default function FreelancingPage() {
             gradientTo="rgba(255, 255, 255, 0.35)"
           />
         </div>
-        <AbstractDeco src="/abstract/Brown shape 1.svg" className="-left-20 -top-16 w-[300px] h-[300px]" opacity={0.12} style={{ filter: 'brightness(0) invert(1)' }} />
-        <AbstractDeco src="/abstract/Leaf2.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)', transform: 'rotate(15deg)' }} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-left-20 -top-16 w-[300px] h-[300px]" opacity={0.12} style={{ filter: 'brightness(0) invert(1)' }} />
+        <AbstractDeco src="/abstract/leaf-2.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)', transform: 'rotate(15deg)' }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="font-bold italic text-white mb-4" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
             Ready to make some magic?

@@ -54,8 +54,8 @@ export default function ContactPage() {
 
       {/* ─── Two CTA Cards — Side-by-side with different shapes ─── */}
       <section className="bg-background py-20 lg:py-28 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Brown shape 2.svg" className="-left-32 -top-16 w-[400px] h-[400px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Leaf2.svg" className="-right-16 bottom-10 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(-15deg)' }} />
+        <AbstractDeco src="/abstract/brown-shape-2.svg" className="-left-32 -top-16 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/leaf-2.svg" className="-right-16 bottom-10 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(-15deg)' }} />
 
         <div className="max-w-[1000px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -108,7 +108,7 @@ export default function ContactPage() {
 
       {/* ─── Contact Form — full-width with side illustration text ─── */}
       <section className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(170deg, hsl(175 30% 92%) 0%, hsl(40 30% 97%) 100%)' }}>
-        <AbstractDeco src="/abstract/Teal shape 1.svg" className="-left-32 -bottom-16 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -bottom-16 w-[400px] h-[400px]" opacity={0.9} />
 
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 items-start">
@@ -190,8 +190,8 @@ export default function ContactPage() {
 
       {/* ─── Social Cards — Grid of TiltCards ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Teal shape 2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Brown shape 1.svg" className="-left-28 -top-16 w-[300px] h-[300px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-left-28 -top-16 w-[300px] h-[300px]" opacity={0.9} />
 
         <div className="max-w-[900px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Online" heading="Where I hang out on the internet." />

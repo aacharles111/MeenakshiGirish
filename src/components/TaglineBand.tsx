@@ -6,13 +6,13 @@ export default function TaglineBand() {
   return (
     <section className="bg-card relative overflow-hidden">
       <AbstractDeco
-        src="/abstract/Leaf1.svg"
+        src="/abstract/leaf-1.svg"
         className="-left-20 -top-10 w-[180px] h-[180px]"
         opacity={0.9}
         style={{ transform: 'rotate(-25deg)' }}
       />
       <AbstractDeco
-        src="/abstract/Leaf2.svg"
+        src="/abstract/leaf-2.svg"
         className="-right-16 -bottom-8 w-[160px] h-[160px]"
         opacity={0.9}
         style={{ transform: 'rotate(20deg)' }}

@@ -6,12 +6,12 @@ export default function Podcast() {
   return (
     <section className="bg-card py-24 relative overflow-hidden">
       <AbstractDeco
-        src="/abstract/Teal shape 2.svg"
+        src="/abstract/teal-shape-2.svg"
         className="-right-32 -top-20 w-[400px] h-[400px]"
         opacity={0.9}
       />
       <AbstractDeco
-        src="/abstract/Leaf2.svg"
+        src="/abstract/leaf-2.svg"
         className="-left-20 bottom-0 w-[220px] h-[220px]"
         opacity={0.9}
         style={{ transform: 'rotate(25deg) scaleX(-1)' }}

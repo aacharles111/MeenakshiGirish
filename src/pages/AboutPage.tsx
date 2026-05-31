@@ -42,8 +42,8 @@ export default function AboutPage() {
       {/* ─── Section 2: My Story — Magazine editorial layout ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
         {/* Unique deco placement for About: bottom-right leaf, left teal */}
-        <AbstractDeco src="/abstract/Leaf1.svg" className="-right-16 bottom-10 w-[280px] h-[280px] lg:w-[350px] lg:h-[350px]" opacity={0.9} style={{ transform: 'rotate(-25deg)' }} />
-        <AbstractDeco src="/abstract/Teal shape 2.svg" className="-left-40 -top-32 w-[500px] h-[500px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/leaf-1.svg" className="-right-16 bottom-10 w-[280px] h-[280px] lg:w-[350px] lg:h-[350px]" opacity={0.9} style={{ transform: 'rotate(-25deg)' }} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-40 -top-32 w-[500px] h-[500px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           {/* FLIPPED: Text LEFT, Image RIGHT (different from Freelancing page) */}
@@ -71,7 +71,7 @@ export default function AboutPage() {
             {/* Portrait — rounded-3xl rectangle, NOT circular */}
             <FadeUp delay={0.2}>
               <div className="relative mx-auto lg:mx-0">
-                <AbstractDeco src="/abstract/Brown shape 2.svg" className="-right-12 -bottom-12 w-[300px] h-[300px]" opacity={0.9} />
+                <AbstractDeco src="/abstract/brown-shape-2.svg" className="-right-12 -bottom-12 w-[300px] h-[300px]" opacity={0.9} />
                 <div className="relative w-[300px] h-[400px] md:w-[340px] md:h-[440px] rounded-3xl overflow-hidden border-[3px] border-primary/20 shadow-[0_10px_40px_hsl(210_25%_15%_/_0.08)] lg:-mt-16">
                   <img src="/images/meenakshi-hero.png" alt="Meenakshi Girish" className="object-cover w-full h-full" />
                 </div>
@@ -95,8 +95,8 @@ export default function AboutPage() {
       {/* ─── Section 4: Fun Facts — Staggered masonry layout ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
         {/* Different deco positions from other pages */}
-        <AbstractDeco src="/abstract/Brown shape 1.svg" className="-right-28 top-1/4 w-[350px] h-[350px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Teal shape 1.svg" className="-left-32 -bottom-20 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-28 top-1/4 w-[350px] h-[350px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -bottom-20 w-[400px] h-[400px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Who I am" heading="A few fun facts about how I operate." />
@@ -125,8 +125,8 @@ export default function AboutPage() {
 
       {/* ─── Section 5: What I Do — Timeline on desktop, cards on mobile ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Teal shape 2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Leaf2.svg" className="-left-16 top-1/3 w-[250px] h-[250px]" opacity={0.9} style={{ transform: 'rotate(25deg)' }} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/leaf-2.svg" className="-left-16 top-1/3 w-[250px] h-[250px]" opacity={0.9} style={{ transform: 'rotate(25deg)' }} />
 
         <div className="max-w-[900px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="What I do" heading="The Full Picture." />
@@ -175,7 +175,7 @@ export default function AboutPage() {
 
       {/* ─── Section 6: Industries — Animated Marquee ─── */}
       <section className="py-20 lg:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(170deg, hsl(175 30% 92%) 0%, hsl(40 30% 97%) 50%, hsl(40 30% 97%) 100%)' }}>
-        <AbstractDeco src="/abstract/Brown shape 2.svg" className="-right-20 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(30deg)' }} />
+        <AbstractDeco src="/abstract/brown-shape-2.svg" className="-right-20 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(30deg)' }} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10 text-center">
           <SectionHeader label="My clients" heading="The Cool People I Work With." />
@@ -218,8 +218,8 @@ export default function AboutPage() {
             gradientTo="rgba(255, 255, 255, 0.35)"
           />
         </div>
-        <AbstractDeco src="/abstract/Leaf1.svg" className="-left-20 -top-16 w-[300px] h-[300px]" opacity={0.12} style={{ transform: 'rotate(-15deg)', filter: 'brightness(0) invert(1)' }} />
-        <AbstractDeco src="/abstract/Teal shape 1.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)' }} />
+        <AbstractDeco src="/abstract/leaf-1.svg" className="-left-20 -top-16 w-[300px] h-[300px]" opacity={0.12} style={{ transform: 'rotate(-15deg)', filter: 'brightness(0) invert(1)' }} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)' }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="font-bold italic text-white mb-4" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
             Let's make something awesome.

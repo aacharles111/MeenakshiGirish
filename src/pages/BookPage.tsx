@@ -56,8 +56,8 @@ export default function BookPage() {
 
       {/* ─── Book Showcase — TiltCard 3D book visual, centered ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Brown shape 1.svg" className="-right-28 -top-20 w-[400px] h-[400px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Leaf1.svg" className="-left-20 bottom-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(-30deg)' }} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-28 -top-20 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/leaf-1.svg" className="-left-20 bottom-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(-30deg)' }} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[470px_1fr] gap-10 items-center">
@@ -91,7 +91,7 @@ export default function BookPage() {
         <div className="max-w-[1000px] mx-auto relative z-10">
           <FadeUp>
             <div className="rounded-[2rem] p-8 md:p-10 border border-[hsl(35_40%_70%)]/40 shadow-[0_4px_20px_hsl(30_15%_80%_/_0.15)] relative overflow-hidden" style={{ background: 'linear-gradient(135deg, hsl(40 40% 92%) 0%, hsl(35 35% 88%) 100%)' }}>
-              <AbstractDeco src="/abstract/Teal shape 1.svg" className="-right-16 -top-10 w-[200px] h-[200px]" opacity={0.2} />
+              <AbstractDeco src="/abstract/teal-shape-1.svg" className="-right-16 -top-10 w-[200px] h-[200px]" opacity={0.2} />
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                   <BookHeart size={28} className="text-primary" />
@@ -115,8 +115,8 @@ export default function BookPage() {
 
       {/* ─── What's Inside — Expandable accordion ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Teal shape 2.svg" className="-left-32 -bottom-20 w-[450px] h-[450px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Leaf2.svg" className="-right-20 top-16 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(15deg)' }} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 -bottom-20 w-[450px] h-[450px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/leaf-2.svg" className="-right-20 top-16 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(15deg)' }} />
 
         <div className="max-w-[800px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Contents" heading="The Good Stuff Inside." />
@@ -138,7 +138,7 @@ export default function BookPage() {
 
       {/* ─── Who Is This For — 3-column with unique colored tops ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Brown shape 2.svg" className="left-1/3 -top-20 w-[350px] h-[350px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/brown-shape-2.svg" className="left-1/3 -top-20 w-[350px] h-[350px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10 text-center">
           <TextReveal
@@ -174,7 +174,7 @@ export default function BookPage() {
 
       {/* ─── What Makes It Different — 2x2 with Marquee divider ─── */}
       <section className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(170deg, hsl(175 30% 92%) 0%, hsl(40 30% 97%) 100%)' }}>
-        <AbstractDeco src="/abstract/Leaf1.svg" className="-right-16 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(30deg)' }} />
+        <AbstractDeco src="/abstract/leaf-1.svg" className="-right-16 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(30deg)' }} />
 
         <div className="max-w-[1000px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Unique" heading="Not your average 'how-to' book." />
@@ -224,7 +224,7 @@ export default function BookPage() {
 
       {/* ─── About the Author — Full-width with offset portrait ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Teal shape 2.svg" className="-right-32 -top-20 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-32 -top-20 w-[400px] h-[400px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-16 items-center">
@@ -241,7 +241,7 @@ export default function BookPage() {
             </div>
             <FadeUp delay={0.15}>
               <div className="relative mx-auto">
-                <AbstractDeco src="/abstract/Brown shape 2.svg" className="-right-10 -bottom-10 w-[250px] h-[250px]" opacity={0.9} />
+                <AbstractDeco src="/abstract/brown-shape-2.svg" className="-right-10 -bottom-10 w-[250px] h-[250px]" opacity={0.9} />
                 {/* Squircle shape */}
                 <div className="relative w-[230px] h-[230px] md:w-[260px] md:h-[260px] overflow-hidden border-[3px] border-primary/20 shadow-[0_10px_40px_hsl(210_25%_15%_/_0.06)]"
                   style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%' }}
@@ -256,7 +256,7 @@ export default function BookPage() {
 
       {/* ─── Testimonials — Single-column large quotes ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Teal shape 1.svg" className="-left-32 -top-16 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -top-16 w-[400px] h-[400px]" opacity={0.9} />
 
         <div className="max-w-[700px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Reviews" heading="What the readers are saying." />
@@ -298,8 +298,8 @@ export default function BookPage() {
             gradientTo="rgba(255, 255, 255, 0.35)"
           />
         </div>
-        <AbstractDeco src="/abstract/Leaf2.svg" className="-left-20 -top-16 w-[300px] h-[300px]" opacity={0.12} style={{ filter: 'brightness(0) invert(1)' }} />
-        <AbstractDeco src="/abstract/Brown shape 1.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)' }} />
+        <AbstractDeco src="/abstract/leaf-2.svg" className="-left-20 -top-16 w-[300px] h-[300px]" opacity={0.12} style={{ filter: 'brightness(0) invert(1)' }} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)' }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="font-bold italic text-white mb-4" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
             Grab your copy!

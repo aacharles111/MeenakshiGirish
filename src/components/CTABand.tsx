@@ -22,13 +22,13 @@ export default function CTABand() {
       </div>
 
       <AbstractDeco
-        src="/abstract/Leaf2.svg"
+        src="/abstract/leaf-2.svg"
         className="-left-20 -top-16 w-[240px] h-[240px]"
         opacity={0.12}
         style={{ transform: 'rotate(10deg)', filter: 'brightness(0) invert(1)' }}
       />
       <AbstractDeco
-        src="/abstract/Teal shape 1.svg"
+        src="/abstract/teal-shape-1.svg"
         className="-right-36 -bottom-24 w-[380px] h-[380px]"
         opacity={0.08}
         style={{ filter: 'brightness(0) invert(1)' }}

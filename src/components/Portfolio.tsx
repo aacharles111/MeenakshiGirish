@@ -37,13 +37,13 @@ export default function Portfolio() {
     <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
       {/* Abstract Decorations */}
       <AbstractDeco
-        src="/abstract/Leaf2.svg"
+        src="/abstract/leaf-2.svg"
         className="-right-16 top-0 w-[300px] h-[300px]"
         opacity={0.9}
         style={{ transform: 'rotate(30deg) scaleX(-1)' }}
       />
       <AbstractDeco
-        src="/abstract/Brown shape 1.svg"
+        src="/abstract/brown-shape-1.svg"
         className="-left-32 bottom-10 w-[400px] h-[400px]"
         opacity={0.9}
       />

@@ -69,17 +69,17 @@ export default function Testimonials() {
     <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
       {/* Abstract Decorations */}
       <AbstractDeco
-        src="/abstract/Teal shape 1.svg"
+        src="/abstract/teal-shape-1.svg"
         className="-left-48 top-10 w-[400px] h-[400px]"
         opacity={0.9}
       />
       <AbstractDeco
-        src="/abstract/Brown shape 2.svg"
+        src="/abstract/brown-shape-2.svg"
         className="-right-32 -bottom-20 w-[350px] h-[350px]"
         opacity={0.9}
       />
       <AbstractDeco
-        src="/abstract/Leaf1.svg"
+        src="/abstract/leaf-1.svg"
         className="right-20 top-8 w-[200px] h-[200px]"
         opacity={0.9}
         style={{ transform: 'rotate(-30deg)' }}

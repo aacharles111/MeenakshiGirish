@@ -48,8 +48,8 @@ export default function BuyPage() {
 
       {/* ─── Book Details — Horizontal strip with TiltCard book visual ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Leaf1.svg" className="-right-20 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} />
-        <AbstractDeco src="/abstract/Teal shape 2.svg" className="-left-32 bottom-10 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/leaf-1.svg" className="-right-20 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 bottom-10 w-[400px] h-[400px]" opacity={0.9} />
 
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[470px_1fr] gap-10 items-center">
@@ -106,8 +106,8 @@ export default function BuyPage() {
 
       {/* ─── Order Form — Full-width with stepped sections ─── */}
       <section className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(170deg, hsl(175 30% 92%) 0%, hsl(40 30% 97%) 100%)' }}>
-        <AbstractDeco src="/abstract/Brown shape 1.svg" className="-right-28 -top-16 w-[350px] h-[350px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/Leaf2.svg" className="-left-16 bottom-20 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-28 -top-16 w-[350px] h-[350px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/leaf-2.svg" className="-left-16 bottom-20 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} />
 
         <div className="max-w-[700px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Order form" heading="The Logistics (Your Details)" />
@@ -232,12 +232,12 @@ export default function BuyPage() {
 
       {/* ─── Audiobook Banner — Different from Book page version ─── */}
       <section className="bg-background py-16 lg:py-20 px-6 relative overflow-hidden">
-        <AbstractDeco src="/abstract/Brown shape 2.svg" className="-left-20 -bottom-16 w-[300px] h-[300px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/brown-shape-2.svg" className="-left-20 -bottom-16 w-[300px] h-[300px]" opacity={0.9} />
 
         <div className="max-w-[800px] mx-auto px-6 lg:px-10 relative z-10">
           <FadeUp>
             <div className="rounded-[2rem] p-8 md:p-10 border border-[hsl(35_40%_70%)]/40 shadow-[0_4px_20px_hsl(30_15%_80%_/_0.15)] relative overflow-hidden" style={{ background: 'linear-gradient(135deg, hsl(40 40% 92%) 0%, hsl(35 35% 88%) 100%)' }}>
-              <AbstractDeco src="/abstract/Leaf1.svg" className="-right-10 -bottom-8 w-[180px] h-[180px]" opacity={0.25} style={{ transform: 'rotate(-20deg)' }} />
+              <AbstractDeco src="/abstract/leaf-1.svg" className="-right-10 -bottom-8 w-[180px] h-[180px]" opacity={0.25} style={{ transform: 'rotate(-20deg)' }} />
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                   <Headphones size={28} className="text-primary" />

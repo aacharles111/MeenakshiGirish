@@ -46,9 +46,18 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 z-50 w-full h-20 transition-all duration-300 ${
         useDarkNav
-          ? "bg-white/70 backdrop-blur-xl shadow-[0_1px_3px_0_rgb(0_0_0/0.06)] border-b border-border/30"
-          : "bg-transparent"
+          ? "shadow-[0_1px_3px_0_rgb(0_0_0/0.06)] border-b border-border/30"
+          : ""
       }`}
+      style={
+        useDarkNav
+          ? {
+              backgroundColor: 'hsla(30, 20%, 98%, 0.72)',
+              backdropFilter: 'blur(20px) saturate(1.8)',
+              WebkitBackdropFilter: 'blur(20px) saturate(1.8)',
+            }
+          : { backgroundColor: 'transparent' }
+      }
     >
       <div className="mx-auto h-full flex items-center justify-between px-6 lg:px-10 max-w-[1280px]">
         {/* Logo */}

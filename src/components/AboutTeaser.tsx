@@ -8,12 +8,12 @@ export default function AboutTeaser() {
     <section className="bg-card py-24 relative overflow-hidden">
       {/* Abstract Decorations */}
       <AbstractDeco
-        src="/abstract/Brown shape 1.svg"
+        src="/abstract/brown-shape-1.svg"
         className="-right-28 top-0 w-[380px] h-[380px]"
         opacity={0.9}
       />
       <AbstractDeco
-        src="/abstract/Leaf1.svg"
+        src="/abstract/leaf-1.svg"
         className="-left-16 -bottom-10 w-[200px] h-[200px]"
         opacity={0.9}
         style={{ transform: 'rotate(-15deg)' }}

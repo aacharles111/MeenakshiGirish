@@ -43,13 +43,13 @@ export default function About() {
     <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
       {/* Abstract Decorations */}
       <AbstractDeco
-        src="/abstract/Leaf1.svg"
+        src="/abstract/leaf-1.svg"
         className="hidden lg:block -right-10 top-10 w-[280px] h-[280px] lg:w-[350px] lg:h-[350px]"
         opacity={0.9}
         style={{ transform: 'rotate(15deg)' }}
       />
       <AbstractDeco
-        src="/abstract/Brown shape 2.svg"
+        src="/abstract/brown-shape-2.svg"
         className="right-10 -bottom-32 w-[300px] h-[300px]"
         opacity={0.9}
       />
@@ -62,7 +62,7 @@ export default function About() {
               <div className="relative mx-auto lg:mx-0">
                 {/* Teal blob behind portrait */}
                 <AbstractDeco
-                  src="/abstract/Teal shape 2.svg"
+                  src="/abstract/teal-shape-2.svg"
                   className="-left-12 -top-12 w-[480px] h-[480px]"
                   opacity={0.9}
                 />

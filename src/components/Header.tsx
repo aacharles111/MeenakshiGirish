@@ -46,7 +46,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 z-50 w-full h-20 transition-all duration-300 ${
         useDarkNav
-          ? "bg-white/95 backdrop-blur-md shadow-[0_1px_3px_0_rgb(0_0_0/0.06)] border-b border-border/30"
+          ? "bg-white/70 backdrop-blur-xl shadow-[0_1px_3px_0_rgb(0_0_0/0.06)] border-b border-border/30"
           : "bg-transparent"
       }`}
     >

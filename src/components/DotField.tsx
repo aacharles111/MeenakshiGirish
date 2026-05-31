@@ -24,7 +24,7 @@ function DotFieldInner({
   cursorForce = 0.1,
   bulgeOnly = true,
   bulgeStrength = 67,
-  glowRadius = 160,
+  _glowRadius = 160,
   sparkle = false,
   waveAmplitude = 0,
   gradientFrom = 'rgba(255, 255, 255, 0.5)',

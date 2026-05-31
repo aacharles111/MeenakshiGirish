@@ -24,7 +24,7 @@ const wordVariants = {
     filter: 'blur(0px)',
     transition: {
       duration: 0.5,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
 };

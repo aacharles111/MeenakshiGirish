@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import LoadingScreen from './components/LoadingScreen'
 import BubbleMenu from './components/BubbleMenu'
 import Hero from './components/Hero'
-import TaglineBand from './components/TaglineBand'
+
 import About from './components/About'
 import Services from './components/Services'
 import Portfolio from './components/Portfolio'

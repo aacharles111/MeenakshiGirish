@@ -1,0 +1,1206 @@
+[
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "div.relative w-[380px] h-[380px] rounded-ful",
+    "details": "width=380px > viewport=375px (overflow: 5px)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "img.pointer-events-none select-none absolute",
+    "details": "width=410px > viewport=375px (overflow: 35px)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "30x30px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'More about me \u2192'",
+    "details": "124x20px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Stalk My Services \u2192'",
+    "details": "245x20px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Grab a Copy \u2192'",
+    "details": "245x20px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Book My Brain \u2192'",
+    "details": "245x20px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'View More Work'",
+    "details": "134x20px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'LISTEN ON SPOTIFY'",
+    "details": "200x44px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "10x10px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_font",
+    "element": "p '\u2726 FRESH OFF THE PRESS!'",
+    "details": "font-size: 11px (min: 12px)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_font",
+    "element": "p 'Real reviews, real chats.'",
+    "details": "font-size: 11px (min: 12px)"
+  },
+  {
+    "page": "home",
+    "viewport": "mobile",
+    "type": "small_font",
+    "element": "p 'FOLLOW ME'",
+    "details": "font-size: 11px (min: 12px)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "text.",
+    "details": "width=494px > viewport=375px (overflow: 119px)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "text.",
+    "details": "width=428px > viewport=375px (overflow: 53px)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "textpath.",
+    "details": "width=428px > viewport=375px (overflow: 53px)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "img.pointer-events-none select-none absolute",
+    "details": "width=410px > viewport=375px (overflow: 35px)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "div.marquee-track",
+    "details": "width=3426px > viewport=375px (overflow: 3051px)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "div.",
+    "details": "width=1713px > viewport=375px (overflow: 1338px)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "div.",
+    "details": "width=1713px > viewport=375px (overflow: 1338px)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "30x30px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'meenakshigirish31@gmail.com'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a '8754416226'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "about",
+    "viewport": "mobile",
+    "type": "small_font",
+    "element": "p 'FOLLOW ME'",
+    "details": "font-size: 11px (min: 12px)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "img.pointer-events-none select-none absolute",
+    "details": "width=410px > viewport=375px (overflow: 35px)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "img.pointer-events-none select-none absolute",
+    "details": "width=429px > viewport=375px (overflow: 54px)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "30x30px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'meenakshigirish31@gmail.com'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a '8754416226'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "mobile",
+    "type": "small_font",
+    "element": "p 'FOLLOW ME'",
+    "details": "font-size: 11px (min: 12px)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "img.pointer-events-none select-none absolute",
+    "details": "width=410px > viewport=375px (overflow: 35px)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "img.pointer-events-none select-none absolute",
+    "details": "width=410px > viewport=375px (overflow: 35px)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "div.marquee-track",
+    "details": "width=2196px > viewport=375px (overflow: 1821px)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "div.",
+    "details": "width=1098px > viewport=375px (overflow: 723px)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "div.",
+    "details": "width=1098px > viewport=375px (overflow: 723px)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "30x30px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Read More About Meenakshi'",
+    "details": "219x20px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'meenakshigirish31@gmail.com'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a '8754416226'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "book",
+    "viewport": "mobile",
+    "type": "small_font",
+    "element": "p 'FOLLOW ME'",
+    "details": "font-size: 11px (min: 12px)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "img.pointer-events-none select-none absolute",
+    "details": "width=410px > viewport=375px (overflow: 35px)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "30x30px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "46x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "45x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "44x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "46x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "45x43px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "44x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "44x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "speaking",
+    "viewport": "mobile",
+    "type": "small_font",
+    "element": "p 'FOLLOW ME'",
+    "details": "font-size: 11px (min: 12px)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "text.",
+    "details": "width=625px > viewport=375px (overflow: 250px)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "text.",
+    "details": "width=426px > viewport=375px (overflow: 51px)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "horizontal_overflow",
+    "element": "textpath.",
+    "details": "width=426px > viewport=375px (overflow: 51px)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "30x30px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Email Me'",
+    "details": "245x40px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'Buy The Book'",
+    "details": "160x40px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a 'meenakshigirish31@gmail.com'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a '8754416226'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "contact",
+    "viewport": "mobile",
+    "type": "small_font",
+    "element": "p 'FOLLOW ME'",
+    "details": "font-size: 11px (min: 12px)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "38x38px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'More about me \u2192'",
+    "details": "124x20px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Stalk My Services \u2192'",
+    "details": "137x20px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Grab a Copy \u2192'",
+    "details": "137x20px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Book My Brain \u2192'",
+    "details": "137x20px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'View More Work'",
+    "details": "134x20px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'LISTEN ON SPOTIFY'",
+    "details": "200x44px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "10x10px (min: 44x44)"
+  },
+  {
+    "page": "home",
+    "viewport": "tablet",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "text.",
+    "details": "width=992px > viewport=768px (overflow: 224px)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "text.",
+    "details": "width=889px > viewport=768px (overflow: 121px)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "textpath.",
+    "details": "width=889px > viewport=768px (overflow: 121px)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "div.marquee-track",
+    "details": "width=3426px > viewport=768px (overflow: 2658px)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "div.",
+    "details": "width=1713px > viewport=768px (overflow: 945px)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "div.",
+    "details": "width=1713px > viewport=768px (overflow: 945px)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "38x38px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'meenakshigirish31@gmail.com'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a '8754416226'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "about",
+    "viewport": "tablet",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "38x38px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'meenakshigirish31@gmail.com'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a '8754416226'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "freelancing",
+    "viewport": "tablet",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "div.marquee-track",
+    "details": "width=2196px > viewport=768px (overflow: 1428px)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "div.",
+    "details": "width=1098px > viewport=768px (overflow: 330px)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "div.",
+    "details": "width=1098px > viewport=768px (overflow: 330px)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "38x38px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Read More About Meenakshi'",
+    "details": "219x20px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'meenakshigirish31@gmail.com'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a '8754416226'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "book",
+    "viewport": "tablet",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "38x38px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "46x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "45x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "44x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "46x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "45x43px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "44x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "div ''",
+    "details": "44x44px (min: 44x44)"
+  },
+  {
+    "page": "speaking",
+    "viewport": "tablet",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "text.",
+    "details": "width=1251px > viewport=768px (overflow: 483px)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "text.",
+    "details": "width=880px > viewport=768px (overflow: 112px)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "horizontal_overflow",
+    "element": "textpath.",
+    "details": "width=880px > viewport=768px (overflow: 112px)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Skip to content'",
+    "details": "1x1px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "38x38px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "button ''",
+    "details": "42x42px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'Buy The Book'",
+    "details": "160x40px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a 'meenakshigirish31@gmail.com'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a '8754416226'",
+    "details": "222x20px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "small_touch_target",
+    "element": "a ''",
+    "details": "36x36px (min: 44x44)"
+  },
+  {
+    "page": "contact",
+    "viewport": "tablet",
+    "type": "text_overflow",
+    "element": "a 'Skip to content'",
+    "details": "scrollWidth=118 > clientWidth=1"
+  }
+]

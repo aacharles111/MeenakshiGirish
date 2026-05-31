@@ -27,18 +27,18 @@ export default function PageHero({ eyebrow, title, subtitle, ctaText, ctaLink }:
 
       {/* Abstract decorations — large and bold like homepage */}
       <AbstractDeco
-        src="/Abstract elements/Leaf1.svg"
+        src="/abstract/leaf-1.svg"
         className="w-[250px] h-[250px] md:w-[350px] md:h-[350px] -top-10 -right-16"
         opacity={0.9}
         style={{ transform: 'rotate(30deg)' }}
       />
       <AbstractDeco
-        src="/Abstract elements/Teal shape 1.svg"
+        src="/abstract/teal-shape-1.svg"
         className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] -bottom-16 -left-20"
         opacity={0.9}
       />
       <AbstractDeco
-        src="/Abstract elements/Brown shape 2.svg"
+        src="/abstract/brown-shape-2.svg"
         className="w-[180px] h-[180px] md:w-[250px] md:h-[250px] top-16 right-[15%]"
         opacity={0.9}
       />

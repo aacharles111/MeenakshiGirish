@@ -14,13 +14,13 @@ export default function Footer() {
     <footer className="bg-muted py-14 relative overflow-hidden">
       {/* Abstract Decorations */}
       <AbstractDeco
-        src="/Abstract elements/Leaf1.svg"
+        src="/abstract/leaf-1.svg"
         className="-right-16 -top-10 w-[200px] h-[200px]"
         opacity={0.9}
         style={{ transform: 'rotate(40deg)' }}
       />
       <AbstractDeco
-        src="/Abstract elements/Brown shape 2.svg"
+        src="/abstract/brown-shape-2.svg"
         className="-left-28 -bottom-16 w-[300px] h-[300px]"
         opacity={0.9}
       />

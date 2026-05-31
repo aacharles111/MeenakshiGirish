@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+
 import { PenLine, BookOpen, Mic2, Users, BookHeart, Instagram, Leaf } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import PageHero from '../components/PageHero';
@@ -28,16 +28,7 @@ const whatIDo: { icon: LucideIcon; label: string; desc: string }[] = [
 
 const industries = ['Healthcare & Medicine', 'E-Commerce', 'B2B Corporate', 'Personal Brands', 'Startups', 'Education', 'Publishing', 'Lifestyle', 'Tech', 'Finance'];
 
-const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
-const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } };
 
-/* Masonry-style stagger offsets for fun facts */
-const masonryOffsets = [
-  { marginTop: '0px' },
-  { marginTop: '40px' },
-  { marginTop: '20px' },
-  { marginTop: '60px' },
-];
 
 export default function AboutPage() {
   return (

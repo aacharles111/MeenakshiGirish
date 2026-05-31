@@ -31,3 +31,5 @@ audit_screenshots/
 ss_*.png
 screenshot_*.png
 *.py
+
+.vercel

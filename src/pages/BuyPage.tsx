@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { BookHeart, Headphones, Package, User, MapPin, CreditCard, MessageSquare, ArrowRight, Check, Star } from 'lucide-react';
+import { BookHeart, Headphones, Package, User, MapPin, MessageSquare, Check, Star } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeader from '../components/SectionHeader';
 import FadeUp from '../components/FadeUp';
 import AbstractDeco from '../components/AbstractDeco';
-import TiltCard from '../components/TiltCard';
 import SplineBook from '../components/SplineBook';
 import CountUp from '../components/CountUp';
 import Marquee from '../components/Marquee';

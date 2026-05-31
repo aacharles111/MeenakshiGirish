@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+
 import { Check, Sparkles, Heart, Users, Palette, Coffee, BookHeart, User, ArrowRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import PageHero from '../components/PageHero';
@@ -41,8 +41,7 @@ const testimonials = [
   { quote: "I literally handed this to my entire team. It answers questions I didn't even know they had.", author: 'Kavitha Rao', role: 'Marketing Manager' },
 ];
 
-const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
-const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } };
+
 
 export default function BookPage() {
   return (

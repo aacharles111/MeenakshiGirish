@@ -22,7 +22,7 @@ const socials: { icon: LucideIcon; label: string; desc: string; href: string; co
 const subjectOptions = ['Hire Me', 'Speaking & Mentoring', 'Book Stuff', 'Just saying hi'];
 
 const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
-const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } };
+const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } } };
 
 export default function ContactPage() {
   const [formState, setFormState] = useState<'idle' | 'sent'>('idle');

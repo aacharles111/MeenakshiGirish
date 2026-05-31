@@ -24,7 +24,8 @@ function DotFieldInner({
   cursorForce = 0.1,
   bulgeOnly = true,
   bulgeStrength = 67,
-  _glowRadius = 160,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  glowRadius: _glowRadius = 160,
   sparkle = false,
   waveAmplitude = 0,
   gradientFrom = 'rgba(255, 255, 255, 0.5)',

@@ -43,7 +43,7 @@ export default function AboutPage() {
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
         {/* Unique deco placement for About: bottom-right leaf, left teal */}
         <AbstractDeco src="/abstract/leaf-1.svg" className="-right-16 bottom-10 w-[280px] h-[280px] lg:w-[350px] lg:h-[350px]" opacity={0.9} style={{ transform: 'rotate(-25deg)' }} />
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-40 -top-32 w-[500px] h-[500px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-40 -top-32 w-[500px] h-[500px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           {/* FLIPPED: Text LEFT, Image RIGHT (different from Freelancing page) */}
@@ -71,7 +71,7 @@ export default function AboutPage() {
             {/* Portrait — rounded-3xl rectangle, NOT circular */}
             <FadeUp delay={0.2}>
               <div className="relative mx-auto lg:mx-0">
-                <AbstractDeco src="/abstract/brown-shape-2.svg" className="-right-12 -bottom-12 w-[300px] h-[300px]" opacity={0.9} />
+                <AbstractDeco src="/abstract/brown-shape-2.svg" className="-right-12 -bottom-12 w-[300px] h-[300px]" opacity={0.9} hideMobile />
                 <div className="relative w-[300px] h-[400px] md:w-[340px] md:h-[440px] rounded-3xl overflow-hidden border-[3px] border-primary/20 shadow-[0_10px_40px_hsl(210_25%_15%_/_0.08)] lg:-mt-16">
                   <img src="/images/meenakshi-hero.png" alt="Meenakshi Girish" className="object-cover w-full h-full" />
                 </div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
         {/* Different deco positions from other pages */}
         <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-28 top-1/4 w-[350px] h-[350px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -bottom-20 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -bottom-20 w-[400px] h-[400px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Who I am" heading="A few fun facts about how I operate." />
@@ -125,7 +125,7 @@ export default function AboutPage() {
 
       {/* ─── Section 5: What I Do — Timeline on desktop, cards on mobile ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} hideMobile />
         <AbstractDeco src="/abstract/leaf-2.svg" className="-left-16 top-1/3 w-[250px] h-[250px]" opacity={0.9} style={{ transform: 'rotate(25deg)' }} />
 
         <div className="max-w-[900px] mx-auto px-6 lg:px-10 relative z-10">

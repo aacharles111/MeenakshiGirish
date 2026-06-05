@@ -200,3 +200,16 @@ main.sphere-main {
 .dg-scroll-lock {
   overflow: hidden !important;
 }
+
+/* ─── Mobile responsive ─── */
+@media (max-width: 767px) {
+  .sphere-root {
+    --viewer-pad: 24px;
+  }
+  .edge-fade {
+    height: 60px;
+  }
+  .item__image {
+    inset: 4px;
+  }
+}

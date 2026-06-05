@@ -129,8 +129,8 @@ export default function SpeakingPage() {
 
       {/* ─── Speaking Topics — Expandable cards (NOT icon grid) ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-left-24 top-16 w-[300px] h-[300px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} hideMobile />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-left-24 top-16 w-[300px] h-[300px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[800px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Topics" heading="What I talk about." />
@@ -163,7 +163,7 @@ export default function SpeakingPage() {
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-16 relative z-10">
           <SectionHeader label="In action" heading="Moments from the Stage & Beyond." />
         </div>
-        <div style={{ height: 'clamp(350px, 60vh, 600px)', position: 'relative' }}>
+        <div style={{ height: 'clamp(260px, 50vh, 600px)', position: 'relative' }}>
           <DomeGallery
             images={mentoringImages}
             grayscale={false}
@@ -213,7 +213,7 @@ export default function SpeakingPage() {
 
       {/* ─── Mentoring — Two side-by-side list cards with different bg ─── */}
       <section className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(170deg, hsl(175 30% 92%) 0%, hsl(40 30% 97%) 100%)' }}>
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1000px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="1-on-1" heading="1-on-1 Mentoring (Let's get specific)." />
@@ -303,7 +303,7 @@ export default function SpeakingPage() {
 
       {/* ─── Testimonials — Overlapping card layout ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 -top-20 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 -top-20 w-[400px] h-[400px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Feedback" heading="What the crowd says." />

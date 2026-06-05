@@ -93,14 +93,14 @@ export default function FreelancingPage() {
       {/* ─── Intro with portrait — IMAGE LEFT, text RIGHT (opposite of About) ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
         <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-32 -top-20 w-[350px] h-[350px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-28 bottom-10 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-28 bottom-10 w-[400px] h-[400px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-16 items-center">
             {/* Portrait LEFT */}
             <FadeUp>
               <div className="relative mx-auto lg:mx-0">
-                <AbstractDeco src="/abstract/leaf-2.svg" className="-left-14 -top-10 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} />
+                <AbstractDeco src="/abstract/leaf-2.svg" className="-left-14 -top-10 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} hideMobile />
                 <div className="relative w-[280px] h-[350px] md:w-[320px] md:h-[400px] rounded-[2rem] overflow-hidden border-[3px] border-primary/20 shadow-[0_10px_40px_hsl(210_25%_15%_/_0.06)]">
                   <img src="/images/meenakshi-hero.png" alt="Meenakshi writing" className="object-cover w-full h-full" />
                 </div>
@@ -122,7 +122,7 @@ export default function FreelancingPage() {
 
       {/* ─── Services — Bento grid (3+2+3+2 layout, NOT uniform grid) ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-right-40 -bottom-32 w-[500px] h-[500px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-right-40 -bottom-32 w-[500px] h-[500px]" opacity={0.9} hideMobile />
         <AbstractDeco src="/abstract/brown-shape-2.svg" className="-left-24 top-1/4 w-[300px] h-[300px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
@@ -177,7 +177,7 @@ export default function FreelancingPage() {
             </h2>
           </div>
         </div>
-        <div style={{ height: 'clamp(350px, 60vh, 600px)', position: 'relative' }}>
+        <div style={{ height: 'clamp(260px, 50vh, 600px)', position: 'relative' }}>
           <CircularGallery
             items={galleryItems}
             bend={3}

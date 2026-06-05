@@ -115,8 +115,8 @@ export default function BookPage() {
 
       {/* ─── What's Inside — Expandable accordion ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 -bottom-20 w-[450px] h-[450px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/leaf-2.svg" className="-right-20 top-16 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(15deg)' }} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 -bottom-20 w-[450px] h-[450px]" opacity={0.9} hideMobile />
+        <AbstractDeco src="/abstract/leaf-2.svg" className="-right-20 top-16 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(15deg)' }} hideMobile />
 
         <div className="max-w-[800px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Contents" heading="The Good Stuff Inside." />
@@ -224,7 +224,7 @@ export default function BookPage() {
 
       {/* ─── About the Author — Full-width with offset portrait ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-32 -top-20 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-32 -top-20 w-[400px] h-[400px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-16 items-center">
@@ -241,7 +241,7 @@ export default function BookPage() {
             </div>
             <FadeUp delay={0.15}>
               <div className="relative mx-auto">
-                <AbstractDeco src="/abstract/brown-shape-2.svg" className="-right-10 -bottom-10 w-[250px] h-[250px]" opacity={0.9} />
+                <AbstractDeco src="/abstract/brown-shape-2.svg" className="-right-10 -bottom-10 w-[250px] h-[250px]" opacity={0.9} hideMobile />
                 {/* Squircle shape */}
                 <div className="relative w-[230px] h-[230px] md:w-[260px] md:h-[260px] overflow-hidden border-[3px] border-primary/20 shadow-[0_10px_40px_hsl(210_25%_15%_/_0.06)]"
                   style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%' }}
@@ -256,7 +256,7 @@ export default function BookPage() {
 
       {/* ─── Testimonials — Single-column large quotes ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -top-16 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -top-16 w-[400px] h-[400px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[700px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Reviews" heading="What the readers are saying." />

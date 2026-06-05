@@ -41,7 +41,7 @@ export default function ContactPage() {
       />
 
       {/* ─── CurvedLoop marquee for personality ─── */}
-      <section className="overflow-hidden py-0" style={{ height: '280px', position: 'relative' }}>
+      <section className="overflow-hidden py-0" style={{ height: 'clamp(180px, 30vh, 280px)', position: 'relative' }}>
         <CurvedLoop
           marqueeText="Hello ✦ Let's Create Something Amazing ✦ Let's Work Together ✦ Got a Project? ✦ "
           speed={2}
@@ -108,7 +108,7 @@ export default function ContactPage() {
 
       {/* ─── Contact Form — full-width with side illustration text ─── */}
       <section className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(170deg, hsl(175 30% 92%) 0%, hsl(40 30% 97%) 100%)' }}>
-        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -bottom-16 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -bottom-16 w-[400px] h-[400px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 items-start">
@@ -190,7 +190,7 @@ export default function ContactPage() {
 
       {/* ─── Social Cards — Grid of TiltCards ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} hideMobile />
         <AbstractDeco src="/abstract/brown-shape-1.svg" className="-left-28 -top-16 w-[300px] h-[300px]" opacity={0.9} />
 
         <div className="max-w-[900px] mx-auto px-6 lg:px-10 relative z-10">

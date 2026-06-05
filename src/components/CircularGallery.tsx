@@ -289,11 +289,14 @@ class Media {
         this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height];
       }
     }
+    const isMobile = this.screen.width < 768;
     this.scale = this.screen.height / 1500;
-    this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
-    this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
+    const scaleH = isMobile ? 550 : 900;
+    const scaleW = isMobile ? 420 : 700;
+    this.plane.scale.y = (this.viewport.height * (scaleH * this.scale)) / this.screen.height;
+    this.plane.scale.x = (this.viewport.width * (scaleW * this.scale)) / this.screen.width;
     this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
-    this.padding = 2;
+    this.padding = isMobile ? 1.2 : 2;
     this.width = this.plane.scale.x + this.padding;
     this.widthTotal = this.width * this.length;
     this.x = this.width * this.index;
@@ -413,7 +416,9 @@ class App {
   onTouchMove(e: any) {
     if (!this.isDown) return;
     const x = e.touches ? e.touches[0].clientX : e.clientX;
-    const distance = (this.start - x) * (this.scrollSpeed * 0.025);
+    const isMobile = this.screen && this.screen.width < 768;
+    const sensitivity = isMobile ? 0.05 : 0.025;
+    const distance = (this.start - x) * (this.scrollSpeed * sensitivity);
     this.scroll.target = (this.scroll.position || 0) + distance;
   }
   onTouchUp() {

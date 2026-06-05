@@ -49,7 +49,7 @@ export default function BuyPage() {
       {/* ─── Book Details — Horizontal strip with TiltCard book visual ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
         <AbstractDeco src="/abstract/leaf-1.svg" className="-right-20 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} />
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 bottom-10 w-[400px] h-[400px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 bottom-10 w-[400px] h-[400px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[470px_1fr] gap-10 items-center">
@@ -106,8 +106,8 @@ export default function BuyPage() {
 
       {/* ─── Order Form — Full-width with stepped sections ─── */}
       <section className="py-24 lg:py-32 relative overflow-hidden" style={{ background: 'linear-gradient(170deg, hsl(175 30% 92%) 0%, hsl(40 30% 97%) 100%)' }}>
-        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-28 -top-16 w-[350px] h-[350px]" opacity={0.9} />
-        <AbstractDeco src="/abstract/leaf-2.svg" className="-left-16 bottom-20 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} />
+        <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-28 -top-16 w-[350px] h-[350px]" opacity={0.9} hideMobile />
+        <AbstractDeco src="/abstract/leaf-2.svg" className="-left-16 bottom-20 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(20deg)' }} hideMobile />
 
         <div className="max-w-[700px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Order form" heading="The Logistics (Your Details)" />

@@ -127,8 +127,18 @@ body {
    without overlapping content. Individual problematic ones use hideMobile. */
 @media (max-width: 767px) {
   .abstract-deco {
-    scale: 0.45;
-    opacity: 0.3 !important;
+    scale: 0.3;
+    opacity: 0.18 !important;
+  }
+
+  /* Reduce vertical padding on sections for tighter mobile layout */
+  section {
+    scroll-margin-top: 60px;
+  }
+
+  /* CurvedLoop sections — reduce height on mobile */
+  .curved-loop-jacket {
+    padding: 0.5rem 0;
   }
 }
 

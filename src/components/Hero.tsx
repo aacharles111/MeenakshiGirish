@@ -6,9 +6,18 @@ const easeOut = [0.16, 1, 0.3, 1] as const;
 export default function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Video Background */}
+      {/* Video Background — Portrait for mobile, Landscape for desktop */}
       <video
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover z-0 md:hidden"
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source src="/video/hero-portrait.mp4" type="video/mp4" />
+      </video>
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0 hidden md:block"
         autoPlay
         muted
         loop

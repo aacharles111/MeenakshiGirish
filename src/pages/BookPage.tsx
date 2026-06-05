@@ -138,7 +138,7 @@ export default function BookPage() {
 
       {/* ─── Who Is This For — 3-column with unique colored tops ─── */}
       <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/brown-shape-2.svg" className="left-1/3 -top-20 w-[350px] h-[350px]" opacity={0.9} />
+        <AbstractDeco src="/abstract/brown-shape-2.svg" className="left-1/3 -top-20 w-[350px] h-[350px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10 text-center">
           <TextReveal

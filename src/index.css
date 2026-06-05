@@ -121,3 +121,14 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary);
 }
+
+/* ─── Abstract Decorations — Mobile Responsive ──────────────── */
+/* On mobile, decorations are scaled down and faded to stay decorative
+   without overlapping content. Individual problematic ones use hideMobile. */
+@media (max-width: 767px) {
+  .abstract-deco {
+    scale: 0.45;
+    opacity: 0.3 !important;
+  }
+}
+

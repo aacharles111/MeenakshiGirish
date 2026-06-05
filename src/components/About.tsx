@@ -65,6 +65,7 @@ export default function About() {
                   src="/abstract/teal-shape-2.svg"
                   className="-left-12 -top-12 w-[480px] h-[480px]"
                   opacity={0.9}
+                  hideMobile
                 />
                 <div className="relative w-[300px] h-[300px] md:w-[380px] md:h-[380px] rounded-full overflow-hidden border-[3px] border-primary/20 shadow-[0_10px_40px_hsl(210_25%_15%_/_0.06)]">
                   <img

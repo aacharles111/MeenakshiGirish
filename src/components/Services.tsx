@@ -56,6 +56,7 @@ export default function Services() {
         src="/abstract/brown-shape-1.svg"
         className="left-1/3 -top-20 w-[350px] h-[350px]"
         opacity={0.9}
+        hideMobile
       />
 
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">

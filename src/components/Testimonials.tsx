@@ -82,6 +82,7 @@ export default function Testimonials() {
         src="/abstract/leaf-1.svg"
         className="right-20 top-8 w-[200px] h-[200px]"
         opacity={0.9}
+        hideMobile
         style={{ transform: 'rotate(-30deg)' }}
       />
 

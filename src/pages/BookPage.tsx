@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { Check, Sparkles, Heart, Users, Palette, Coffee, BookHeart, User, ArrowRight } from 'lucide-react';
+import { Sparkles, Heart, Users, Palette, Coffee, BookHeart, User, ArrowRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeader from '../components/SectionHeader';
@@ -8,19 +8,9 @@ import FadeUp from '../components/FadeUp';
 import AbstractDeco from '../components/AbstractDeco';
 import TiltCard from '../components/TiltCard';
 import SplineBook from '../components/SplineBook';
-import ExpandableCard from '../components/ExpandableCard';
 import Marquee from '../components/Marquee';
 import DotField from '../components/DotField';
 import TextReveal from '../components/TextReveal';
-
-const whatsInside = [
-  'The completely unfiltered story of my first few years (spoiler: it was chaotic).',
-  'The exact workflows, templates, and systems I use to run my business today.',
-  'No-BS advice on how to find clients, send pitches, and not underprice yourself.',
-  "Interviews with other real freelancers—so you don't just have to listen to me!",
-  'Gorgeous, original artworks created just for this book. (It\'s pretty to look at, I promise.)',
-  "A massive dose of encouragement from someone who's been exactly where you are right now.",
-];
 
 const forWho: { icon: LucideIcon; title: string; body: string; color: string }[] = [
   { icon: Sparkles, title: 'The "Where Do I Even Start" Beginner.', body: "If you're curious but clueless, welcome! I don't use scary jargon. I'll walk you through the absolute basics.", color: 'hsl(175 35% 55%)' },
@@ -39,6 +29,20 @@ const testimonials = [
   { quote: 'Finally, a freelancing book written by someone who actually gets the struggle!', author: 'Priya Sundaram', role: 'Copywriter & Freelancer' },
   { quote: 'The artworks are gorgeous, but the advice inside is what I keep coming back to.', author: 'Arun Balaji', role: 'UX Writer, Chennai' },
   { quote: "I literally handed this to my entire team. It answers questions I didn't even know they had.", author: 'Kavitha Rao', role: 'Marketing Manager' },
+];
+
+// TODO: replace placeholder hrefs with real audiobook links
+const audiobookLinks = [
+  { label: 'Apple Music', href: 'https://music.apple.com' },
+  { label: 'Audible', href: 'https://www.audible.in' },
+  { label: 'Storytel', href: 'https://www.storytel.com' },
+  { label: 'Kuku FM', href: 'https://kukufm.com' },
+];
+
+// TODO: replace with real Amazon Kindle and catalog URLs
+const purchaseLinks = [
+  { label: 'Amazon Kindle', href: 'https://www.amazon.in' },
+  { label: 'View Catalog', href: '#' },
 ];
 
 
@@ -72,12 +76,11 @@ export default function BookPage() {
 
             {/* Book story text */}
             <div>
-              <SectionHeader label="The story" heading="So, what actually is this book?" align="left" />
+              <SectionHeader label="The story" heading="So, What Is in This Book?" align="left" />
               <FadeUp>
                 <div className="space-y-5 text-foreground/85 leading-[1.75]" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
-                  <p><em>The Freelancer's Mindset</em> is the guide I scoured the earth for when I was starting out—and couldn't find. Everything out there was either too corporate or full of toxic hustle-culture fluff.</p>
-                  <p>So, I wrote my own.</p>
-                  <p>This book drags you through my early days of confusion, the mistakes I definitely made, and the systems that finally made everything click. While you're laughing at my journey, you'll be secretly absorbing the tools you need to build your own freelance empire.</p>
+                  <p><em>The Freelancer's Mindset</em> is the guide I scoured the earth for when I was starting out but couldn't find. Everything out there was either too corporate or full of toxic hustle-culture fluff. So, I wrote my own.</p>
+                  <p>This book takes you through my early days of confusion, the mistakes I made, and the systems that finally made everything click. While you're laughing at my journey, you'll be absorbing the tools you need to build your own freelance empire.</p>
                   <p><strong>Student? 9-to-5er looking for an exit? Or already freelancing and feeling completely stuck?</strong> This one's for you.</p>
                 </div>
               </FadeUp>
@@ -98,41 +101,22 @@ export default function BookPage() {
                 </div>
                 <div className="text-center md:text-left flex-1">
                   <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-3">
-                    Coming Soon!
+                    Live Now!
                   </span>
                   <p className="text-foreground/85 leading-relaxed" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
-                    Too busy to read? I get it. <em>The Freelancer's Mindset — Audiobook Edition</em> is currently cooking. Stay tuned to hear me read it to you!
+                    Too busy to read? I get it. <em>The Freelancer's Mindset Audiobook Edition</em> is out now. Listen to it here.
                   </p>
                 </div>
-                <button className="border-2 border-primary text-primary font-semibold text-sm uppercase tracking-wide rounded-full px-6 py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-200 shrink-0">
-                  Notify Me
-                </button>
+                <div className="flex flex-wrap gap-2 justify-center md:justify-end shrink-0">
+                  {audiobookLinks.map((l) => (
+                    <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="border-2 border-primary text-primary font-semibold text-xs uppercase tracking-wide rounded-full px-4 py-2.5 hover:bg-primary hover:text-primary-foreground transition-all duration-200">
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </FadeUp>
-        </div>
-      </section>
-
-      {/* ─── What's Inside — Expandable accordion ─── */}
-      <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 -bottom-20 w-[450px] h-[450px]" opacity={0.9} hideMobile />
-        <AbstractDeco src="/abstract/leaf-2.svg" className="-right-20 top-16 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(15deg)' }} hideMobile />
-
-        <div className="max-w-[800px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="Contents" heading="The Good Stuff Inside." />
-          <div className="space-y-4">
-            {whatsInside.map((item, i) => (
-              <FadeUp key={i} delay={i * 0.08}>
-                <ExpandableCard
-                  title={`Chapter highlight ${i + 1}`}
-                  icon={<Check size={18} />}
-                  defaultOpen={i === 0}
-                >
-                  {item}
-                </ExpandableCard>
-              </FadeUp>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -142,7 +126,7 @@ export default function BookPage() {
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10 text-center">
           <TextReveal
-            text="Who is this for?"
+            text="Who Is This For?"
             as="h2"
             className="font-bold italic text-foreground leading-tight mb-14"
             style={{ display: 'inline-block' }}
@@ -177,7 +161,7 @@ export default function BookPage() {
         <AbstractDeco src="/abstract/leaf-1.svg" className="-right-16 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(30deg)' }} />
 
         <div className="max-w-[1000px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="Unique" heading="Not your average 'how-to' book." />
+          <SectionHeader label="Unique" heading="Not Your Average 'How-To' Book" />
           <FadeUp>
             <p className="text-foreground/80 leading-relaxed mb-10 text-center max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
               There are a million freelancing books. Most of them are boring. Here's why mine isn't:
@@ -222,44 +206,12 @@ export default function BookPage() {
         </Marquee>
       </section>
 
-      {/* ─── About the Author — Full-width with offset portrait ─── */}
-      <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
-        <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-32 -top-20 w-[400px] h-[400px]" opacity={0.9} hideMobile />
-
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-16 items-center">
-            <div>
-              <SectionHeader label="The author" heading="Who wrote this thing?" align="left" />
-              <FadeUp>
-                <p className="text-foreground/85 leading-[1.75] mb-6" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
-                  Meenakshi Girish is a freelance writer, podcaster, and professional book-buyer based in South India. After six years of full-time freelancing for global brands, she realized she had a lot to say about it. She hosts <em>TFM Shortcast</em>, mentors aspiring creators, and firmly believes a good pun goes a long way. <em>The Freelancer's Mindset</em> is her debut book.
-                </p>
-                <Link to="/about" className="font-medium text-sm text-primary inline-flex items-center gap-1 hover:gap-2 transition-all duration-200">
-                  Read More About Meenakshi <ArrowRight size={14} />
-                </Link>
-              </FadeUp>
-            </div>
-            <FadeUp delay={0.15}>
-              <div className="relative mx-auto">
-                <AbstractDeco src="/abstract/brown-shape-2.svg" className="-right-10 -bottom-10 w-[250px] h-[250px]" opacity={0.9} hideMobile />
-                {/* Squircle shape */}
-                <div className="relative w-[230px] h-[230px] md:w-[260px] md:h-[260px] overflow-hidden border-[3px] border-primary/20 shadow-[0_10px_40px_hsl(210_25%_15%_/_0.06)]"
-                  style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%' }}
-                >
-                  <img src="/images/meenakshi-hero.png" alt="Meenakshi Girish" className="object-cover w-full h-full" />
-                </div>
-              </div>
-            </FadeUp>
-          </div>
-        </div>
-      </section>
-
       {/* ─── Testimonials — Single-column large quotes ─── */}
       <section className="bg-card py-24 lg:py-32 relative overflow-hidden">
         <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -top-16 w-[400px] h-[400px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[700px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="Reviews" heading="What the readers are saying." />
+          <SectionHeader label="Reviews" heading="Don't Take My Word For It" />
           <div className="space-y-8">
             {testimonials.map((t, i) => (
               <FadeUp key={i} delay={i * 0.12}>
@@ -302,7 +254,7 @@ export default function BookPage() {
         <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)' }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="font-bold italic text-white mb-4" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
-            Grab your copy!
+            Grab Your Copy!
           </h2>
           <p className="text-white/80 leading-relaxed mb-8 max-w-xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
             Just fill in your details, grab your wallet, and I'll send it straight to your door. Easy peasy.
@@ -310,6 +262,14 @@ export default function BookPage() {
           <Link to="/buy" className="bg-white text-[hsl(175_35%_40%)] font-semibold text-sm uppercase tracking-wide rounded-full px-10 py-4 hover:bg-white/90 hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center gap-2">
             Buy The Freelancer's Mindset <ArrowRight size={14} />
           </Link>
+          <div className="flex flex-wrap justify-center items-center gap-3 mt-6">
+            <span className="text-white/70 text-xs uppercase tracking-wider">Also on</span>
+            {purchaseLinks.map((l) => (
+              <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="border border-white/60 text-white font-semibold text-xs uppercase tracking-wide rounded-full px-5 py-2 hover:bg-white hover:text-[hsl(175_35%_40%)] transition-all duration-200">
+                {l.label}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
     </>

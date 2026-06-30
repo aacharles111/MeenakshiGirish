@@ -15,6 +15,9 @@ import CountUp from '../components/CountUp';
 import ExpandableCard from '../components/ExpandableCard';
 import TextReveal from '../components/TextReveal';
 
+// TODO: replace with your real Topmate profile URL
+const TOPMATE_URL = 'https://topmate.io';
+
 const topics: { icon: LucideIcon; title: string; body: string; color: string }[] = [
   { icon: Briefcase, title: 'Freelancing in the Real World', body: "What freelancing actually looks like behind the scenes. We talk getting started, finding clients, and how to survive the unpredictable income months without panicking.", color: 'hsl(175 35% 55%)' },
   { icon: PenLine, title: 'Content Writing as a Legit Career', body: "Yes, you can make a living writing! I break down the skills you actually need, how to build a portfolio that doesn't suck, and how to go from writing for fun to writing for money.", color: 'hsl(35 55% 55%)' },
@@ -69,7 +72,7 @@ export default function SpeakingPage() {
     <>
       <PageHero
         eyebrow="Speaking & Mentoring"
-        title="Because sometimes, I actually like leaving my desk."
+        title="Because sometimes, I actually like leaving my desk"
         subtitle="Writing is how I think, but speaking is how I connect. Over the years, I've dragged myself away from my laptop to bring everything I know about freelancing and content to stages, classrooms, and 1-on-1 calls. Turns out, I love it."
         ctaText="Book My Brain"
         ctaLink="/contact"
@@ -79,9 +82,9 @@ export default function SpeakingPage() {
       <section className="py-14 relative overflow-hidden border-y border-border/30" style={{ background: 'linear-gradient(to right, hsl(175 30% 92%), hsl(40 30% 97%))' }}>
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <CountUp end={1000} suffix="+" label="Students Mentored" />
-            <CountUp end={50} suffix="+" label="Talks Delivered" />
-            <CountUp end={30} suffix="+" label="Colleges Visited" />
+            <CountUp end={700} suffix="+" label="Students Mentored" />
+            <CountUp end={80} suffix="+" label="Talks Delivered" />
+            <CountUp end={10} suffix="+" label="Colleges Visited" />
             <CountUp end={4} suffix="" label="Core Topics" />
           </div>
         </div>
@@ -96,7 +99,7 @@ export default function SpeakingPage() {
           {/* Full-width text reveal heading */}
           <div className="mb-12">
             <TextReveal
-              text="Give me a mic and some coffee."
+              text="Give Me a Mic and Some Coffee"
               as="h2"
               className="font-bold italic text-foreground leading-tight"
               style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.8rem, 4vw, 3rem)' }}
@@ -133,10 +136,10 @@ export default function SpeakingPage() {
         <AbstractDeco src="/abstract/brown-shape-1.svg" className="-left-24 top-16 w-[300px] h-[300px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[800px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="Topics" heading="What I talk about." />
+          <SectionHeader label="Topics" heading="What I Talk About" />
           <FadeUp>
             <p className="text-foreground/80 leading-relaxed mb-10 text-center max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
-              I only speak about things I actually know and care about. No fluffy motivational speeches here—just real, useful stuff.
+              I only speak about things I know and care about. No fluffy motivational speeches from me. Just real, useful stuff. You can either have a personal discussion with me or invite me to your institution or corporate space for a session.
             </p>
           </FadeUp>
           <div className="space-y-4">
@@ -155,13 +158,21 @@ export default function SpeakingPage() {
               );
             })}
           </div>
+
+          <FadeUp delay={0.2} className="mt-10">
+            <div className="text-center">
+              <a href={TOPMATE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200">
+                Book Me on Topmate
+              </a>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
       {/* ─── DomeGallery — Moments from events and mentoring ─── */}
       <section className="relative overflow-hidden" style={{ background: 'hsl(40 30% 95%)' }}>
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 pt-16 relative z-10">
-          <SectionHeader label="In action" heading="Moments from the Stage & Beyond." />
+          <SectionHeader label="In action" heading="Moments from the Stage & Beyond" />
         </div>
         <div style={{ height: 'clamp(260px, 50vh, 600px)', position: 'relative' }}>
           <DomeGallery
@@ -180,10 +191,10 @@ export default function SpeakingPage() {
         <AbstractDeco src="/abstract/leaf-1.svg" className="-left-16 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(30deg)' }} />
 
         <div className="max-w-[1000px] mx-auto px-6 lg:px-10 relative z-10 text-center">
-          <SectionHeader label="My audience" heading="Who I've been talking to." />
+          <SectionHeader label="My audience" heading="Who I've Been Talking To" />
           <FadeUp>
             <p className="text-foreground/80 leading-relaxed mb-10 max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
-              I've had the absolute best time speaking to thousands of students, founders, and creators across South India.
+              I've had the absolute best time speaking to thousands of students, founders, and creators across India and internationally.
             </p>
           </FadeUp>
           <FadeUp delay={0.15}>
@@ -208,6 +219,13 @@ export default function SpeakingPage() {
               Watching mentees go from confused to confidently running their own freelance gigs is easily the best part of my job.
             </p>
           </FadeUp>
+          <FadeUp delay={0.3}>
+            <div className="text-center mt-10">
+              <a href={TOPMATE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200">
+                Ask Me Anything
+              </a>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -216,7 +234,7 @@ export default function SpeakingPage() {
         <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-40 -bottom-32 w-[450px] h-[450px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1000px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="1-on-1" heading="1-on-1 Mentoring (Let's get specific)." />
+          <SectionHeader label="1-on-1" heading="1-on-1 Mentoring (Let's Get Specific)" />
           <FadeUp>
             <p className="text-foreground/80 leading-relaxed mb-10 text-center max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
               Listening to a talk is great, but sometimes you just need someone to look at <em>your</em> specific mess and tell you how to fix it. That's where mentoring comes in.
@@ -268,7 +286,7 @@ export default function SpeakingPage() {
 
           <FadeUp delay={0.3}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="https://topmate.io" target="_blank" rel="noopener noreferrer" className="bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200">
+              <a href={TOPMATE_URL} target="_blank" rel="noopener noreferrer" className="bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200">
                 Book a Mentoring Session
               </a>
               <Link to="/contact" className="border-2 border-primary text-primary font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-primary hover:text-primary-foreground transition-all duration-200">
@@ -290,7 +308,7 @@ export default function SpeakingPage() {
                   <Award size={28} className="text-primary" />
                 </div>
                 <h3 className="font-bold italic text-foreground mb-3" style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.15rem' }}>
-                  Shoutout to Toastmasters.
+                  Shoutout to Toastmasters
                 </h3>
                 <p className="text-foreground/80 leading-relaxed max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
                   I have to give credit where it's due: Toastmasters International totally changed the game for me. It gave me the structure and the thick skin to become a way better communicator. I bring all those sneaky public speaking tricks into my mentoring calls to make sure you sound as confident as you are.
@@ -306,7 +324,7 @@ export default function SpeakingPage() {
         <AbstractDeco src="/abstract/teal-shape-2.svg" className="-left-32 -top-20 w-[400px] h-[400px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="Feedback" heading="What the crowd says." />
+          <SectionHeader label="Feedback" heading="What the Crowd Says" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
             {testimonials.map((t, i) => (
               <FadeUp key={i} delay={i * 0.12}>
@@ -352,13 +370,13 @@ export default function SpeakingPage() {
         <AbstractDeco src="/abstract/brown-shape-1.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)' }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="font-bold italic text-white mb-4" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
-            Let's get you moving.
+            Let's Get You Moving
           </h2>
           <p className="text-white/80 leading-relaxed mb-8 max-w-xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
             Whether you want me on your stage or on a zoom call to fix your portfolio, let's make it happen.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://topmate.io" target="_blank" rel="noopener noreferrer" className="bg-white text-[hsl(175_35%_40%)] font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-white/90 hover:-translate-y-px hover:shadow-lg transition-all duration-200">
+            <a href={TOPMATE_URL} target="_blank" rel="noopener noreferrer" className="bg-white text-[hsl(175_35%_40%)] font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-white/90 hover:-translate-y-px hover:shadow-lg transition-all duration-200">
               Book a Session
             </a>
             <Link to="/contact" className="border-2 border-white text-white font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-white hover:text-[hsl(175_35%_40%)] transition-all duration-200">

@@ -12,16 +12,16 @@ import Marquee from '../components/Marquee';
 
 const funFacts: { icon: LucideIcon; title: string; body: string; accent: string }[] = [
   { icon: PenLine, title: 'I am a writer first.', body: "Whether it's a 3,000-word deep-dive article or a cheeky 15-second Instagram caption, my brain works the same way: What is the clearest, most interesting way to say this? I hate fluff. I don't write to hit word counts; I write to make an impact.", accent: 'hsl(175 35% 55%)' },
-  { icon: BookOpen, title: 'I read. A lot.', body: "My personal library is sitting pretty somewhere between 1,500 and 2,000 books. I review them, talk about them online, and interview publishing folks on my podcast. Reading isn't just my escape; it's the secret sauce behind everything I write.", accent: 'hsl(35 55% 55%)' },
-  { icon: Mic2, title: 'I was freelancing before it was cool.', body: "Freelancing became the ultimate pandemic trend, but I was already out here in the trenches! I've ridden the highs, survived the lows, and built a system that actually works. That roller-coaster ride? That's what eventually became my book.", accent: 'hsl(200 40% 55%)' },
-  { icon: Users, title: "I love a good 'Aha!' moment.", body: "I've mentored over a thousand students and pros. I don't do vague \"follow your dreams\" advice. I give you the real, actionable, step-by-step guidance I wish someone had handed me.", accent: 'hsl(320 30% 55%)' },
+  { icon: BookOpen, title: 'I read. A lot.', body: "My personal library is sitting somewhere between 1,500 and 2,000 books. I review them, talk about them online, and share reading tips on Instagram. They say every good writer is a reader and I couldn't agree more!", accent: 'hsl(35 55% 55%)' },
+  { icon: Mic2, title: 'I was freelancing before it was cool.', body: "Freelancing became a cool hashtag, but I was already doing it for 2 years. I've ridden the highs, survived the lows, and built a system that works. That rollercoaster ride eventually became my book.", accent: 'hsl(200 40% 55%)' },
+  { icon: Users, title: "I love a good 'Aha!' moment.", body: "I've mentored over 700 students and pros. I don't do vague \"follow your dreams\" advice. I give you the real, actionable, step-by-step guidance I wish someone had handed me.", accent: 'hsl(320 30% 55%)' },
 ];
 
 const whatIDo: { icon: LucideIcon; label: string; desc: string }[] = [
   { icon: PenLine, label: 'Freelance Content Writing', desc: "Websites, blogs, SEO, newsletters. If your brand needs a voice, I'm your girl." },
   { icon: BookHeart, label: 'Author', desc: "I wrote The Freelancer's Mindset so you wouldn't have to guess how to start freelancing." },
   { icon: Mic2, label: 'Podcaster', desc: 'I host TFM Shortcast, a space where I interrogate (kidding!) freelancers and creators about their real journeys.' },
-  { icon: Users, label: 'Public Speaker', desc: "I've spoken all over South India about content, personal branding, and why words matter." },
+  { icon: Users, label: 'Public Speaker', desc: "I've spoken across India and internationally at colleges, conferences, and Toastmasters International about content, personal branding, and why words matter." },
   { icon: Leaf, label: 'Mentor', desc: '1-on-1 and group sessions for anyone trying to figure out their online voice without losing their mind.' },
   { icon: Instagram, label: 'Book Reviewer', desc: 'You can find me over on Instagram obsessing over my latest read.' },
 ];
@@ -35,8 +35,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="The girl behind the keyboard"
-        title="Just a girl, a borderline-concerning number of books, and a freelancing career built from scratch."
-        subtitle="I didn't have a mentor when I started. I definitely didn't have a map. I just had a laptop, a love for words, and a stubborn belief that good content can genuinely move people. Seven years later, I'm still at it—and honestly? I'm having more fun than ever."
+        title="Just a girl, a borderline-concerning number of books, and a freelancing career built from scratch"
+        subtitle="I didn't have a mentor when I started. I definitely didn't have a map. I just had a laptop, a love for words, and a stubborn belief that good content can genuinely move people. Four years later, I'm still at it. And honestly? I'm having more fun than ever."
       />
 
       {/* ─── Section 2: My Story — Magazine editorial layout ─── */}
@@ -56,14 +56,14 @@ export default function AboutPage() {
                   <span>MY JOURNEY</span>
                 </div>
                 <h2 className="font-bold italic text-foreground leading-tight mb-6" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
-                  So, how did this all happen?
+                  So, How Did This All Happen?
                 </h2>
               </FadeUp>
               <FadeUp delay={0.1}>
                 <div className="space-y-5 text-foreground/85 leading-[1.75]" style={{ fontFamily: 'var(--font-poppins)', fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
                   <p>Well, I was a voracious reader long before anyone ever paid me to write. Growing up, books weren't just a hobby; they were how I understood the world. So when I accidentally stumbled into content writing, it felt less like picking a career and more like, "Oh, right, this makes sense."</p>
                   <p>I started freelancing while everyone else my age was stressing over internships. I took on tiny projects, slowly built my client list, and eventually spiraled into doing <em>everything</em> content—websites, SEO, blogs, newsletters, podcast hosting, you name it.</p>
-                  <p>Fast forward six years of full-time freelancing: I work with awesome clients globally. I've written for industries I never thought I'd understand (hello, medical tech and B2B software), and I built a stable business out of it. And no, it wasn't magic. It was just good systems, respecting the craft, and figuring out exactly what clients actually need.</p>
+                  <p>Fast forward four years of full-time freelancing: I work with awesome clients globally. I've written for industries I never thought I'd understand (hello, medical tech and B2B software), and I built a stable business out of it. It was just good systems, respecting the craft, and figuring out exactly what clients need.</p>
                 </div>
               </FadeUp>
             </div>
@@ -99,7 +99,7 @@ export default function AboutPage() {
         <AbstractDeco src="/abstract/teal-shape-1.svg" className="-left-32 -bottom-20 w-[400px] h-[400px]" opacity={0.9} hideMobile />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="Who I am" heading="A few fun facts about how I operate." />
+          <SectionHeader label="Who I am" heading="A Few Fun Facts About How I Operate" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {funFacts.map((fact, i) => {
               const Icon = fact.icon;
@@ -129,10 +129,10 @@ export default function AboutPage() {
         <AbstractDeco src="/abstract/leaf-2.svg" className="-left-16 top-1/3 w-[250px] h-[250px]" opacity={0.9} style={{ transform: 'rotate(25deg)' }} />
 
         <div className="max-w-[900px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="What I do" heading="The Full Picture." />
+          <SectionHeader label="What I do" heading="The Full Picture" />
           <FadeUp>
             <p className="text-foreground/80 leading-relaxed mb-10 text-center max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
-              My work doesn't fit neatly into a tiny little box, and I gave up trying to force it into one. Here's what my day-to-day actually looks like:
+              My work doesn't fit neatly into a box, and I gave up trying to force it into one. Here's what my career looks like:
             </p>
           </FadeUp>
 
@@ -178,10 +178,10 @@ export default function AboutPage() {
         <AbstractDeco src="/abstract/brown-shape-2.svg" className="-right-20 -top-10 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(30deg)' }} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10 text-center">
-          <SectionHeader label="My clients" heading="The Cool People I Work With." />
+          <SectionHeader label="My clients" heading="The Cool People I Work With" />
           <FadeUp>
             <p className="text-foreground/80 leading-relaxed mb-10 max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
-              I get bored easily, which is why I love jumping between different industries! From solo founders to massive international brands, here's where I've left my mark:
+              I love jumping between different industries. From solo startup founders to international brands, here are the industries where I've left my mark:
             </p>
           </FadeUp>
 
@@ -222,7 +222,7 @@ export default function AboutPage() {
         <AbstractDeco src="/abstract/teal-shape-1.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)' }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="font-bold italic text-white mb-4" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
-            Let's make something awesome.
+            Let's Make Something Awesome
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
             <Link to="/buy" className="bg-white text-[hsl(175_35%_40%)] font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-white/90 hover:-translate-y-px hover:shadow-lg transition-all duration-200">

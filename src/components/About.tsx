@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Leaf, ScrollText, FolderOpen, PenLine, IndianRupee, BookOpen, Users } from 'lucide-react';
+import { Leaf, ScrollText, FolderOpen, PenLine, BookOpen, Users, Mic } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FadeUp from './FadeUp';
@@ -15,9 +15,9 @@ const stats: Stat[] = [
   { icon: ScrollText, number: '7+', label: 'Years of Experience' },
   { icon: FolderOpen, number: '350+', label: 'Projects Delivered' },
   { icon: PenLine, number: '300,000+', label: 'Words Written' },
-  { icon: IndianRupee, number: '₹2L+', label: 'Monthly Income' },
-  { icon: BookOpen, number: '1,500+', label: 'Books Hoarded' },
-  { icon: Users, number: '1,000+', label: 'Students Mentored' },
+  { icon: BookOpen, number: '150+', label: 'Book Copies Sold' },
+  { icon: Mic, number: '80+', label: 'Public Speeches & Sessions Given' },
+  { icon: Users, number: '700+', label: 'Students Mentored' },
 ];
 
 const containerVariants = {
@@ -90,11 +90,11 @@ export default function About() {
                   fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
                 }}
               >
-                A writer at heart, a strategist in mind.
+                A Writer at Heart, a Strategist in Mind
               </h2>
 
               <p className="text-base text-foreground/85 leading-[1.75] max-w-[520px] mb-4">
-                With over 7 years of experience, I help brands and businesses communicate with clarity, purpose, and authenticity across every word.
+                As a freelance content writer and content strategist with 7+ years of experience, I work with brands, founders, and marketing teams across India and globally. I turn scattered ideas into content that builds pipeline, earns trust, and gets read.
               </p>
 
               <Link

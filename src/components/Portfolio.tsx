@@ -51,8 +51,14 @@ export default function Portfolio() {
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
         <SectionHeader
           label="SELECTED WORK"
-          heading="Words in Action (Yes, I actually do work)."
+          heading="Words in Action (Yes, I Actually Do Work)"
         />
+
+        <FadeUp>
+          <p className="text-foreground/80 leading-relaxed mb-10 text-center max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
+            Across brand websites, B2B blog writing, thought leadership content, and SEO content projects, here is what happens when strategy meets words that work.
+          </p>
+        </FadeUp>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map((project, index) => (

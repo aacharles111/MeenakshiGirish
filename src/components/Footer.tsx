@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Mail, Phone, Linkedin, Instagram, Youtube, Music2, BookOpen } from 'lucide-react';
 import AbstractDeco from './AbstractDeco';
 
@@ -77,9 +78,15 @@ export default function Footer() {
         </div>
 
         {/* Copyright bar */}
-        <div className="border-t border-border/50 mt-10 pt-6">
+        <div className="border-t border-border/50 mt-10 pt-6 flex flex-col items-center gap-3">
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+            <Link to="/terms" className="hover:text-primary transition-colors">Terms of Use</Link>
+            <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/refund-policy" className="hover:text-primary transition-colors">Refund Policy</Link>
+            <Link to="/cookies-policy" className="hover:text-primary transition-colors">Cookies Policy</Link>
+          </div>
           <p className="text-xs text-muted-foreground text-center">
-            &copy; 2025 Meenakshi Girish. All rights reserved.
+            &copy; 2026 Meenakshi Girish. All rights reserved.
           </p>
         </div>
       </div>

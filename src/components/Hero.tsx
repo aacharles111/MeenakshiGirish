@@ -79,7 +79,7 @@ export default function Hero() {
               fontSize: 'clamp(0.85rem, 1.5vw, 1.05rem)',
             }}
           >
-            Freelance writer, author, speaker, content creator &amp; someone who
+            Freelance content writer, content strategist, author, and speaker. Someone who
             probably spends a little too much time talking into a mic.
           </p>
 

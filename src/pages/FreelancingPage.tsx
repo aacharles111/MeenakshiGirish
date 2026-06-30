@@ -31,9 +31,9 @@ const services: { icon: LucideIcon; title: string; body: string }[] = [
 const steps = [
   { num: '01', title: 'We Chat', body: "You tell me what you need, and I ask a bunch of questions so I can crawl inside your brand's brain.", color: 'hsl(175 35% 55%)' },
   { num: '02', title: 'The Proposal', body: 'I send you a plan, a timeline, and a price. No hidden fees, no drama.', color: 'hsl(35 55% 55%)' },
-  { num: '03', title: 'I Go Cave-Mode', body: 'I research, write, and polish. You get clean, proofread copy.', color: 'hsl(200 40% 55%)' },
+  { num: '03', title: 'I Get the Work Done', body: 'I research, write, and polish. You get a clean, proofread copy.', color: 'hsl(200 40% 55%)' },
   { num: '04', title: 'We Tweak', body: "You read it. If something feels off, we tweak it until it's perfect.", color: 'hsl(320 30% 55%)' },
-  { num: '05', title: 'You Launch', body: 'You hit publish, look awesome, and we high-five (virtually).', color: 'hsl(150 35% 50%)' },
+  { num: '05', title: 'Launch Day', body: 'You hit publish, look awesome, and we high-five (virtually).', color: 'hsl(150 35% 50%)' },
 ];
 
 const niches: { icon: LucideIcon; label: string }[] = [
@@ -72,8 +72,8 @@ export default function FreelancingPage() {
     <>
       <PageHero
         eyebrow="Freelance Content Writing"
-        title="Words that actually pay the bills (yours and mine)."
-        subtitle="I've been playing with words professionally for seven years and freelancing full-time for six. In that time, I've written for more industries than I can count on two hands, helping brands sound like humans rather than robots. If you need writing that's sharp, researched, and actually fun to read—we need to talk."
+        title="Words That Pay the Bills (Yours and Mine)"
+        subtitle="I've been playing with words professionally for seven years and freelancing full-time for four. In that time, I've written for more industries than I can count on two hands, helping brands sound like humans rather than robots. If you need writing that's sharp, researched, and fun to read, we need to talk."
         ctaText="Pitch Me Your Project"
         ctaLink="/contact"
       />
@@ -83,9 +83,9 @@ export default function FreelancingPage() {
         <div className="max-w-[1000px] mx-auto px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <CountUp end={7} suffix="+" label="Years of Writing" />
-            <CountUp end={200} suffix="+" label="Projects Delivered" />
-            <CountUp end={10} suffix="+" label="Industry Niches" />
-            <CountUp end={6} suffix="" label="Years Full-Time Freelancing" />
+            <CountUp end={350} suffix="+" label="Projects Delivered" />
+            <CountUp end={40} suffix="+" label="Industry Niches" />
+            <CountUp end={4} suffix="" label="Years Full-Time Freelancing" />
           </div>
         </div>
       </section>
@@ -108,7 +108,7 @@ export default function FreelancingPage() {
             </FadeUp>
             {/* Text RIGHT */}
             <div>
-              <SectionHeader label="My approach" heading="Six years of full-time freelancing looks like..." align="left" />
+              <SectionHeader label="My approach" heading="Four Years of Full-Time Freelancing Looks Like..." align="left" />
               <FadeUp>
                 <div className="space-y-5 text-foreground/85 leading-[1.75]" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
                   <p>Freelancing wasn't a backup plan for me; it was <em>the</em> plan. Earning a consistent living doing this isn't about luck (though a good cup of coffee helps). It's about treating writing like a craft and clients like real partners.</p>
@@ -126,7 +126,7 @@ export default function FreelancingPage() {
         <AbstractDeco src="/abstract/brown-shape-2.svg" className="-left-24 top-1/4 w-[300px] h-[300px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="My services" heading="How I Can Help You." />
+          <SectionHeader label="My services" heading="How I Can Help You" />
           <motion.div
             className="grid gap-6"
             style={{
@@ -173,7 +173,7 @@ export default function FreelancingPage() {
           <div className="text-center mb-4">
             <span className="text-primary font-medium text-xs uppercase tracking-[0.15em]">My Work</span>
             <h2 className="font-bold italic text-foreground mt-2" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
-              A Glimpse of What I Create.
+              A Glimpse of What I Create
             </h2>
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function FreelancingPage() {
         <AbstractDeco src="/abstract/teal-shape-2.svg" className="-right-20 bottom-0 w-[350px] h-[350px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10 text-center">
-          <SectionHeader label="Niches" heading="Where I've Been Hanging Out (Industries)." />
+          <SectionHeader label="Niches" heading="Where I've Been Hanging Out (Industries)" />
           <FadeUp>
             <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
               {niches.map((niche, i) => {
@@ -223,7 +223,7 @@ export default function FreelancingPage() {
         <AbstractDeco src="/abstract/brown-shape-1.svg" className="-left-32 -top-24 w-[400px] h-[400px]" opacity={0.9} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="My process" heading="How This Whole Thing Goes Down." />
+          <SectionHeader label="My process" heading="How This Whole Thing Goes Down" />
           <FadeUp>
             <p className="text-foreground/80 leading-relaxed mb-10 text-center max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
               I like to keep things painfully simple. No stress, no weird jargon.
@@ -258,7 +258,7 @@ export default function FreelancingPage() {
         <AbstractDeco src="/abstract/leaf-1.svg" className="-left-20 -bottom-16 w-[300px] h-[300px]" opacity={0.9} style={{ transform: 'rotate(-15deg)' }} />
 
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
-          <SectionHeader label="Social proof" heading="Don't Just Take My Word For It." />
+          <SectionHeader label="Social proof" heading="Don't Just Take My Word For It" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
             {testimonials.map((t, i) => (
               <FadeUp key={i} delay={i * 0.12}>
@@ -303,7 +303,7 @@ export default function FreelancingPage() {
         <AbstractDeco src="/abstract/leaf-2.svg" className="-right-16 -bottom-20 w-[350px] h-[350px]" opacity={0.08} style={{ filter: 'brightness(0) invert(1)', transform: 'rotate(15deg)' }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="font-bold italic text-white mb-4" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}>
-            Ready to make some magic?
+            Ready to Make Some Magic?
           </h2>
           <p className="text-white/80 leading-relaxed mb-8 max-w-xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
             Whether it's a quick blog post or a massive website revamp, I'm game. Let's figure it out together.

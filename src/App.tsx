@@ -21,6 +21,11 @@ import BookPage from './pages/BookPage'
 import SpeakingPage from './pages/SpeakingPage'
 import ContactPage from './pages/ContactPage'
 import BuyPage from './pages/BuyPage'
+import TermsPage from './pages/TermsPage'
+import PrivacyPage from './pages/PrivacyPage'
+import RefundPage from './pages/RefundPage'
+import CookiesPage from './pages/CookiesPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 function HomePage() {
   return (
@@ -61,6 +66,11 @@ function App() {
           <Route path="/speaking" element={<SpeakingPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/buy" element={<BuyPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/refund-policy" element={<RefundPage />} />
+          <Route path="/cookies-policy" element={<CookiesPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />

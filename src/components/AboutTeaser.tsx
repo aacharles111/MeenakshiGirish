@@ -33,15 +33,17 @@ export default function AboutTeaser() {
 
           <div className="space-y-4 mb-8">
             <p className="text-base text-foreground/85 leading-[1.8]">
-              Well, I'm a 26-year-old South Indian girl who got into freelancing way before it
-              became a trendy TikTok hashtag. I built a career out of words and somehow accidentally
-              ended up living in a library of 1,500 books.
+              I'm someone who got into freelancing before it became a trendy hashtag. I built a
+              career out of words and somehow ended up living in a library of 1,500 books.
             </p>
             <p className="text-base text-foreground/85 leading-[1.8]">
               I work with awesome Indian and international clients across healthcare, e-commerce,
-              and B2B. I host a podcast where I get real with other freelancers, I review books,
-              and I read constantly. I built this whole thing from scratch — no safety net, no magic
-              tricks, just a laptop and an unreasonable amount of stubbornness.
+              and B2B. As a freelance content writer, I've helped teams move from vague briefs and
+              inconsistent messaging to content that sounds like a human wrote it.
+            </p>
+            <p className="text-base text-foreground/85 leading-[1.8]">
+              I host a podcast where I get real with other freelancers, I review books, and I mentor
+              aspirants and companies constantly.
             </p>
           </div>
 

@@ -17,7 +17,7 @@ const services: ServiceCard[] = [
   {
     icon: Monitor,
     title: 'Freelance Content Writing',
-    body: "I write for brands, businesses, and people who need words that actually work. Websites, blogs, social media, SEO content, newsletters — if it has letters in it, I've probably written it.",
+    body: "I write for brands, businesses, and people who need words that work. Websites, blogs, social media, SEO content, newsletters - if it has letters in it, I've written it.",
     link: 'Stalk My Services →',
     href: '/freelancing',
   },
@@ -31,7 +31,7 @@ const services: ServiceCard[] = [
   {
     icon: Mic,
     title: 'Public Speaking & Mentoring',
-    body: "I've spoken at colleges, practically lived at Toastmasters, and mentored over a thousand folks through content and freelancing. Turns out, I like talking almost as much as writing.",
+    body: "I've spoken at colleges, practically lived at Toastmasters, and mentored over a thousand people on content strategy, freelance content writing, and building a career that doesn't require a backup plan. Turns out, I like talking almost as much as writing.",
     link: 'Book My Brain →',
     href: '/speaking',
   },
@@ -62,8 +62,14 @@ export default function Services() {
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative z-10">
         <SectionHeader
           label="WHAT I BRING TO THE TABLE"
-          heading="Three things I've built my life around (besides reading)."
+          heading="Three Things I've Built My Life Around (Besides Reading)"
         />
+
+        <FadeUp>
+          <p className="text-foreground/80 leading-relaxed mb-10 text-center max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
+            From blog writing that earns rankings to SEO content writing that converts and content strategy that ties it all together, this is where most of my work lives.
+          </p>
+        </FadeUp>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => {

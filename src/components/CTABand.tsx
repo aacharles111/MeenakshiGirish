@@ -47,8 +47,10 @@ export default function CTABand() {
           </h2>
 
           <p className="text-base text-white/80 leading-[1.7] mb-8">
-            Whether you need words written, a speaker for your event, a bit of mentoring, or you
-            just really want to buy my book &mdash; let&rsquo;s chat!
+            Whether you need a freelance content writer for your brand, a content strategist to
+            shape your editorial roadmap, a blog writer for your next campaign, a speaker for your
+            event, a bit of mentoring, or you just really want to buy my book, let&rsquo;s make it
+            happen.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -87,7 +87,10 @@ export default function Testimonials() {
       />
 
       <FadeUp>
-        <SectionHeader label="PEOPLE SAYING NICE THINGS" heading="Don't just take my word for it." />
+        <SectionHeader label="PEOPLE SAYING NICE THINGS" heading="Don't Just Take My Word for It" />
+        <p className="text-foreground/80 leading-relaxed mb-10 text-center max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
+          From brand founders to senior content strategists, here is what working with a freelance content writer who takes the craft seriously looks like.
+        </p>
 
         {/* Carousel */}
         <div

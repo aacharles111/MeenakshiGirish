@@ -14,6 +14,7 @@ import DomeGallery from '../components/DomeGallery';
 import CountUp from '../components/CountUp';
 import ExpandableCard from '../components/ExpandableCard';
 import TextReveal from '../components/TextReveal';
+import FeaturedIn from '../components/FeaturedIn';
 
 // TODO: replace with your real Topmate profile URL
 const TOPMATE_URL = 'https://topmate.io';
@@ -50,18 +51,28 @@ const whatWeDo = [
 ];
 
 const testimonials = [
-  { quote: 'She spoke at our college and the students were actually awake and asking questions. It felt like a conversation, not a boring lecture.', author: 'Prof. Ramya Venkatesh', role: 'SRM University' },
-  { quote: "One mentoring call with Meenakshi gave me a clearer roadmap than 6 months of Googling. I've been landing clients ever since!", author: 'Deepika Raj', role: 'Freelance Designer' },
-  { quote: 'Her content writing workshop totally shifted how our team writes. Practical, funny, and so helpful.', author: 'Vikram Iyer', role: 'Head of Content, TechBridge' },
+  { quote: 'What a great speech, I enjoyed listening to you because your energy was fantastic. You spoke with authority and clarity. Your speech was very organized and easy for me to follow along.', author: 'Audience Member', role: 'Speech Feedback' },
+  { quote: 'Excellent inspirational speech full of tips, well done Meenakshi and thank you!', author: 'Talk Attendee', role: 'Inspirational Session' },
+  { quote: "Your talk was very clear and you answered my questions very well. Thanks for your patience and I am surely going to try freelancing.", author: 'Event Attendee', role: 'Q&A Session' },
 ];
 
 const mentoringImages = [
-  '/images/mentoring/event1.png',
-  '/images/mentoring/event2.png',
-  '/images/mentoring/event3.png',
-  '/images/mentoring/event4.png',
-  '/images/mentoring/event5.png',
-  '/images/mentoring/event6.png',
+  '/images/events/event-01.jpeg',
+  '/images/events/event-02.jpeg',
+  '/images/events/event-03.jpg',
+  '/images/events/event-04.jpeg',
+  '/images/events/event-05.jpeg',
+  '/images/events/event-06.jpeg',
+  '/images/events/event-07.jpeg',
+  '/images/events/event-08.jpg',
+  '/images/events/event-09.jpeg',
+  '/images/events/event-10.jpg',
+  '/images/events/event-11.jpg',
+  '/images/events/event-12.jpeg',
+  '/images/events/event-13.jpeg',
+  '/images/events/event-14.webp',
+  '/images/events/event-15.jpg',
+  '/images/events/event-16.jpg',
 ];
 
 const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
@@ -351,6 +362,8 @@ export default function SpeakingPage() {
           </div>
         </div>
       </section>
+
+      <FeaturedIn />
 
       {/* ─── CTA Band — Teal with white dot field ─── */}
       <section className="relative overflow-hidden py-24 lg:py-28 px-6" style={{ background: 'hsl(175 35% 55%)' }}>

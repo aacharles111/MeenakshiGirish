@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Linkedin, Instagram, Youtube, Music2, ExternalLink, Mail, Phone, Send, MessageSquare, ArrowRight, Heart } from 'lucide-react';
+import { Linkedin, Instagram, Youtube, Music2, ExternalLink, Mail, CalendarClock, Send, MessageSquare, ArrowRight, Heart } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeader from '../components/SectionHeader';
@@ -73,11 +73,11 @@ export default function ContactPage() {
                     If you want to hire me to write, invite me to your event, or book a 1-on-1 call, poke me here. I usually reply within 48 hours (unless I'm lost in a good book).
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <a href="mailto:hello@meenakshigirish.com" className="bg-primary text-primary-foreground font-semibold text-xs uppercase tracking-wide rounded-full px-6 py-3 text-center hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2">
+                    <a href="mailto:meenakshigirish31@gmail.com" className="bg-primary text-primary-foreground font-semibold text-xs uppercase tracking-wide rounded-full px-6 py-3 text-center hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2">
                       <Mail size={14} /> Email Me
                     </a>
-                    <a href="https://wa.me/?text=Hey%20Meenakshi!" target="_blank" rel="noopener noreferrer" className="border-2 border-primary text-primary font-semibold text-xs uppercase tracking-wide rounded-full px-6 py-3 text-center hover:bg-primary hover:text-primary-foreground transition-all duration-200 inline-flex items-center justify-center gap-2">
-                      <Phone size={14} /> WhatsApp Me
+                    <a href="https://topmate.io/meenakshi_girish/" target="_blank" rel="noopener noreferrer" className="border-2 border-primary text-primary font-semibold text-xs uppercase tracking-wide rounded-full px-6 py-3 text-center hover:bg-primary hover:text-primary-foreground transition-all duration-200 inline-flex items-center justify-center gap-2">
+                      <CalendarClock size={14} /> Book a Call
                     </a>
                   </div>
                 </div>

@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Globe, FileText, Search, Smartphone, Mail, UserPen, Megaphone,
   FileCode, User, Printer, Heart, ShoppingBag, Building2, GraduationCap,
-  Dumbbell, Cpu, Wallet, Rocket, BookOpen, Hotel, ArrowRight
+  Dumbbell, Cpu, Wallet, Rocket, BookOpen, Hotel, ArrowRight, Send
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import PageHero from '../components/PageHero';
@@ -50,9 +51,9 @@ const niches: { icon: LucideIcon; label: string }[] = [
 ];
 
 const testimonials = [
-  { quote: "Meenakshi doesn't need to be micromanaged. She just gets it, and she delivers gold every time.", author: 'Sneha Mohan', role: 'E-Commerce Founder' },
-  { quote: 'She overhauled our website and enquiries shot up immediately. Best investment we made.', author: 'Arjun Kapoor', role: 'SaaS Startup, Bangalore' },
-  { quote: 'Accurate, clear, and perfectly written. She nails our medical content every single time.', author: 'Dr. Lakshmi Nair', role: 'HealthVista Digital' },
+  { quote: 'You made freelancing sound so accessible that I also want to start it today.', author: 'Session Attendee', role: 'Freelancing Talk' },
+  { quote: "I didn't know it's possible for students to start their own personal brands. I am going to create a LinkedIn page today and give it a try. Thanks so much.", author: 'Student Attendee', role: 'Personal Branding Session' },
+  { quote: "My parents didn't believe my goal to earn money by writing content online. You are the first person who accepted my belief and told me to keep going. This really means a lot and I won't forget you.", author: 'Student Attendee', role: 'Freelancing Session' },
 ];
 
 const galleryItems = [
@@ -68,6 +69,7 @@ const containerVariants = { hidden: {}, visible: { transition: { staggerChildren
 const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } } };
 
 export default function FreelancingPage() {
+  const [sampleFormState, setSampleFormState] = useState<'idle' | 'sent'>('idle');
   return (
     <>
       <PageHero
@@ -186,6 +188,70 @@ export default function FreelancingPage() {
             scrollSpeed={2}
             scrollEase={0.02}
           />
+        </div>
+      </section>
+
+      {/* ─── Work Samples on Demand — request form ─── */}
+      <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
+        <AbstractDeco src="/abstract/leaf-2.svg" className="-right-16 -top-10 w-[280px] h-[280px]" opacity={0.9} style={{ transform: 'rotate(15deg)' }} hideMobile />
+
+        <div className="max-w-[820px] mx-auto px-6 lg:px-10 relative z-10">
+          <SectionHeader label="Work samples" heading="Want to see if we're a fit?" />
+          <FadeUp>
+            <p className="text-foreground/80 leading-relaxed mb-10 text-center max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
+              Work samples as per your industry and required content format are available on demand. Tell me a little about your business and what you need, and I'll send over relevant samples.
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.1}>
+            {sampleFormState === 'sent' ? (
+              <div className="bg-card rounded-[2rem] p-10 border border-border/50 shadow-[0_4px_20px_hsl(30_15%_80%_/_0.15)] text-center">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Send size={28} className="text-primary" />
+                </div>
+                <h3 className="font-bold italic text-foreground mb-2" style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.3rem' }}>
+                  Request received!
+                </h3>
+                <p className="text-muted-foreground text-sm">I'll get back to you within 48 hours with work samples tailored to your industry.</p>
+                <button onClick={() => setSampleFormState('idle')} className="mt-6 text-primary text-sm font-medium hover:underline">
+                  Send another request
+                </button>
+              </div>
+            ) : (
+              <form
+                onSubmit={(e) => { e.preventDefault(); setSampleFormState('sent'); }}
+                className="bg-card rounded-[2rem] p-8 md:p-10 border border-border/50 shadow-[0_4px_20px_hsl(30_15%_80%_/_0.15)] space-y-5"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="sample-name" className="block text-foreground text-sm font-medium mb-1.5">Your Name *</label>
+                    <input id="sample-name" type="text" required className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label htmlFor="sample-company" className="block text-foreground text-sm font-medium mb-1.5">Company / Organization *</label>
+                    <input id="sample-company" type="text" required className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="Where you work" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="sample-email" className="block text-foreground text-sm font-medium mb-1.5">Email *</label>
+                    <input id="sample-email" type="email" required className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="you@company.com" />
+                  </div>
+                  <div>
+                    <label htmlFor="sample-phone" className="block text-foreground text-sm font-medium mb-1.5">Phone (optional)</label>
+                    <input id="sample-phone" type="tel" className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="+91 XXXXX XXXXX" />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="sample-industry" className="block text-foreground text-sm font-medium mb-1.5">Industry / Content type you need</label>
+                  <input id="sample-industry" type="text" className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="E.g., healthcare blogs, SaaS website copy..." />
+                </div>
+                <button type="submit" className="w-full sm:w-auto bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-10 py-3.5 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2">
+                  <Send size={14} /> Request Work Samples
+                </button>
+              </form>
+            )}
+          </FadeUp>
         </div>
       </section>
 
@@ -312,9 +378,9 @@ export default function FreelancingPage() {
             <Link to="/contact" className="inline-flex items-center bg-white text-[hsl(175_35%_40%)] font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-white/90 hover:-translate-y-px hover:shadow-lg transition-all duration-200">
               Email Me <ArrowRight size={14} className="ml-2" />
             </Link>
-            <Link to="/contact" className="border-2 border-white text-white font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-white hover:text-[hsl(175_35%_40%)] transition-all duration-200">
-              WhatsApp Me
-            </Link>
+            <a href="https://topmate.io/meenakshi_girish/" target="_blank" rel="noopener noreferrer" className="border-2 border-white text-white font-semibold text-sm uppercase tracking-wide rounded-full px-8 py-3.5 hover:bg-white hover:text-[hsl(175_35%_40%)] transition-all duration-200">
+              Book a Call
+            </a>
           </div>
         </div>
       </section>

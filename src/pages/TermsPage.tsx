@@ -17,7 +17,7 @@ export default function TermsPage() {
           'Payments are processed securely through Razorpay. I do not store your card or banking details on this site.',
         ]},
         { h: 'Third-Party Links', p: [
-          'The site links to third-party platforms such as Razorpay, Amazon Kindle, Audible, Storytel, Apple Music, and Kuku FM for purchases and audiobook streaming.',
+          'The site links to third-party platforms such as Razorpay and Amazon Kindle for purchases, and Spotify for audiobook streaming.',
           'I am not responsible for the content, availability, or policies of those external platforms.',
         ]},
         { h: 'Disclaimer', p: [

@@ -332,7 +332,7 @@ export default function DomeGallery({
       const originalImg = overlay.querySelector('img');
       if (originalImg) {
         const img = originalImg.cloneNode() as HTMLImageElement;
-        img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+        img.style.cssText = 'width:100%;height:100%;object-fit:contain;';
         animatingOverlay.appendChild(img);
       }
       overlay.remove();
@@ -456,38 +456,58 @@ export default function DomeGallery({
         overlay.style.transform = 'translate(0px, 0px) scale(1, 1)';
         rootRef.current?.setAttribute('data-enlarging', 'true');
       }, 16);
-      const wantsResize = openedImageWidth || openedImageHeight;
-      if (wantsResize) {
-        const onFirstEnd = (ev: TransitionEvent) => {
-          if (ev.propertyName !== 'transform') return;
-          overlay.removeEventListener('transitionend', onFirstEnd);
-          const prevTransition = overlay.style.transition;
-          overlay.style.transition = 'none';
-          const tempWidth = openedImageWidth || `${frameR.width}px`;
-          const tempHeight = openedImageHeight || `${frameR.height}px`;
-          overlay.style.width = tempWidth;
-          overlay.style.height = tempHeight;
-          const newRect = overlay.getBoundingClientRect();
-          overlay.style.width = frameR.width + 'px';
-          overlay.style.height = frameR.height + 'px';
-          void overlay.offsetWidth;
-          overlay.style.transition = `left ${enlargeTransitionMs}ms ease, top ${enlargeTransitionMs}ms ease, width ${enlargeTransitionMs}ms ease, height ${enlargeTransitionMs}ms ease`;
-          const centeredLeft = frameR.left - mainR.left + (frameR.width - newRect.width) / 2;
-          const centeredTop = frameR.top - mainR.top + (frameR.height - newRect.height) / 2;
-          requestAnimationFrame(() => {
-            overlay.style.left = `${centeredLeft}px`;
-            overlay.style.top = `${centeredTop}px`;
-            overlay.style.width = tempWidth;
-            overlay.style.height = tempHeight;
-          });
-          const cleanupSecond = () => {
-            overlay.removeEventListener('transitionend', cleanupSecond);
-            overlay.style.transition = prevTransition;
-          };
-          overlay.addEventListener('transitionend', cleanupSecond, { once: true });
+      // After the grow-in transition, resize the overlay to match the image's
+      // natural aspect ratio (within a viewport-bounded box) so landscape,
+      // square, and portrait photos all display fully without being cropped.
+      const openedImg = overlay.querySelector('img');
+      const MAX_W = Math.min(window.innerWidth * 0.82, Math.max(frameR.width * 1.15, 320));
+      const MAX_H = Math.min(window.innerHeight * 0.84, Math.max(frameR.height * 1.25, 420));
+
+      const runResize = (natW: number, natH: number) => {
+        const aspect = natW > 0 && natH > 0 ? natW / natH : 3 / 4;
+        let w = MAX_W;
+        let h = w / aspect;
+        if (h > MAX_H) {
+          h = MAX_H;
+          w = h * aspect;
+        }
+        w = Math.round(w);
+        h = Math.round(h);
+        const prevTransition = overlay.style.transition;
+        overlay.style.transition = 'none';
+        overlay.style.width = frameR.width + 'px';
+        overlay.style.height = frameR.height + 'px';
+        void overlay.offsetWidth;
+        overlay.style.transition = `left ${enlargeTransitionMs}ms ease, top ${enlargeTransitionMs}ms ease, width ${enlargeTransitionMs}ms ease, height ${enlargeTransitionMs}ms ease`;
+        const centeredLeft = frameR.left - mainR.left + (frameR.width - w) / 2;
+        const centeredTop = frameR.top - mainR.top + (frameR.height - h) / 2;
+        requestAnimationFrame(() => {
+          if (!overlay.parentElement) return;
+          overlay.style.left = `${centeredLeft}px`;
+          overlay.style.top = `${centeredTop}px`;
+          overlay.style.width = `${w}px`;
+          overlay.style.height = `${h}px`;
+        });
+        const cleanupSecond = () => {
+          overlay.removeEventListener('transitionend', cleanupSecond);
+          overlay.style.transition = prevTransition;
         };
-        overlay.addEventListener('transitionend', onFirstEnd);
-      }
+        overlay.addEventListener('transitionend', cleanupSecond, { once: true });
+      };
+
+      const onFirstEnd = (ev: TransitionEvent) => {
+        if (ev.propertyName !== 'transform') return;
+        overlay.removeEventListener('transitionend', onFirstEnd);
+        if (openedImg && openedImg.complete && openedImg.naturalWidth > 0) {
+          runResize(openedImg.naturalWidth, openedImg.naturalHeight);
+        } else if (openedImg) {
+          openedImg.addEventListener('load', () => runResize(openedImg.naturalWidth, openedImg.naturalHeight), { once: true });
+          openedImg.addEventListener('error', () => runResize(0, 0), { once: true });
+        } else {
+          runResize(0, 0);
+        }
+      };
+      overlay.addEventListener('transitionend', onFirstEnd);
     },
     [enlargeTransitionMs, lockScroll, openedImageHeight, openedImageWidth, segments, unlockScroll]
   );

@@ -13,7 +13,7 @@ export default function RefundPage() {
           'Because books are physical goods, change-of-mind refunds are handled on a case-by-case basis — just reach out and I will do my best to help.',
         ]},
         { h: 'Digital & Audiobook', p: [
-          'Digital audiobook purchases happen on third-party platforms (Audible, Storytel, Kuku FM, Apple Music) and are governed by their own refund policies.',
+          'Digital audiobook purchases, where applicable on third-party platforms, are governed by their own refund policies.',
         ]},
         { h: 'Mentoring Sessions', p: [
           'Booked through Topmate: sessions can be rescheduled or refunded if cancelled at least 24 hours in advance.',

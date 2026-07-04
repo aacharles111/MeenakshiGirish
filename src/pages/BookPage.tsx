@@ -26,22 +26,14 @@ const differentiators: { icon: LucideIcon; label: string; desc: string }[] = [
 ];
 
 const testimonials = [
-  { quote: 'Finally, a freelancing book written by someone who actually gets the struggle!', author: 'Priya Sundaram', role: 'Copywriter & Freelancer' },
-  { quote: 'The artworks are gorgeous, but the advice inside is what I keep coming back to.', author: 'Arun Balaji', role: 'UX Writer, Chennai' },
-  { quote: "I literally handed this to my entire team. It answers questions I didn't even know they had.", author: 'Kavitha Rao', role: 'Marketing Manager' },
-];
-
-// TODO: replace placeholder hrefs with real audiobook links
-const audiobookLinks = [
-  { label: 'Apple Music', href: 'https://music.apple.com' },
-  { label: 'Audible', href: 'https://www.audible.in' },
-  { label: 'Storytel', href: 'https://www.storytel.com' },
-  { label: 'Kuku FM', href: 'https://kukufm.com' },
+  { quote: "Loved your candid thoughts on writing and becoming an author, ma'am.", author: 'Aspiring Author', role: 'Talk Attendee' },
+  { quote: "I finished your book today and it has so many insights. I want to start freelancing and support my family but didn't know it's possible for students. Thank you.", author: 'Book Reader', role: 'Student' },
+  { quote: "I have just started writing my book but thought nobody will buy a book on spirituality written by a college student. But your session gave me the confidence to give it a try anyway. Thanks so much, ma'am.", author: 'Aspiring Author', role: 'Student' },
 ];
 
 // TODO: replace with real Amazon Kindle and catalog URLs
 const purchaseLinks = [
-  { label: 'Amazon Kindle', href: 'https://www.amazon.in' },
+  { label: 'Amazon Kindle', href: 'https://amzn.in/d/06pnDdVe' },
   { label: 'View Catalog', href: '#' },
 ];
 
@@ -101,19 +93,15 @@ export default function BookPage() {
                 </div>
                 <div className="text-center md:text-left flex-1">
                   <span className="inline-block bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-3">
-                    Live Now!
+                    First 10 Chapters Live
                   </span>
                   <p className="text-foreground/85 leading-relaxed" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
-                    Too busy to read? I get it. <em>The Freelancer's Mindset Audiobook Edition</em> is out now. Listen to it here.
+                    Too busy to read? I get it. The first 10 chapters of <em>The Freelancer's Mindset</em> audiobook are live now, with more coming soon. Listen to me read it to you!
                   </p>
                 </div>
-                <div className="flex flex-wrap gap-2 justify-center md:justify-end shrink-0">
-                  {audiobookLinks.map((l) => (
-                    <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="border-2 border-primary text-primary font-semibold text-xs uppercase tracking-wide rounded-full px-4 py-2.5 hover:bg-primary hover:text-primary-foreground transition-all duration-200">
-                      {l.label}
-                    </a>
-                  ))}
-                </div>
+                <a href="https://open.spotify.com/show/55C8g0qgxeROYP0X6m8inn" target="_blank" rel="noopener noreferrer" className="border-2 border-primary text-primary font-semibold text-sm uppercase tracking-wide rounded-full px-6 py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-200 shrink-0">
+                  Listen on Spotify
+                </a>
               </div>
             </div>
           </FadeUp>

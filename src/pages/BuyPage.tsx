@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookHeart, Headphones, Package, User, MapPin, MessageSquare, Check, Star } from 'lucide-react';
+import { BookHeart, BookOpen, Headphones, Package, User, MapPin, MessageSquare, Check, Star, ArrowRight } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import SectionHeader from '../components/SectionHeader';
 import FadeUp from '../components/FadeUp';
@@ -83,6 +83,9 @@ export default function BuyPage() {
                   );
                 })}
               </div>
+              <a href="https://amzn.in/d/06pnDdVe" target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-6 py-3 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200">
+                <BookOpen size={16} /> Prefer Kindle? Get the Digital Edition <ArrowRight size={14} />
+              </a>
             </FadeUp>
           </div>
         </div>

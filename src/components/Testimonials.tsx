@@ -12,24 +12,28 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    text: 'Working with Meenakshi was the best content decision we made this year. She understood our brand voice instantly and delivered consistently.',
-    author: 'Rohan K., Marketing Director, TechFlow',
+    text: 'I heard Dave say you were looking for voice modulation and clarity. You succeeded in BOTH. Outstanding.',
+    author: 'Speech Attendee',
   },
   {
-    text: 'Her book genuinely changed how I approach freelancing. It\u2019s the kind of read that makes you feel like someone finally gets it.',
-    author: 'Ananya S., Freelance Designer',
+    text: 'Your talk on personal branding was SO GOOD. I have been posting on LinkedIn for the past 7 months but didn\u2019t get any traction. Now I have a better idea how to start again and do it right.',
+    author: 'Personal Branding Session',
   },
   {
-    text: 'Her mentoring session was worth every minute. She doesn\u2019t give you generic advice \u2014 she gives you a real roadmap.',
-    author: 'Vikram P., Content Strategist',
+    text: 'My parents didn\u2019t believe my goal to earn money by writing content online. You are the first person who accepted my belief and told me to keep going. This really means a lot and I won\u2019t forget you.',
+    author: 'Student Attendee',
   },
   {
-    text: 'I handed her a chaotic brief, and she returned a beautifully structured, highly converting sales page. Absolute magic.',
-    author: 'Sarah L., E-commerce Founder',
+    text: 'Meenakshi, thank you for sharing your gifts. I am very grateful.',
+    author: 'Audience Member',
   },
   {
-    text: 'Meenakshi is rare. She writes with empathy but understands business metrics. Our newsletter open rates have never been higher.',
-    author: 'Dr. Arvind T., Healthcare Consultant',
+    text: 'Excellent speech and great topic.',
+    author: 'Talk Attendee',
+  },
+  {
+    text: 'You did an excellent job with your speech.',
+    author: 'Event Attendee',
   },
 ];
 
@@ -87,9 +91,10 @@ export default function Testimonials() {
       />
 
       <FadeUp>
-        <SectionHeader label="PEOPLE SAYING NICE THINGS" heading="Don't Just Take My Word for It" />
-        <p className="text-foreground/80 leading-relaxed mb-10 text-center max-w-2xl mx-auto" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
-          From brand founders to senior content strategists, here is what working with a freelance content writer who takes the craft seriously looks like.
+        <SectionHeader label="PEOPLE SAYING NICE THINGS" heading="Don't just take my word for it" />
+
+        <p className="text-base text-foreground/75 leading-[1.75] max-w-[680px] mx-auto text-center -mt-6 mb-14 px-6">
+          From college auditoriums to book clubs to 1-on-1 mentoring calls — here's what people have said after attending a talk, reading the book, or sitting in on a session.
         </p>
 
         {/* Carousel */}

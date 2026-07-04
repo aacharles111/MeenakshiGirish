@@ -10,6 +10,7 @@ import Portfolio from './components/Portfolio'
 import AboutTeaser from './components/AboutTeaser'
 import BookBanner from './components/BookBanner'
 import Podcast from './components/Podcast'
+import FeaturedIn from './components/FeaturedIn'
 import Testimonials from './components/Testimonials'
 import CTABand from './components/CTABand'
 import Footer from './components/Footer'
@@ -37,6 +38,7 @@ function HomePage() {
       <AboutTeaser />
       <BookBanner />
       <Podcast />
+      <FeaturedIn />
       <Testimonials />
       <CTABand />
     </>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import useSEO from './hooks/useSEO'
 import LoadingScreen from './components/LoadingScreen'
 import BubbleMenu from './components/BubbleMenu'
 import Hero from './components/Hero'
@@ -29,6 +30,11 @@ import CookiesPage from './pages/CookiesPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function HomePage() {
+  useSEO({
+    title: 'Meenakshi Girish — Freelance Content Writer, Content Strategist & Author',
+    description: "Meenakshi Girish is a freelance content writer and content strategist with 7+ years of experience, and author of The Freelancer's Mindset. She turns scattered ideas into content that builds pipeline, earns trust, and gets read.",
+    path: '/',
+  });
   return (
     <>
       <Hero />

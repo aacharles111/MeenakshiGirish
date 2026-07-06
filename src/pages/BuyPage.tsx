@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BookHeart, BookOpen, Headphones, Package, User, MapPin, MessageSquare, Check, Star, ArrowRight } from 'lucide-react';
 import PageHero from '../components/PageHero';
+import useSEO from '../hooks/useSEO';
 import SectionHeader from '../components/SectionHeader';
 import FadeUp from '../components/FadeUp';
 import AbstractDeco from '../components/AbstractDeco';
@@ -19,6 +20,11 @@ const bookDetails = [
 const copyOptions = [1, 2, 3, 5];
 
 export default function BuyPage() {
+  useSEO({
+    title: "Buy The Freelancer's Mindset — Meenakshi Girish",
+    description: "Buy The Freelancer's Mindset by Meenakshi Girish. Order a signed paperback shipped to your door or get the Kindle edition instantly on Amazon.",
+    path: '/buy',
+  });
   const [formState, setFormState] = useState<'idle' | 'sent'>('idle');
   const [copies, setCopies] = useState(1);
 
@@ -147,10 +153,6 @@ export default function BuyPage() {
                       <div>
                         <label htmlFor="buy-email" className="block text-foreground text-sm font-medium mb-1.5">Email Address *</label>
                         <input id="buy-email" type="email" required className="w-full px-4 py-3 rounded-xl border border-border/60 bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
-                      </div>
-                      <div>
-                        <label htmlFor="buy-phone" className="block text-foreground text-sm font-medium mb-1.5">Phone Number *</label>
-                        <input id="buy-phone" type="tel" required className="w-full px-4 py-3 rounded-xl border border-border/60 bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
                       </div>
                     </div>
                   </div>

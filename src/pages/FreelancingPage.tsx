@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import PageHero from '../components/PageHero';
+import useSEO from '../hooks/useSEO';
 import SectionHeader from '../components/SectionHeader';
 import FadeUp from '../components/FadeUp';
 import AbstractDeco from '../components/AbstractDeco';
@@ -69,6 +70,11 @@ const containerVariants = { hidden: {}, visible: { transition: { staggerChildren
 const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } } };
 
 export default function FreelancingPage() {
+  useSEO({
+    title: 'Freelance Content Writing Services — Meenakshi Girish',
+    description: 'Freelance content writing services: blogs, SEO content, website copy, newsletters and content strategy. 7+ years, 350+ projects across 40+ industries.',
+    path: '/freelancing',
+  });
   const [sampleFormState, setSampleFormState] = useState<'idle' | 'sent'>('idle');
   return (
     <>
@@ -236,10 +242,6 @@ export default function FreelancingPage() {
                   <div>
                     <label htmlFor="sample-email" className="block text-foreground text-sm font-medium mb-1.5">Email *</label>
                     <input id="sample-email" type="email" required className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="you@company.com" />
-                  </div>
-                  <div>
-                    <label htmlFor="sample-phone" className="block text-foreground text-sm font-medium mb-1.5">Phone (optional)</label>
-                    <input id="sample-phone" type="tel" className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="+91 XXXXX XXXXX" />
                   </div>
                 </div>
                 <div>

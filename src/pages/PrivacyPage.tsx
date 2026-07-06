@@ -9,7 +9,7 @@ export default function PrivacyPage() {
       intro="Your trust matters. This policy explains what information I collect, why, and how I keep it safe."
       sections={[
         { h: 'What I Collect', p: [
-          'When you fill in a contact or order form, I collect the details you provide, such as your name, email address, phone number, and shipping details.',
+          'When you fill in a contact or order form, I collect the details you provide, such as your name, email address, and shipping details.',
           'Payment information is handled by Razorpay; I never see or store your card or banking data.',
         ]},
         { h: 'How I Use It', p: [

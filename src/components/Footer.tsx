@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, Linkedin, Instagram, Youtube, Music2, BookOpen } from 'lucide-react';
+import { Mail, Linkedin, Instagram, Youtube, Music2, BookOpen } from 'lucide-react';
 import AbstractDeco from './AbstractDeco';
 
 const socialLinks = [
@@ -42,13 +42,6 @@ export default function Footer() {
             >
               <Mail size={14} className="text-primary" />
               meenakshigirish31@gmail.com
-            </a>
-            <a
-              href="tel:8754416226"
-              className="flex items-center gap-2 text-[13px] text-foreground/80 hover:text-primary transition-colors"
-            >
-              <Phone size={14} className="text-primary" />
-              8754416226
             </a>
           </div>
 

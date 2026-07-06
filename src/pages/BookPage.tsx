@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Sparkles, Heart, Users, Palette, Coffee, BookHeart, User, ArrowRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import PageHero from '../components/PageHero';
+import useSEO from '../hooks/useSEO';
 import SectionHeader from '../components/SectionHeader';
 import FadeUp from '../components/FadeUp';
 import AbstractDeco from '../components/AbstractDeco';
@@ -40,6 +41,11 @@ const purchaseLinks = [
 
 
 export default function BookPage() {
+  useSEO({
+    title: "The Freelancer's Mindset — Book by Meenakshi Girish",
+    description: "The Freelancer's Mindset — the honest, practical guide to building a freelance career by Meenakshi Girish. Available on Kindle; audiobook on Spotify.",
+    path: '/the-book',
+  });
   return (
     <>
       <PageHero

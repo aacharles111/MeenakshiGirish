@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import PageHero from '../components/PageHero';
+import useSEO from '../hooks/useSEO';
 import SectionHeader from '../components/SectionHeader';
 import FadeUp from '../components/FadeUp';
 import AbstractDeco from '../components/AbstractDeco';
@@ -79,6 +80,11 @@ const containerVariants = { hidden: {}, visible: { transition: { staggerChildren
 const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } } };
 
 export default function SpeakingPage() {
+  useSEO({
+    title: 'Speaking & Mentoring — Meenakshi Girish',
+    description: 'Book Meenakshi Girish to speak on content strategy, freelance content writing and personal branding, or for 1-on-1 mentoring sessions.',
+    path: '/speaking',
+  });
   return (
     <>
       <PageHero

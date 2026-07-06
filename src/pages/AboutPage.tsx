@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PenLine, BookOpen, Mic2, Users, BookHeart, Instagram, Leaf } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import PageHero from '../components/PageHero';
+import useSEO from '../hooks/useSEO';
 import SectionHeader from '../components/SectionHeader';
 import FadeUp from '../components/FadeUp';
 import AbstractDeco from '../components/AbstractDeco';
@@ -31,6 +32,11 @@ const industries = ['Healthcare & Medicine', 'E-Commerce', 'B2B Corporate', 'Per
 
 
 export default function AboutPage() {
+  useSEO({
+    title: 'About Meenakshi Girish — Writer, Author & Mentor',
+    description: "About Meenakshi Girish — freelance content writer, content strategist, author of The Freelancer's Mindset, speaker and mentor to writers and freelancers.",
+    path: '/about',
+  });
   return (
     <>
       <PageHero

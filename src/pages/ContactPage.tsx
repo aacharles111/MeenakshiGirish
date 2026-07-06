@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Linkedin, Instagram, Youtube, Music2, ExternalLink, Mail, CalendarClock, Send, MessageSquare, ArrowRight, Heart } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import PageHero from '../components/PageHero';
+import useSEO from '../hooks/useSEO';
 import SectionHeader from '../components/SectionHeader';
 import FadeUp from '../components/FadeUp';
 import AbstractDeco from '../components/AbstractDeco';
@@ -25,6 +26,11 @@ const containerVariants = { hidden: {}, visible: { transition: { staggerChildren
 const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } } };
 
 export default function ContactPage() {
+  useSEO({
+    title: 'Contact Meenakshi Girish — Hire or Book a Session',
+    description: 'Hire a freelance content writer or content strategist, book a mentoring session, or invite Meenakshi to speak. Email meenakshigirish31@gmail.com.',
+    path: '/contact',
+  });
   const [formState, setFormState] = useState<'idle' | 'sent'>('idle');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -160,10 +166,6 @@ export default function ContactPage() {
                       <label htmlFor="contact-email" className="block text-foreground text-sm font-medium mb-1.5">Your Email *</label>
                       <input id="contact-email" type="email" required className="w-full px-4 py-3 rounded-xl border border-border/60 bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="you@example.com" />
                     </div>
-                  </div>
-                  <div>
-                    <label htmlFor="contact-phone" className="block text-foreground text-sm font-medium mb-1.5">Phone Number</label>
-                    <input id="contact-phone" type="tel" className="w-full px-4 py-3 rounded-xl border border-border/60 bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="+91 XXXXX XXXXX" />
                   </div>
                   <div>
                     <label htmlFor="contact-subject" className="block text-foreground text-sm font-medium mb-1.5">What's this about? *</label>

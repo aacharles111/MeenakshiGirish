@@ -37,9 +37,13 @@ export default function BuyPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.currentTarget;
+    // Read + sanitize: strip control chars / angle brackets and cap length.
+    // (Razorpay rejects note values over 256 chars; also defence-in-depth
+    // in case these are ever rendered back in an admin view later.)
     const field = (id: string) => (form.querySelector(`#${id}`) as HTMLInputElement | null)?.value.trim() ?? '';
-    const name = field('buy-name') || 'Customer';
-    const email = field('buy-email');
+    const clean = (val: string, max: number) => val.replace(/[<>]/g, '').trim().slice(0, max);
+    const name = clean(field('buy-name'), 100) || 'Customer';
+    const email = clean(field('buy-email'), 254);
     const amount = BOOK_PRICE_INR * copies * 100; // ₹ → paise (Razorpay uses paise)
 
     setStatus('processing');
@@ -53,12 +57,12 @@ export default function BuyPage() {
           copies: String(copies),
           name,
           email,
-          address: [field('buy-addr1'), field('buy-addr2')].filter(Boolean).join(', '),
-          city: field('buy-city'),
-          state: field('buy-state'),
-          pin: field('buy-pin'),
-          country: field('buy-country'),
-          request: field('buy-notes').slice(0, 200),
+          address: clean([field('buy-addr1'), field('buy-addr2')].filter(Boolean).join(', '), 256),
+          city: clean(field('buy-city'), 100),
+          state: clean(field('buy-state'), 100),
+          pin: clean(field('buy-pin'), 10),
+          country: clean(field('buy-country'), 50),
+          request: clean(field('buy-notes'), 200),
         },
       });
       const result = await checkout({

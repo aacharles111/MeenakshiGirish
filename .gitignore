@@ -33,3 +33,8 @@ screenshot_*.png
 *.py
 
 .vercel
+
+# Local environment variables (never commit secrets)
+.env
+.env.*
+!.env.example

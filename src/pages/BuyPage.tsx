@@ -8,6 +8,10 @@ import AbstractDeco from '../components/AbstractDeco';
 import SplineBook from '../components/SplineBook';
 import CountUp from '../components/CountUp';
 import Marquee from '../components/Marquee';
+import { createOrder, checkout, verifyPayment } from '../lib/razorpay';
+
+// ⚠️  Set this to the real paperback price (INR) before going live with LIVE Razorpay keys.
+const BOOK_PRICE_INR = 399;
 
 const bookDetails = [
   { icon: BookHeart, label: 'Title', value: "The Freelancer's Mindset" },
@@ -25,12 +29,52 @@ export default function BuyPage() {
     description: "Buy The Freelancer's Mindset by Meenakshi Girish. Order a signed paperback shipped to your door or get the Kindle edition instantly on Amazon.",
     path: '/buy',
   });
-  const [formState, setFormState] = useState<'idle' | 'sent'>('idle');
+  const [status, setStatus] = useState<'idle' | 'processing' | 'paid' | 'error'>('idle');
   const [copies, setCopies] = useState(1);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [paymentId, setPaymentId] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormState('sent');
+    const form = e.currentTarget;
+    const name = (form.querySelector('#buy-name') as HTMLInputElement | null)?.value.trim() || 'Customer';
+    const email = (form.querySelector('#buy-email') as HTMLInputElement | null)?.value.trim();
+    const amount = BOOK_PRICE_INR * copies * 100; // ₹ → paise (Razorpay uses paise)
+
+    setStatus('processing');
+    setErrorMsg('');
+    try {
+      const order = await createOrder({
+        amount,
+        receipt: `book_x${copies}_${Date.now()}`,
+        notes: { copies: String(copies) },
+      });
+      const result = await checkout({
+        orderId: order.id,
+        amount,
+        name: "The Freelancer's Mindset",
+        prefillName: name,
+        email,
+        description: `${copies} ${copies > 1 ? 'copies' : 'copy'} of The Freelancer's Mindset`,
+      });
+      const verification = await verifyPayment(result);
+      if (verification?.verified) {
+        setPaymentId(result.razorpay_payment_id);
+        setStatus('paid');
+      } else {
+        setErrorMsg("Payment couldn't be verified. If you were charged, email meenakshigirish31@gmail.com with your details.");
+        setStatus('error');
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : '';
+      if (/cancel/i.test(msg)) {
+        // user dismissed the modal — quietly return to the form
+        setStatus('idle');
+      } else {
+        setErrorMsg(msg || 'Something went wrong. Please try again.');
+        setStatus('error');
+      }
+    }
   };
 
   return (
@@ -121,18 +165,18 @@ export default function BuyPage() {
         <div className="max-w-[700px] mx-auto px-6 lg:px-10 relative z-10">
           <SectionHeader label="Order form" heading="The Logistics (Your Details)" />
           <FadeUp>
-            {formState === 'sent' ? (
+            {status === 'paid' ? (
               <div className="bg-white rounded-[2rem] p-10 border border-border/50 shadow-[0_4px_20px_hsl(30_15%_80%_/_0.15)] text-center">
                 <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                  <Package size={28} className="text-primary" />
+                  <Check size={28} className="text-primary" />
                 </div>
                 <h3 className="font-bold italic text-foreground mb-2" style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.3rem' }}>
-                  Order received! 🎉
+                  Payment successful! 🎉
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed max-w-md mx-auto">
-                  Woohoo! You'll get an email confirmation shortly. If anything looks weird, or you just want to say hi, email me at <strong>meenakshigirish31@gmail.com</strong>.
+                  Thank you! Your order is confirmed{paymentId ? <> (Ref <strong>{paymentId}</strong>)</> : null}. I'll email you a confirmation shortly. Questions? Email me at <strong>meenakshigirish31@gmail.com</strong>.
                 </p>
-                <button onClick={() => setFormState('idle')} className="mt-6 text-primary text-sm font-medium hover:underline">
+                <button onClick={() => { setStatus('idle'); setPaymentId(''); }} className="mt-6 text-primary text-sm font-medium hover:underline">
                   Place another order
                 </button>
               </div>
@@ -226,8 +270,29 @@ export default function BuyPage() {
                   </div>
                 </div>
 
-                <button type="submit" className="w-full bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-10 py-4 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2">
-                  <Check size={16} /> Complete My Order!
+                {status === 'error' && (
+                  <div className="rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3">
+                    {errorMsg}
+                  </div>
+                )}
+
+                <div className="flex items-center justify-between pt-2 border-t border-border/30">
+                  <span className="text-sm text-muted-foreground">Total payable</span>
+                  <span className="font-bold text-foreground" style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.15rem' }}>
+                    ₹{BOOK_PRICE_INR * copies}
+                  </span>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={status === 'processing'}
+                  className="w-full bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-10 py-4 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none"
+                >
+                  {status === 'processing' ? (
+                    <><span className="inline-block w-4 h-4 border-2 border-primary-foreground/40 border-t-primary-foreground rounded-full animate-spin" /> Processing…</>
+                  ) : (
+                    <><Check size={16} /> Pay ₹{BOOK_PRICE_INR * copies} & Complete Order</>
+                  )}
                 </button>
               </form>
             )}

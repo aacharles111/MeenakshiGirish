@@ -37,8 +37,9 @@ export default function BuyPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const name = (form.querySelector('#buy-name') as HTMLInputElement | null)?.value.trim() || 'Customer';
-    const email = (form.querySelector('#buy-email') as HTMLInputElement | null)?.value.trim();
+    const field = (id: string) => (form.querySelector(`#${id}`) as HTMLInputElement | null)?.value.trim() ?? '';
+    const name = field('buy-name') || 'Customer';
+    const email = field('buy-email');
     const amount = BOOK_PRICE_INR * copies * 100; // ₹ → paise (Razorpay uses paise)
 
     setStatus('processing');
@@ -47,7 +48,18 @@ export default function BuyPage() {
       const order = await createOrder({
         amount,
         receipt: `book_x${copies}_${Date.now()}`,
-        notes: { copies: String(copies) },
+        // Stored against the order in your Razorpay dashboard so you can fulfil it.
+        notes: {
+          copies: String(copies),
+          name,
+          email,
+          address: [field('buy-addr1'), field('buy-addr2')].filter(Boolean).join(', '),
+          city: field('buy-city'),
+          state: field('buy-state'),
+          pin: field('buy-pin'),
+          country: field('buy-country'),
+          request: field('buy-notes').slice(0, 200),
+        },
       });
       const result = await checkout({
         orderId: order.id,

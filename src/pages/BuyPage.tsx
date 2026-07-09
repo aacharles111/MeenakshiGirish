@@ -10,8 +10,8 @@ import CountUp from '../components/CountUp';
 import Marquee from '../components/Marquee';
 import { createOrder, checkout, verifyPayment } from '../lib/razorpay';
 
-// ⚠️  Set this to the real paperback price (INR) before going live with LIVE Razorpay keys.
-const BOOK_PRICE_INR = 399;
+// Paperback price in INR. (Currently using Razorpay TEST keys — swap to LIVE keys for real sales.)
+const BOOK_PRICE_INR = 549;
 
 const bookDetails = [
   { icon: BookHeart, label: 'Title', value: "The Freelancer's Mindset" },

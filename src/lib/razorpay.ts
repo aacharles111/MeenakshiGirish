@@ -17,7 +17,7 @@ interface RazorpayInstance {
 }
 
 interface RazorpayOptions {
-  key_id: string;
+  key: string;
   order_id: string;
   amount: number;
   currency: string;
@@ -99,7 +99,7 @@ export async function checkout(opts: {
 
   return new Promise<RazorpaySuccess>((resolve, reject) => {
     const rzp = new Rzp({
-      key_id: KEY_ID,
+      key: KEY_ID,
       order_id: opts.orderId,
       amount: opts.amount,
       currency: 'INR',

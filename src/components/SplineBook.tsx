@@ -8,8 +8,19 @@ const RENDER_SIZE = 1080;
 
 /**
  * Interactive 3D Spline model.
- * Internally renders at 1080×1080 for crisp quality,
- * then CSS-scaled down to fit whatever size the parent provides (e.g. 450px).
+ *
+ * `<spline-viewer>` renders its internal WebGL canvas at a fixed 1080×1080 and
+ * will NOT shrink that canvas down to a smaller host (a width:100% host just
+ * overflows and clips). So we give the viewer a real 1080×1080 box (`.spline-book-scaler`)
+ * and CSS-scale that box to fit the responsive wrapper.
+ *
+ * IMPORTANT — why the scale is applied in CSS, not JS:
+ * The viewer's canvas only looks right when the scaler is actually scaled down.
+ * If the scale is ever missing (e.g. a JS timing race on a slower device), the
+ * 1080 box overflows the wrapper, gets clipped to its top-left corner, and the
+ * model appears tiny / blank. Doing it in CSS via container-query units makes it
+ * correct from first paint on every device, with no dependency on JS timing.
+ * The ResizeObserver below is kept only as a fallback for older browsers.
  */
 export default function SplineBook({ className = '' }: SplineBookProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,22 +42,26 @@ export default function SplineBook({ className = '' }: SplineBookProps) {
     scriptLoaded.current = true;
   }, []);
 
-  // Dynamically scale the 1080px canvas to fit the container
+  // Fallback scale via JS (covers browsers without cqw/calc-in-transform).
+  // CSS already handles the scale, so this just mirrors the same value inline.
   useEffect(() => {
     const container = containerRef.current;
     const scaler = scalerRef.current;
     if (!container || !scaler) return;
 
     const updateScale = () => {
-      const containerWidth = container.offsetWidth;
-      const scale = containerWidth / RENDER_SIZE;
-      scaler.style.transform = `scale(${scale})`;
+      const w = container.offsetWidth;
+      if (w > 0) scaler.style.transform = `scale(${w / RENDER_SIZE})`;
     };
 
     updateScale();
     const observer = new ResizeObserver(updateScale);
     observer.observe(container);
-    return () => observer.disconnect();
+    window.addEventListener('load', updateScale);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('load', updateScale);
+    };
   }, []);
 
   // Hide Spline watermark / logo
@@ -117,11 +132,15 @@ export default function SplineBook({ className = '' }: SplineBookProps) {
           aspect-ratio: 1 / 1;
           overflow: hidden;
           border-radius: 0.75rem;
+          container-type: inline-size;
         }
         .spline-book-scaler {
           width: ${RENDER_SIZE}px;
           height: ${RENDER_SIZE}px;
           transform-origin: top left;
+          /* 100cqw = the wrapper's width (container query unit), so this is
+             wrapperWidth / 1080 — the exact fit scale, in pure CSS. */
+          transform: scale(calc(100cqw / ${RENDER_SIZE}px));
         }
         .spline-book-scaler spline-viewer {
           width: ${RENDER_SIZE}px;

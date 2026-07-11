@@ -123,7 +123,7 @@ export default function BookPage() {
             text="Who Is This For?"
             as="h2"
             className="font-bold italic text-foreground leading-tight mb-14"
-            style={{ display: 'inline-block' }}
+            style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }}
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {forWho.map((card, i) => {

@@ -80,7 +80,10 @@ async function sendBuyerEmail(order, notes) {
     country: notes.country,
   });
   const sendOpts = { from: FROM_EMAIL, to: email, subject, html };
-  if (NOTIFY_EMAIL) sendOpts.bcc = NOTIFY_EMAIL; // BCC you on every confirmation
+  if (NOTIFY_EMAIL) {
+    sendOpts.bcc = NOTIFY_EMAIL;       // BCC you on every order
+    sendOpts.reply_to = NOTIFY_EMAIL;  // buyer replies land in your inbox
+  }
   const { error } = await new Resend(RESEND_API_KEY).emails.send(sendOpts);
   if (error) return { ok: false, reason: 'resend-error', detail: String(error.message || error) };
   return { ok: true };

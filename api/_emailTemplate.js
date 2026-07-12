@@ -139,7 +139,7 @@ ${emailClean ? `<div style="font-size:13px;line-height:1.5;color:#6B6258;margin-
 </table>
 
 <!-- Footer -->
-<p style="max-width:600px;width:100%;margin:18px auto 0 auto;font-size:12px;line-height:1.5;color:#9A8F80;text-align:center;">You&rsquo;re receiving this email because you placed an order at meenakshigirish.com. Questions? Just reply to this email.</p>
+<p style="max-width:600px;width:100%;margin:18px auto 0 auto;font-size:12px;line-height:1.5;color:#9A8F80;text-align:center;">You&rsquo;re receiving this email because you placed an order at meenakshigirish.com. Questions? Just hit reply &mdash; I read every message.</p>
 
 </td></tr>
 </table>

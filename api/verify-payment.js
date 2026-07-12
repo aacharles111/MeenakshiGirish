@@ -57,11 +57,17 @@ async function markConfirmationSent(orderId, existingNotes) {
 
 async function sendBuyerEmail(order, notes) {
   if (!RESEND_API_KEY) return { ok: false, reason: 'resend-not-configured' };
-  if (!notes.email) return { ok: false, reason: 'no-buyer-email' };
+  // Validate the recipient server-side: one well-formed address, no whitespace
+  // or newlines (header-injection defence-in-depth — the value is buyer-controlled
+  // via order notes). The client only strips <>; enforce a real format here.
+  const email = String(notes.email || '').trim();
+  if (!email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return { ok: false, reason: 'invalid-email' };
+  }
   const totalInr = Math.round((order.amount_paid ?? order.amount ?? 0) / 100);
   const { subject, html } = buildOrderEmail({
     buyerName: notes.name,
-    email: notes.email,
+    email,
     phone: notes.phone,
     copies: notes.copies,
     totalInr,
@@ -73,7 +79,7 @@ async function sendBuyerEmail(order, notes) {
     pin: notes.pin,
     country: notes.country,
   });
-  const sendOpts = { from: FROM_EMAIL, to: notes.email, subject, html };
+  const sendOpts = { from: FROM_EMAIL, to: email, subject, html };
   if (NOTIFY_EMAIL) sendOpts.bcc = NOTIFY_EMAIL; // BCC you on every confirmation
   const { error } = await new Resend(RESEND_API_KEY).emails.send(sendOpts);
   if (error) return { ok: false, reason: 'resend-error', detail: String(error.message || error) };

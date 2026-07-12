@@ -56,7 +56,8 @@ async function markConfirmationSent(orderId, existingNotes) {
 }
 
 async function sendBuyerEmail(order, notes) {
-  if (!RESEND_API_KEY || !notes.email) return false;
+  if (!RESEND_API_KEY) return { ok: false, reason: 'resend-not-configured' };
+  if (!notes.email) return { ok: false, reason: 'no-buyer-email' };
   const totalInr = Math.round((order.amount_paid ?? order.amount ?? 0) / 100);
   const { subject, html } = buildOrderEmail({
     buyerName: notes.name,
@@ -75,11 +76,12 @@ async function sendBuyerEmail(order, notes) {
   const sendOpts = { from: FROM_EMAIL, to: notes.email, subject, html };
   if (NOTIFY_EMAIL) sendOpts.bcc = NOTIFY_EMAIL; // BCC you on every confirmation
   const { error } = await new Resend(RESEND_API_KEY).emails.send(sendOpts);
-  return !error;
+  if (error) return { ok: false, reason: 'resend-error', detail: String(error.message || error) };
+  return { ok: true };
 }
 
 async function logOrderToSheet(order, paymentId, notes) {
-  if (!SHEET_URL) return false;
+  if (!SHEET_URL) return { ok: false, reason: 'sheet-not-configured' };
   const totalInr = Math.round((order.amount_paid ?? order.amount ?? 0) / 100);
   const payload = {
     secret: SHEET_SECRET,
@@ -104,7 +106,8 @@ async function logOrderToSheet(order, paymentId, notes) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
-  return res.ok;
+  if (!res.ok) return { ok: false, reason: 'sheet-http-' + res.status };
+  return { ok: true };
 }
 
 // Runs both side-effects (email + sheet). Idempotent via the order's
@@ -122,13 +125,21 @@ async function afterPaymentSuccess(orderId, paymentId) {
     return { emailSent: false, logged: false }; // already processed
   }
 
-  let emailSent = false;
-  let logged = false;
-  try { emailSent = await sendBuyerEmail(order, notes); } catch { emailSent = false; }
-  try { logged = await logOrderToSheet(order, paymentId, notes); } catch { logged = false; }
+  let emailRes = { ok: false, reason: 'exception' };
+  let sheetRes = { ok: false, reason: 'exception' };
+  try { emailRes = await sendBuyerEmail(order, notes); } catch (e) { emailRes = { ok: false, reason: 'exception', detail: String(e) }; }
+  try { sheetRes = await logOrderToSheet(order, paymentId, notes); } catch (e) { sheetRes = { ok: false, reason: 'exception', detail: String(e) }; }
+
+  // Structured log so Vercel Runtime Logs show exactly which step ran and which (if any) failed.
+  const line = `[order] ${orderId} verified=1 email=${emailRes.ok ? 'ok' : 'FAIL:' + emailRes.reason}` +
+    ` sheet=${sheetRes.ok ? 'ok' : 'FAIL:' + sheetRes.reason}` +
+    (emailRes.detail ? ` | emailDetail=${emailRes.detail}` : '') +
+    (sheetRes.detail ? ` | sheetDetail=${sheetRes.detail}` : '');
+  if (emailRes.ok && sheetRes.ok) console.log(line);
+  else console.error(line);
 
   await markConfirmationSent(orderId, notes); // stamp idempotency flag (best-effort)
-  return { emailSent, logged };
+  return { emailSent: emailRes.ok, logged: sheetRes.ok };
 }
 
 export default async function handler(req, res) {

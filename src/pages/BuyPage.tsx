@@ -44,6 +44,7 @@ export default function BuyPage() {
     const clean = (val: string, max: number) => val.replace(/[<>]/g, '').trim().slice(0, max);
     const name = clean(field('buy-name'), 100) || 'Customer';
     const email = clean(field('buy-email'), 254);
+    const phone = clean(field('buy-phone'), 20);
     const amount = BOOK_PRICE_INR * copies * 100; // ₹ → paise (Razorpay uses paise)
 
     setStatus('processing');
@@ -57,12 +58,13 @@ export default function BuyPage() {
           copies: String(copies),
           name,
           email,
-          address: clean([field('buy-addr1'), field('buy-addr2')].filter(Boolean).join(', '), 256),
+          phone,
+          address1: clean(field('buy-addr1'), 256),
+          address2: clean(field('buy-addr2'), 256),
           city: clean(field('buy-city'), 100),
           state: clean(field('buy-state'), 100),
           pin: clean(field('buy-pin'), 10),
           country: clean(field('buy-country'), 50),
-          request: clean(field('buy-notes'), 200),
         },
       });
       const result = await checkout({
@@ -70,6 +72,7 @@ export default function BuyPage() {
         amount,
         name: "The Freelancer's Mindset",
         prefillName: name,
+        prefillContact: phone,
         email,
         description: `${copies} ${copies > 1 ? 'copies' : 'copy'} of The Freelancer's Mindset`,
       });
@@ -214,6 +217,10 @@ export default function BuyPage() {
                         <label htmlFor="buy-email" className="block text-foreground text-sm font-medium mb-1.5">Email Address *</label>
                         <input id="buy-email" type="email" required className="w-full px-4 py-3 rounded-xl border border-border/60 bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
                       </div>
+                      <div>
+                        <label htmlFor="buy-phone" className="block text-foreground text-sm font-medium mb-1.5">Phone Number *</label>
+                        <input id="buy-phone" type="tel" required className="w-full px-4 py-3 rounded-xl border border-border/60 bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -260,29 +267,18 @@ export default function BuyPage() {
                     <div className="w-8 h-8 rounded-full bg-[hsl(200_40%_55%)]/10 flex items-center justify-center font-bold text-xs" style={{ fontFamily: 'var(--font-playfair)', color: 'hsl(200 40% 55%)' }}>3</div>
                     <h4 className="font-bold text-foreground text-sm uppercase tracking-wider">Order Details</h4>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="buy-copies" className="block text-foreground text-sm font-medium mb-1.5">Number of Copies *</label>
-                      <select
-                        id="buy-copies"
-                        value={copies}
-                        onChange={(e) => setCopies(Number(e.target.value))}
-                        className="w-full px-4 py-3 rounded-xl border border-border/60 bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors appearance-none"
-                      >
-                        {copyOptions.map((n) => (
-                          <option key={n} value={n}>{n} {n === 1 ? 'Copy' : 'Copies'}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="buy-notes" className="block text-foreground text-sm font-medium mb-1.5">Special Requests</label>
-                      <input
-                        id="buy-notes"
-                        type="text"
-                        className="w-full px-4 py-3 rounded-xl border border-border/60 bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
-                        placeholder='E.g., "Sign it!" or "Draw a cat"'
-                      />
-                    </div>
+                  <div className="max-w-[240px]">
+                    <label htmlFor="buy-copies" className="block text-foreground text-sm font-medium mb-1.5">Number of Copies *</label>
+                    <select
+                      id="buy-copies"
+                      value={copies}
+                      onChange={(e) => setCopies(Number(e.target.value))}
+                      className="w-full px-4 py-3 rounded-xl border border-border/60 bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors appearance-none"
+                    >
+                      {copyOptions.map((n) => (
+                        <option key={n} value={n}>{n} {n === 1 ? 'Copy' : 'Copies'}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 

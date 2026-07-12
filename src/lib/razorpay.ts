@@ -23,7 +23,7 @@ interface RazorpayOptions {
   currency: string;
   name: string;
   description?: string;
-  prefill?: { name?: string; email?: string };
+  prefill?: { name?: string; email?: string; contact?: string };
   theme?: { color?: string };
   handler: (response: RazorpaySuccess) => void;
   modal?: { ondismiss?: () => void };
@@ -89,6 +89,7 @@ export async function checkout(opts: {
   description?: string;
   prefillName?: string;    // customer name (prefilled in the modal)
   email?: string;          // customer email (prefilled in the modal)
+  prefillContact?: string; // customer phone (prefilled in the modal)
 }): Promise<RazorpaySuccess> {
   if (!KEY_ID) {
     throw new Error('Razorpay is not configured (missing VITE_RAZORPAY_KEY_ID).');
@@ -108,6 +109,7 @@ export async function checkout(opts: {
       prefill: {
         ...(opts.prefillName ? { name: opts.prefillName } : {}),
         ...(opts.email ? { email: opts.email } : {}),
+        ...(opts.prefillContact ? { contact: opts.prefillContact } : {}),
       },
       theme: { color: '#0f6e66' },
       handler: (response) => resolve(response),

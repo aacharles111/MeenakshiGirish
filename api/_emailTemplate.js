@@ -148,3 +148,66 @@ ${emailClean ? `<div style="font-size:13px;line-height:1.5;color:#6B6258;margin-
 
   return { subject, html };
 }
+
+/**
+ * Merchant-facing "new order" notification (sent to ORDER_NOTIFY_EMAIL).
+ * Same pure/dep-free contract as buildOrderEmail.
+ */
+export function buildMerchantEmail(data = {}) {
+  const { buyerName, email, phone, copies, totalInr, orderId, paymentId,
+    address1, address2, city, state, pin, country } = data;
+
+  const name = buyerName ? escapeHtml(buyerName) : '(no name provided)';
+  const numCopies = Number(copies);
+  const safeCopies = Number.isFinite(numCopies) && numCopies > 0 ? numCopies : 1;
+  const numTotal = Number(totalInr);
+  const safeTotal = Number.isFinite(numTotal) && numTotal > 0 ? numTotal : 549;
+  const phoneClean = phone ? escapeHtml(phone) : '—';
+  const emailClean = email ? escapeHtml(email) : '—';
+  const safeOrderId = orderId ? escapeHtml(orderId) : '';
+  const safePaymentId = paymentId ? escapeHtml(paymentId) : '';
+
+  const cityState = [city, state].filter(Boolean).join(', ');
+  const csp = [cityState, pin].filter(Boolean).join(' ');
+  const addressLines = [address1, address2, csp, country].filter(Boolean).map(escapeHtml);
+
+  const subject = `New order 🎉 — ${buyerName ? escapeHtml(buyerName) : 'Someone'} · ${safeCopies} ${safeCopies > 1 ? 'copies' : 'copy'} · &#8377;${safeTotal}`;
+
+  const html = `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background-color:#F4EEE3;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#2A2622;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#F4EEE3;padding:32px 16px;">
+<tr><td align="center">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#FFFFFF;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(40,30,15,0.06);">
+<tr><td style="background-color:#0F6E66;padding:26px 36px;">
+<div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;color:#EAF4F2;">&#10022; New Order</div>
+<div style="font-family:Georgia,'Times New Roman',serif;font-size:26px;color:#FFFFFF;margin-top:8px;font-weight:bold;">You&rsquo;ve got a sale! &#127881;</div>
+</td></tr>
+<tr><td style="padding:28px 36px 8px 36px;">
+<p style="margin:0 0 14px 0;font-size:15px;line-height:1.6;">A new order for <em style="font-family:Georgia,'Times New Roman',serif;">The Freelancer&rsquo;s Mindset</em> just came in. The buyer has been emailed a confirmation &mdash; time to ship it!</p>
+</td></tr>
+<tr><td style="padding:8px 36px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #ECE3D2;border-radius:12px;overflow:hidden;">
+<tr><td style="padding:12px 16px;font-size:14px;color:#6B6258;border-bottom:1px solid #ECE3D2;width:38%;">Buyer</td><td style="padding:12px 16px;font-size:14px;color:#2A2622;border-bottom:1px solid #ECE3D2;font-weight:600;">${name}</td></tr>
+<tr><td style="padding:12px 16px;font-size:14px;color:#6B6258;border-bottom:1px solid #ECE3D2;">Email</td><td style="padding:12px 16px;font-size:14px;color:#2A2622;border-bottom:1px solid #ECE3D2;">${emailClean}</td></tr>
+<tr><td style="padding:12px 16px;font-size:14px;color:#6B6258;border-bottom:1px solid #ECE3D2;">Phone</td><td style="padding:12px 16px;font-size:14px;color:#2A2622;border-bottom:1px solid #ECE3D2;">${phoneClean}</td></tr>
+<tr><td style="padding:12px 16px;font-size:14px;color:#6B6258;border-bottom:1px solid #ECE3D2;">Copies</td><td style="padding:12px 16px;font-size:14px;color:#2A2622;border-bottom:1px solid #ECE3D2;font-weight:600;">${safeCopies}</td></tr>
+<tr><td style="padding:12px 16px;font-size:14px;color:#6B6258;${safeOrderId || safePaymentId ? 'border-bottom:1px solid #ECE3D2;' : ''}">Total paid</td><td style="padding:12px 16px;font-size:14px;color:#2A2622;${safeOrderId || safePaymentId ? 'border-bottom:1px solid #ECE3D2;' : ''}font-weight:600;">&#8377;${safeTotal}</td></tr>
+${safeOrderId ? `<tr><td style="padding:12px 16px;font-size:14px;color:#6B6258;${safePaymentId ? 'border-bottom:1px solid #ECE3D2;' : ''}">Order ref</td><td style="padding:12px 16px;font-size:13px;color:#2A2622;font-family:monospace;${safePaymentId ? 'border-bottom:1px solid #ECE3D2;' : ''}">${safeOrderId}</td></tr>` : ''}
+${safePaymentId ? `<tr><td style="padding:12px 16px;font-size:14px;color:#6B6258;">Payment ref</td><td style="padding:12px 16px;font-size:13px;color:#2A2622;font-family:monospace;">${safePaymentId}</td></tr>` : ''}
+</table>
+</td></tr>
+<tr><td style="padding:20px 36px 32px 36px;">
+<p style="margin:0 0 10px 0;font-size:12px;font-weight:700;color:#6B6258;text-transform:uppercase;letter-spacing:0.1em;">Ship to</p>
+<div style="background-color:#FBF7EF;border:1px solid #ECE3D2;border-radius:12px;padding:16px 18px;">
+${addressLines.length ? addressLines.map((l) => `<div style="font-size:14px;line-height:1.5;color:#2A2622;">${l}</div>`).join('') : '<div style="font-size:14px;color:#6B6258;">Address not captured</div>'}
+</div>
+<p style="margin:14px 0 0 0;font-size:13px;line-height:1.5;color:#6B6258;">Also logged to your Google Sheet and the Razorpay dashboard.</p>
+</td></tr>
+</table>
+<p style="max-width:600px;width:100%;margin:18px auto 0 auto;font-size:12px;color:#9A8F80;text-align:center;">Internal order notification &middot; meenakshigirish.com</p>
+</td></tr></table>
+</body></html>`;
+
+  return { subject, html };
+}

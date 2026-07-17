@@ -74,6 +74,19 @@ const mentoringImages = [
   '/images/events/event-14.webp',
   '/images/events/event-15.jpg',
   '/images/events/event-16.jpg',
+  '/images/events/event-17.jpeg',
+  '/images/events/event-18.jpeg',
+  '/images/events/event-19.jpeg',
+  '/images/events/event-20.jpeg',
+  '/images/events/event-21.jpeg',
+  '/images/events/event-22.jpeg',
+  '/images/events/event-23.jpeg',
+  '/images/events/event-24.jpeg',
+  '/images/events/event-25.jpeg',
+  '/images/events/event-26.jpeg',
+  '/images/events/event-27.jpeg',
+  '/images/events/event-28.jpeg',
+  '/images/events/event-29.jpeg',
 ];
 
 const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };

@@ -14,7 +14,7 @@ export default function TermsPage() {
         ]},
         { h: 'Book & Service Purchases', p: [
           'When you buy The Freelancer’s Mindset or book a service, you agree to provide accurate information and complete payment.',
-          <>Payments are processed securely through Razorpay; I do not store your card or banking details on this site. Payment processing is governed by Razorpay&rsquo;s <a href="https://razorpay.com/terms-of-use/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Terms of Use</a> and <a href="https://razorpay.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</a>.</>,
+          <>Payments are processed securely through Razorpay; I do not store your card or banking details on this site. Payment processing is governed by Razorpay&rsquo;s <a href="https://razorpay.com/tnc/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Terms of Use</a> and <a href="https://razorpay.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</a>.</>,
         ]},
         { h: 'Third-Party Links', p: [
           'The site links to third-party platforms such as Razorpay and Amazon Kindle for purchases, and Spotify for audiobook streaming.',

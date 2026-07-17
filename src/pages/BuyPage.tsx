@@ -310,7 +310,7 @@ export default function BuyPage() {
                 <p className="text-center text-xs text-muted-foreground mt-4 leading-relaxed">
                   🔒 Payments secured by Razorpay. By placing this order you agree to our{' '}
                   <Link to="/terms" className="text-primary hover:underline">Terms</Link>{' '}and Razorpay&rsquo;s{' '}
-                  <a href="https://razorpay.com/terms-of-use/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Terms</a> &amp;{' '}
+                  <a href="https://razorpay.com/tnc/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Terms</a> &amp;{' '}
                   <a href="https://razorpay.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</a>.
                 </p>
               </form>

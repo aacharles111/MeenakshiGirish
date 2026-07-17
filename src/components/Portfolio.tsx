@@ -1,5 +1,3 @@
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import SectionHeader from './SectionHeader';
 import FadeUp from './FadeUp';
 import AbstractDeco from './AbstractDeco';
@@ -95,17 +93,6 @@ export default function Portfolio() {
           ))}
         </div>
 
-        <FadeUp delay={0.5}>
-          <div className="flex justify-center mt-10">
-            <Link
-              to="/work"
-              className="font-medium text-sm text-primary flex items-center justify-center gap-1 hover:gap-2 transition-all duration-200"
-            >
-              View More Work
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-        </FadeUp>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import PageHero from './PageHero';
 import FadeUp from './FadeUp';
@@ -5,7 +6,7 @@ import AbstractDeco from './AbstractDeco';
 
 interface Section {
   h: string;
-  p: string[];
+  p: ReactNode[];
 }
 
 interface Props {

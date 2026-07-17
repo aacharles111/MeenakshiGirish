@@ -10,7 +10,7 @@ export default function PrivacyPage() {
       sections={[
         { h: 'What I Collect', p: [
           'When you fill in a contact or order form, I collect the details you provide, such as your name, email address, and shipping details.',
-          'Payment information is handled by Razorpay; I never see or store your card or banking data.',
+          <>Payments are processed by Razorpay, the payment processor, which handles your card, UPI, and banking details — I never see or store that information. See Razorpay&rsquo;s <a href="https://razorpay.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Privacy Policy</a> and <a href="https://razorpay.com/terms-of-use/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Terms of Use</a>.</>,
         ]},
         { h: 'How I Use It', p: [
           'To respond to your enquiries, deliver book orders, provide mentoring sessions, and send updates you have asked for.',

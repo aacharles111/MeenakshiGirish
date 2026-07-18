@@ -31,11 +31,38 @@ export default function ContactPage() {
     description: 'Hire a freelance content writer or content strategist, book a mentoring session, or invite Meenakshi to speak. Email meenakshigirish31@gmail.com.',
     path: '/contact',
   });
-  const [formState, setFormState] = useState<'idle' | 'sent'>('idle');
+  const [formState, setFormState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [formError, setFormError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormState('sent');
+    const form = e.currentTarget;
+    const field = (id: string) =>
+      (form.querySelector(`#${id}`) as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null)?.value.trim() ?? '';
+    const payload = {
+      type: 'contact',
+      name: field('contact-name'),
+      email: field('contact-email'),
+      subject: field('contact-subject'),
+      message: field('contact-message'),
+      website: field('contact-website'), // honeypot
+    };
+    setFormState('sending');
+    setFormError('');
+    try {
+      const res = await fetch('/api/contact-message', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data?.ok) throw new Error(data?.error || 'Could not send your message. Please try again.');
+      setFormState('sent');
+      form.reset();
+    } catch (err) {
+      setFormError(err instanceof Error ? err.message : 'Could not send your message. Please try again.');
+      setFormState('idle');
+    }
   };
 
   return (
@@ -157,6 +184,8 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="bg-white rounded-[2rem] p-8 md:p-10 border border-border/50 shadow-[0_4px_20px_hsl(30_15%_80%_/_0.15)] space-y-5">
+                  {/* honeypot — hidden anti-spam field; humans never see it, bots fill it */}
+                  <input type="text" id="contact-website" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute opacity-0 pointer-events-none h-0 w-0 -left-[9999px]" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="contact-name" className="block text-foreground text-sm font-medium mb-1.5">Your Name *</label>
@@ -180,8 +209,11 @@ export default function ContactPage() {
                     <label htmlFor="contact-message" className="block text-foreground text-sm font-medium mb-1.5">Your Message *</label>
                     <textarea id="contact-message" required rows={5} className="w-full px-4 py-3 rounded-xl border border-border/60 bg-card text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-none" placeholder="Tell me what's on your mind..." />
                   </div>
-                  <button type="submit" className="w-full sm:w-auto bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-10 py-3.5 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2">
-                    <Send size={14} /> Send It!
+                  {formError && (
+                    <div className="rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3">{formError}</div>
+                  )}
+                  <button type="submit" disabled={formState === 'sending'} className="w-full sm:w-auto bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-10 py-3.5 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none">
+                    {formState === 'sending' ? <><span className="inline-block w-4 h-4 border-2 border-primary-foreground/40 border-t-primary-foreground rounded-full animate-spin" /> Sending…</> : <><Send size={14} /> Send It!</>}
                   </button>
                 </form>
               )}

@@ -15,6 +15,8 @@ import FeaturedIn from './components/FeaturedIn'
 import Testimonials from './components/Testimonials'
 import CTABand from './components/CTABand'
 import Footer from './components/Footer'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 
 // Pages
 import AboutPage from './pages/AboutPage'
@@ -82,6 +84,8 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <Analytics />
+      <SpeedInsights />
     </>
   )
 }

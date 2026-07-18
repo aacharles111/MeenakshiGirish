@@ -75,7 +75,38 @@ export default function FreelancingPage() {
     description: 'Freelance content writing services: blogs, SEO content, website copy, newsletters and content strategy. 7+ years, 350+ projects across 40+ industries.',
     path: '/freelancing',
   });
-  const [sampleFormState, setSampleFormState] = useState<'idle' | 'sent'>('idle');
+  const [sampleFormState, setSampleFormState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [sampleFormError, setSampleFormError] = useState('');
+
+  const handleSampleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const field = (id: string) => (form.querySelector(`#${id}`) as HTMLInputElement | null)?.value.trim() ?? '';
+    const payload = {
+      type: 'work-sample',
+      name: field('sample-name'),
+      company: field('sample-company'),
+      email: field('sample-email'),
+      industry: field('sample-industry'),
+      website: field('sample-website'), // honeypot
+    };
+    setSampleFormState('sending');
+    setSampleFormError('');
+    try {
+      const res = await fetch('/api/contact-message', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data?.ok) throw new Error(data?.error || 'Could not send your request. Please try again.');
+      setSampleFormState('sent');
+      form.reset();
+    } catch (err) {
+      setSampleFormError(err instanceof Error ? err.message : 'Could not send your request. Please try again.');
+      setSampleFormState('idle');
+    }
+  };
   return (
     <>
       <PageHero
@@ -225,9 +256,11 @@ export default function FreelancingPage() {
               </div>
             ) : (
               <form
-                onSubmit={(e) => { e.preventDefault(); setSampleFormState('sent'); }}
+                onSubmit={handleSampleSubmit}
                 className="bg-card rounded-[2rem] p-8 md:p-10 border border-border/50 shadow-[0_4px_20px_hsl(30_15%_80%_/_0.15)] space-y-5"
               >
+                {/* honeypot — hidden anti-spam field; humans never see it, bots fill it */}
+                <input type="text" id="sample-website" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute opacity-0 pointer-events-none h-0 w-0 -left-[9999px]" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="sample-name" className="block text-foreground text-sm font-medium mb-1.5">Your Name *</label>
@@ -248,8 +281,11 @@ export default function FreelancingPage() {
                   <label htmlFor="sample-industry" className="block text-foreground text-sm font-medium mb-1.5">Industry / Content type you need</label>
                   <input id="sample-industry" type="text" className="w-full px-4 py-3 rounded-xl border border-border/60 bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="E.g., healthcare blogs, SaaS website copy..." />
                 </div>
-                <button type="submit" className="w-full sm:w-auto bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-10 py-3.5 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2">
-                  <Send size={14} /> Request Work Samples
+                {sampleFormError && (
+                  <div className="rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3">{sampleFormError}</div>
+                )}
+                <button type="submit" disabled={sampleFormState === 'sending'} className="w-full sm:w-auto bg-primary text-primary-foreground font-semibold text-sm uppercase tracking-wide rounded-full px-10 py-3.5 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none">
+                  {sampleFormState === 'sending' ? <><span className="inline-block w-4 h-4 border-2 border-primary-foreground/40 border-t-primary-foreground rounded-full animate-spin" /> Sending…</> : <><Send size={14} /> Request Work Samples</>}
                 </button>
               </form>
             )}

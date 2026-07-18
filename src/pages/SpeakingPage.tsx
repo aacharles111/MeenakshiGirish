@@ -17,8 +17,7 @@ import ExpandableCard from '../components/ExpandableCard';
 import TextReveal from '../components/TextReveal';
 import FeaturedIn from '../components/FeaturedIn';
 
-// TODO: replace with your real Topmate profile URL
-const TOPMATE_URL = 'https://topmate.io';
+const TOPMATE_URL = 'https://topmate.io/meenakshi_girish';
 
 const topics: { icon: LucideIcon; title: string; body: string; color: string }[] = [
   { icon: Briefcase, title: 'Freelancing in the Real World', body: "What freelancing actually looks like behind the scenes. We talk getting started, finding clients, and how to survive the unpredictable income months without panicking.", color: 'hsl(175 35% 55%)' },

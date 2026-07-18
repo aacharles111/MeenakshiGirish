@@ -91,14 +91,14 @@ export default async function handler(req, res) {
       html,
     });
     if (error) {
-      console.error(`[contact] resend error type=${type}`, error);
-      res.status(500).json({ ok: false, error: 'Could not send your message right now. Please email meenakshigirish31@gmail.com directly.' });
+      console.error(`[contact] resend error type=${type}: ${error?.message || error?.name || 'unknown'}`);
+      res.status(500).json({ ok: false, error: 'Something went wrong sending your message. Please try again later.' });
       return;
     }
-    console.log(`[contact] ${type} from ${email}`);
+    console.log(`[contact] ${type} message sent`);
     res.status(200).json({ ok: true });
   } catch (e) {
-    console.error(`[contact] exception type=${type}`, e);
+    console.error(`[contact] exception type=${type}: ${e?.message || 'unknown'}`);
     res.status(500).json({ ok: false, error: 'Could not send your message right now. Please email meenakshigirish31@gmail.com directly.' });
   }
 }

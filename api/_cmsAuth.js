@@ -8,6 +8,9 @@ const MAX_AGE = 8 * 3600; // 8h
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
 const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH;
 const SESSION_SECRET = process.env.SESSION_SECRET || '';
+function secretConfigured() {
+  return typeof SESSION_SECRET === 'string' && SESSION_SECRET.length >= 32;
+}
 
 const b2b64 = (u8) => Buffer.from(u8).toString('base64');
 const b642u8 = (b64) => new Uint8Array(Buffer.from(b64, 'base64'));
@@ -35,12 +38,14 @@ export async function verifyPassword(password, stored) {
 }
 
 export async function signSession(payload) {
+  if (!secretConfigured()) throw new Error('SESSION_SECRET not configured (must be >= 32 chars)');
   const key = await subtle.importKey('raw', enc.encode(SESSION_SECRET), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
   const body = Buffer.from(JSON.stringify(payload)).toString('base64url');
   const sig = await subtle.sign('HMAC', key, enc.encode(body));
   return `${body}.${Buffer.from(sig).toString('base64url')}`;
 }
 export async function verifySession(token) {
+  if (!secretConfigured()) return null;
   if (!token || !token.includes('.')) return null;
   const [body, sig] = token.split('.');
   const key = await subtle.importKey('raw', enc.encode(SESSION_SECRET), { name: 'HMAC', hash: 'SHA-256' }, false, ['verify']);

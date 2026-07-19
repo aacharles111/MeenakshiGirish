@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
 
-process.env.SESSION_SECRET = process.env.SESSION_SECRET || 'test-secret';
+process.env.SESSION_SECRET = process.env.SESSION_SECRET || 'test-secret-must-be-at-least-32-chars-long';
 const { hashPassword, verifyPassword, signSession, verifySession } = await import('../../api/_cmsAuth.js');
 
 test('password hash then verify', async () => {

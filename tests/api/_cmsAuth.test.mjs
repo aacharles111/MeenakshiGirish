@@ -1,15 +1,17 @@
-import { test } from 'node:test'; import assert from 'node:assert';
-import { hashPassword, verifyPassword, signSession, verifySession } from '../../api/_cmsAuth.js';
-// These tests need SESSION_SECRET set to exercise HMAC; default '' is acceptable for sign/verify symmetry.
+import { test } from 'node:test';
+import assert from 'node:assert';
+
+process.env.SESSION_SECRET = process.env.SESSION_SECRET || 'test-secret';
+const { hashPassword, verifyPassword, signSession, verifySession } = await import('../../api/_cmsAuth.js');
+
 test('password hash then verify', async () => {
-  process.env.SESSION_SECRET = process.env.SESSION_SECRET || 'test-secret';
   const h = await hashPassword('correct horse battery', 1000);
   assert.ok(h.startsWith('pbkdf2$'));
   assert.equal(await verifyPassword('correct horse battery', h), true);
   assert.equal(await verifyPassword('wrong', h), false);
 });
+
 test('session sign/verify + tamper rejection', async () => {
-  process.env.SESSION_SECRET = 'test-secret';
   const tok = await signSession({ exp: Date.now() + 1000 });
   assert.ok((await verifySession(tok)));
   assert.equal(await verifySession(tok + 'x'), null);

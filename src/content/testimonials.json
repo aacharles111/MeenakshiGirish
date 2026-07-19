@@ -1,0 +1,76 @@
+{
+  "testimonials": [
+    {
+      "id": "t-01",
+      "quote": "I heard Dave say you were looking for voice modulation and clarity. You succeeded in BOTH. Outstanding.",
+      "author": "Speech Attendee",
+      "role": ""
+    },
+    {
+      "id": "t-02",
+      "quote": "Your talk on personal branding was SO GOOD. I have been posting on LinkedIn for the past 7 months but didn’t get any traction. Now I have a better idea how to start again and do it right.",
+      "author": "Personal Branding Session",
+      "role": ""
+    },
+    {
+      "id": "t-03",
+      "quote": "My parents didn’t believe my goal to earn money by writing content online. You are the first person who accepted my belief and told me to keep going. This really means a lot and I won’t forget you.",
+      "author": "Student Attendee",
+      "role": ""
+    },
+    {
+      "id": "t-04",
+      "quote": "Meenakshi, thank you for sharing your gifts. I am very grateful.",
+      "author": "Audience Member",
+      "role": ""
+    },
+    {
+      "id": "t-05",
+      "quote": "Excellent speech and great topic.",
+      "author": "Talk Attendee",
+      "role": ""
+    },
+    {
+      "id": "t-06",
+      "quote": "You did an excellent job with your speech.",
+      "author": "Event Attendee",
+      "role": ""
+    },
+    {
+      "id": "t-07",
+      "quote": "What a great speech, I enjoyed listening to you because your energy was fantastic. You spoke with authority and clarity. Your speech was very organized and easy for me to follow along.",
+      "author": "Audience Member",
+      "role": "Speech Feedback"
+    },
+    {
+      "id": "t-08",
+      "quote": "Excellent inspirational speech full of tips, well done Meenakshi and thank you!",
+      "author": "Talk Attendee",
+      "role": "Inspirational Session"
+    },
+    {
+      "id": "t-09",
+      "quote": "Your talk was very clear and you answered my questions very well. Thanks for your patience and I am surely going to try freelancing.",
+      "author": "Event Attendee",
+      "role": "Q&A Session"
+    },
+    {
+      "id": "t-10",
+      "quote": "Loved your candid thoughts on writing and becoming an author, ma’am.",
+      "author": "Aspiring Author",
+      "role": "Talk Attendee"
+    },
+    {
+      "id": "t-11",
+      "quote": "I finished your book today and it has so many insights. I want to start freelancing and support my family but didn’t know it’s possible for students. Thank you.",
+      "author": "Book Reader",
+      "role": "Student"
+    },
+    {
+      "id": "t-12",
+      "quote": "I have just started writing my book but thought nobody will buy a book on spirituality written by a college student. But your session gave me the confidence to give it a try anyway. Thanks so much, ma’am.",
+      "author": "Aspiring Author",
+      "role": "Student"
+    }
+  ]
+}

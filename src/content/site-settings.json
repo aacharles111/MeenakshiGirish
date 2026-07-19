@@ -1,0 +1,37 @@
+{
+  "book": {
+    "priceInr": 549,
+    "title": "The Freelancer's Mindset",
+    "buyCtaLabel": "Buy the Book"
+  },
+  "contact": {
+    "email": "meenakshigirish31@gmail.com"
+  },
+  "socials": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/meenakshi-girish/",
+      "icon": "linkedin"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/meenakshigirish31/",
+      "icon": "instagram"
+    },
+    {
+      "label": "Bookstagram",
+      "url": "https://www.instagram.com/meenugirish31/",
+      "icon": "instagram"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@TFMShortcast/videos",
+      "icon": "youtube"
+    },
+    {
+      "label": "Spotify",
+      "url": "https://open.spotify.com/show/55C8g0qgxeROYP0X6m8inn",
+      "icon": "spotify"
+    }
+  ]
+}

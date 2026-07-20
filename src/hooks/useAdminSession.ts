@@ -8,8 +8,9 @@ interface AdminSessionState {
 
 /**
  * Probes the CMS session cookie via GET /api/admin-session on mount and
- * exposes a `logout()` that clears it. Network failures collapse to the
- * logged-out state so the UI always lands on the login screen.
+ * exposes a `logout()` that clears it. On network failure `logout()` returns
+ * false and leaves the session intact (fail-closed) — the UI never claims
+ * logged-out while the server cookie may still be valid.
  */
 export default function useAdminSession(): AdminSessionState {
   const [authed, setAuthed] = useState(false)

@@ -1,4 +1,5 @@
-import { Navigate, Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { Navigate, Link } from 'react-router-dom'
 import { LogOut, ExternalLink } from 'lucide-react'
 import useSEO from '../hooks/useSEO'
 import useAdminSession from '../hooks/useAdminSession'
@@ -12,7 +13,8 @@ export default function AdminPage() {
   })
 
   const { authed, loading, logout } = useAdminSession()
-  const navigate = useNavigate()
+  const [loggingOut, setLoggingOut] = useState(false)
+  const [logoutError, setLogoutError] = useState(false)
 
   if (loading) {
     return (
@@ -30,8 +32,16 @@ export default function AdminPage() {
   }
 
   const handleLogout = async () => {
-    await logout()
-    navigate('/login', { replace: true })
+    if (loggingOut) return
+    setLoggingOut(true)
+    setLogoutError(false)
+    const ok = await logout()
+    setLoggingOut(false)
+    if (!ok) {
+      // Server didn't confirm — cookie may still be valid. Stay on /admin.
+      setLogoutError(true)
+    }
+    // On success, authed flips to false and <Navigate to="/login"> renders.
   }
 
   return (
@@ -57,6 +67,15 @@ export default function AdminPage() {
               Panels coming in the next tasks.
             </p>
 
+            {logoutError && (
+              <div
+                role="alert"
+                className="mb-6 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3"
+              >
+                Couldn't reach the server to log out — please retry.
+              </div>
+            )}
+
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 to="/"
@@ -68,10 +87,20 @@ export default function AdminPage() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold text-xs uppercase tracking-wide rounded-full px-6 py-3 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200"
+                disabled={loggingOut}
+                className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold text-xs uppercase tracking-wide rounded-full px-6 py-3 hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none"
               >
-                <LogOut size={14} />
-                Log out
+                {loggingOut ? (
+                  <>
+                    <span className="inline-block w-3.5 h-3.5 border-2 border-primary-foreground/40 border-t-primary-foreground rounded-full animate-spin" />
+                    Logging out…
+                  </>
+                ) : (
+                  <>
+                    <LogOut size={14} />
+                    Log out
+                  </>
+                )}
               </button>
             </div>
           </div>

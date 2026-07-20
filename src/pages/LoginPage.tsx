@@ -26,6 +26,19 @@ export default function LoginPage() {
     return <Navigate to="/admin" replace />
   }
 
+  // While the session probe is in flight, render a minimal loading state so
+  // an already-authed visitor doesn't briefly see the form before the redirect.
+  if (sessionLoading) {
+    return (
+      <section className="bg-background min-h-[80vh] flex items-center justify-center py-28">
+        <div className="flex items-center gap-3 text-muted-foreground text-sm">
+          <span className="inline-block w-5 h-5 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+          Checking session…
+        </div>
+      </section>
+    )
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (submitting) return
@@ -123,7 +136,10 @@ export default function LoginPage() {
               </div>
 
               {error && (
-                <div className="rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 flex items-start gap-2">
+                <div
+                  role="alert"
+                  className="rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 flex items-start gap-2"
+                >
                   <AlertCircle size={16} className="mt-0.5 shrink-0" />
                   <span>{error}</span>
                 </div>

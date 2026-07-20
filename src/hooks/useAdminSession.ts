@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 interface AdminSessionState {
   authed: boolean
   loading: boolean
-  logout: () => Promise<void>
+  logout: () => Promise<boolean>
 }
 
 /**
@@ -34,16 +34,15 @@ export default function useAdminSession(): AdminSessionState {
     }
   }, [])
 
-  const logout = async () => {
+  const logout = async (): Promise<boolean> => {
     try {
-      await fetch('/api/admin-logout', {
-        method: 'POST',
-        credentials: 'same-origin',
-      })
+      const res = await fetch('/api/admin-logout', { method: 'POST', credentials: 'same-origin' })
+      if (!res.ok) return false
+      setAuthed(false)
+      return true
     } catch {
-      // swallow — we still flip the client state so the UI bounces to /login
+      return false // network failure — cookie may still be valid; do NOT claim logged out
     }
-    setAuthed(false)
   }
 
   return { authed, loading, logout }

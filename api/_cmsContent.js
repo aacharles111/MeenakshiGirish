@@ -21,7 +21,8 @@ export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Accept http(s):// URLs OR the literal "#" (featured items may have no URL yet).
 // Inherently rejects javascript:, data:, etc. — only http/https pass.
-export const URL_RE = /^(https?:\/\/[^\s<>]+|#)$/;
+// Quotes are excluded so a URL can never break out of an href/src attribute.
+export const URL_RE = /^(https?:\/\/[^\s<>"']+|#)$/;
 
 // URL-safe slug: lowercase letters, digits, hyphens.
 export const SLUG_RE = /^[a-z0-9-]+$/;
@@ -29,15 +30,19 @@ export const SLUG_RE = /^[a-z0-9-]+$/;
 // Cap URLs well below any abuse-the-string limit.
 const MAX_URL = 2048;
 
-// Returns the validated URL string, or null if invalid. Trims first.
+// Returns the validated URL string, or null if invalid. Trims first and
+// strips any stray angle brackets via clean() so they cannot be used to
+// bypass the charset test.
 function cleanUrl(v) {
-  const s = typeof v === 'string' ? v.trim().slice(0, MAX_URL) : '';
+  const s = typeof v === 'string' ? clean(v, MAX_URL) : '';
   return URL_RE.test(s) ? s : null;
 }
 
-// Keeps an existing non-empty string id, else generates a fresh uuid.
+// Keeps an existing non-empty string id (capped), else generates a fresh uuid.
 function uid(input) {
-  if (input && typeof input.id === 'string' && input.id.trim()) return input.id.trim();
+  if (input && typeof input.id === 'string' && input.id.trim()) {
+    return input.id.trim().slice(0, 100);
+  }
   return crypto.randomUUID();
 }
 
@@ -49,6 +54,29 @@ function requireClean(v, max, label) {
 }
 
 // ── Blog ───────────────────────────────────────────────────────────────────
+
+// ISO 8601 datetime, e.g. 2026-07-20T12:34:56.789Z or 2026-07-20T12:34:56+05:30.
+// new Date().toISOString() output always matches this.
+const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?$/;
+
+// DEFENSE-IN-DEPTH body sanitizer for the save boundary. Strips obvious XSS
+// vectors (dangerous tag blocks, on* event handlers, javascript:/vbscript:
+// URLs) so dangerous markup is never committed to the repo. The AUTHORITATIVE
+// sanitizer is render-time DOMPurify (Task 13) — this regex pass is a
+// second layer and is intentionally zero-dependency.
+function sanitizeBodyHtml(html) {
+  return String(html ?? '')
+    // drop dangerous tag BLOCKS (tag + their content): script, iframe, object, embed, style, form, svg, math
+    .replace(/<(script|iframe|object|embed|style|form|svg|math)\b[\s\S]*?<\/\1\s*>/gi, '')
+    // drop any remaining standalone/void dangerous tags (open OR close, with attrs)
+    .replace(/<\/?(script|iframe|object|embed|style|form|svg|math|link|meta|base)\b[^>]*>/gi, '')
+    // strip inline event-handler attributes: on\w+="..." / on\w+='...' / on\w+=unquoted
+    .replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)?/gi, '')
+    // neutralize javascript:/vbscript: URLs inside href="..." or src="..."
+    .replace(/(href|src)\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, (m) => (/javascript:|vbscript:/i.test(m) ? '' : m))
+    .slice(0, 50000);
+}
+
 export function validateBlog(input, existingBlogs = []) {
   if (!input || typeof input !== 'object') throw new Error('Blog body is required');
 
@@ -63,11 +91,9 @@ export function validateBlog(input, existingBlogs = []) {
   }
   const status = input.status;
 
-  // Body: strip <script>...</script> blocks (case-insensitive, multi-line) as
-  // defense-in-depth. Full HTML sanitization happens render-time via DOMPurify.
-  let body = String(input.body ?? '')
-    .replace(/<script[\s\S]*?<\/script>/gi, '')
-    .slice(0, 50000);
+  // Body: defense-in-depth XSS strip at save time (see sanitizeBodyHtml).
+  // Render-time DOMPurify is the authoritative sanitizer.
+  const body = sanitizeBodyHtml(input.body);
   if (!body.trim()) throw new Error('Body is required');
 
   const metaTitle = clean(input.metaTitle, 60);
@@ -89,6 +115,9 @@ export function validateBlog(input, existingBlogs = []) {
   const publishedAt = typeof input.publishedAt === 'string' && input.publishedAt.trim()
     ? input.publishedAt.trim()
     : (status === 'published' ? now : '');
+  if (publishedAt && !ISO_DATE_RE.test(publishedAt)) {
+    throw new Error('publishedAt must be a valid ISO 8601 datetime');
+  }
 
   return {
     id,
@@ -161,7 +190,12 @@ export function validateSettings(input) {
   if (!input || typeof input !== 'object') throw new Error('Settings body is required');
 
   const book = (input.book && typeof input.book === 'object') ? input.book : {};
-  const priceRaw = Number(book.priceInr);
+  // Reject non-number prices (booleans, strings, etc.) up front so true/'499'
+  // cannot sneak through Number() coercion. Integer + ≥1 enforced below.
+  if (typeof book.priceInr !== 'number') {
+    throw new Error('Price must be a number');
+  }
+  const priceRaw = book.priceInr;
   if (!Number.isFinite(priceRaw) || !Number.isInteger(priceRaw) || priceRaw < 1) {
     throw new Error('Price must be at least ₹1');
   }

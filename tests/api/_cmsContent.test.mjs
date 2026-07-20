@@ -271,3 +271,66 @@ test('SLUG_RE: validates slug shape', () => {
   assert.equal(SLUG_RE.test('up_per'), false);
   assert.equal(SLUG_RE.test('spaces not'), false);
 });
+
+// ── Security hardening ─────────────────────────────────────────────────────
+
+test('sanitizeBodyHtml: <img onerror> event handler stripped', () => {
+  const blog = validateBlog({
+    title: 'T', slug: 't', status: 'draft',
+    body: '<img src="x" onerror="alert(1)">',
+  });
+  assert.ok(!blog.body.includes('onerror'), 'no onerror in result');
+  assert.ok(!/<img[^>]*on\w+/i.test(blog.body), 'no inline handler on img');
+});
+
+test('sanitizeBodyHtml: <iframe> block stripped', () => {
+  const blog = validateBlog({
+    title: 'T', slug: 't', status: 'draft',
+    body: '<p>ok</p><iframe src="evil"></iframe><p>end</p>',
+  });
+  assert.ok(!blog.body.includes('<iframe'), 'no iframe tag in result');
+  assert.ok(!blog.body.includes('evil'), 'iframe content dropped');
+  assert.ok(blog.body.includes('<p>ok</p>'));
+});
+
+test('sanitizeBodyHtml: javascript: URL in href neutralized', () => {
+  const blog = validateBlog({
+    title: 'T', slug: 't', status: 'draft',
+    body: '<a href="javascript:alert(1)">x</a>',
+  });
+  assert.ok(!blog.body.toLowerCase().includes('javascript:'), 'no javascript: scheme');
+});
+
+test('cleanUrl rejects URLs containing a quote (Fix 2)', () => {
+  assert.throws(
+    () => validateFeatured({ items: [{ label: 'X', url: 'https://x"y' }] }),
+    /URL/,
+  );
+  assert.throws(
+    () => validateSettings({
+      ...validSettings,
+      socials: [{ label: 'X', url: "https://x'y", icon: 'linkedin' }],
+    }),
+    /URL/,
+  );
+});
+
+test('validateBlog: non-ISO publishedAt throws (Fix 3)', () => {
+  assert.throws(
+    () => validateBlog({
+      title: 'T', slug: 't', body: 'b', status: 'draft',
+      publishedAt: 'not-a-date',
+    }),
+    /ISO 8601/,
+  );
+});
+
+test('validateBlog: published + unset publishedAt defaults to a valid ISO string', () => {
+  const blog = validateBlog({ title: 'T', slug: 't', body: 'b', status: 'published' });
+  assert.ok(blog.publishedAt, 'publishedAt is set');
+  assert.match(
+    blog.publishedAt,
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?$/,
+    'default publishedAt matches ISO 8601',
+  );
+});

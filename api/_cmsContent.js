@@ -64,16 +64,22 @@ const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2
 // URLs) so dangerous markup is never committed to the repo. The AUTHORITATIVE
 // sanitizer is render-time DOMPurify (Task 13) — this regex pass is a
 // second layer and is intentionally zero-dependency.
+// DEFENSE-IN-DEPTH only. The authoritative sanitizer is render-time DOMPurify (applied before
+// dangerouslySetInnerHTML in the blog post renderer). This regex best-effort-strips common XSS
+// vectors at the save boundary; it is NOT a complete HTML sanitizer.
 function sanitizeBodyHtml(html) {
   return String(html ?? '')
     // drop dangerous tag BLOCKS (tag + their content): script, iframe, object, embed, style, form, svg, math
     .replace(/<(script|iframe|object|embed|style|form|svg|math)\b[\s\S]*?<\/\1\s*>/gi, '')
     // drop any remaining standalone/void dangerous tags (open OR close, with attrs)
     .replace(/<\/?(script|iframe|object|embed|style|form|svg|math|link|meta|base)\b[^>]*>/gi, '')
-    // strip inline event-handler attributes: on\w+="..." / on\w+='...' / on\w+=unquoted
-    .replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)?/gi, '')
-    // neutralize javascript:/vbscript: URLs inside href="..." or src="..."
-    .replace(/(href|src)\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, (m) => (/javascript:|vbscript:/i.test(m) ? '' : m))
+    // strip inline event-handler attributes (leading whitespace incl. tab/newline)
+    .replace(/\s+on\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)?/gi, '')
+    // neutralize javascript:/vbscript: URLs inside href="..." or src="..." (tolerates whitespace obfuscation like "java\tscript:")
+    .replace(/(href|src)\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, (whole, attr, val) => {
+      const compact = String(val).replace(/\s+/g, '').toLowerCase();
+      return /javascript:|vbscript:/.test(compact) ? '' : whole;
+    })
     .slice(0, 50000);
 }
 

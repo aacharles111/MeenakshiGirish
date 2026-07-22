@@ -11,6 +11,7 @@
 
 import { requireAdmin } from './_cmsAuth.js';
 import { readJson } from './_github.js';
+import { ValidationError } from './_cmsContent.js';
 
 const PATHS = {
   blogs: 'src/content/blogs.json',
@@ -50,6 +51,9 @@ export default async function handler(req, res) {
       settings: settings ?? DEFAULTS.settings,
     });
   } catch (e) {
+    if (e instanceof ValidationError) {
+      return res.status(400).json({ ok: false, error: e.message });
+    }
     // Auth errors (requireAdmin) carry {status, body}.
     if (e?.status) return res.status(e.status).json(e.body);
     console.error('[cms] content read error:', e?.message || 'unknown');

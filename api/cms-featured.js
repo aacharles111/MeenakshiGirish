@@ -10,7 +10,7 @@
 
 import { requireAdmin } from './_cmsAuth.js';
 import { writeJson } from './_github.js';
-import { validateFeatured } from './_cmsContent.js';
+import { validateFeatured, ValidationError } from './_cmsContent.js';
 import { parseBody } from './_cmsUtil.js';
 
 const PATH = 'src/content/featured.json';
@@ -26,13 +26,13 @@ export default async function handler(req, res) {
     console.log('[cms] featured saved');
     res.status(200).json({ ok: true });
   } catch (e) {
-    if (e?.status) return res.status(e.status).json(e.body);
-    const msg = e?.message || '';
-    if (msg) {
-      console.error('[cms] featured error:', msg);
-      return res.status(400).json({ ok: false, error: msg });
+    if (e instanceof ValidationError) {
+      return res.status(400).json({ ok: false, error: e.message });
     }
-    console.error('[cms] featured unexpected error');
+    if (e?.status) {
+      return res.status(e.status).json(e.body);
+    }
+    console.error('[cms] featured error:', e?.message || 'unknown');
     res.status(500).json({ ok: false, error: 'Could not save. Please try again.' });
   }
 }

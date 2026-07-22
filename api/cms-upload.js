@@ -14,6 +14,7 @@
 
 import { requireAdmin } from './_cmsAuth.js';
 import { writeFile } from './_github.js';
+import { ValidationError } from './_cmsContent.js';
 import { parseBody } from './_cmsUtil.js';
 
 const MAX_BYTES = 2 * 1024 * 1024; // 2 MiB
@@ -32,28 +33,28 @@ export default async function handler(req, res) {
     await requireAdmin(req);
     const input = parseBody(req);
     if (!input || typeof input !== 'object') {
-      return res.status(400).json({ ok: false, error: 'Invalid request body' });
+      throw new ValidationError('Invalid request body');
     }
     const { contentType, dataB64, filename } = input;
     const ext = EXT_BY_TYPE[contentType];
     if (!ext) {
-      return res.status(400).json({ ok: false, error: 'Image must be JPEG, PNG, or WebP' });
+      throw new ValidationError('Image must be JPEG, PNG, or WebP');
     }
     if (typeof dataB64 !== 'string' || !dataB64) {
-      return res.status(400).json({ ok: false, error: 'Image data is required' });
+      throw new ValidationError('Image data is required');
     }
     let buf;
     try {
       buf = Buffer.from(dataB64, 'base64');
     } catch {
-      return res.status(400).json({ ok: false, error: 'Image data is malformed' });
+      throw new ValidationError('Image data is malformed');
     }
     if (buf.length > MAX_BYTES) {
-      return res.status(400).json({ ok: false, error: 'Image must be 2 MB or smaller' });
+      throw new ValidationError('Image must be 2 MB or smaller');
     }
     const slug = typeof filename === 'string' ? filename.trim() : '';
     if (!SLUG_RE.test(slug)) {
-      return res.status(400).json({ ok: false, error: 'Filename must be 1–60 letters, digits, or hyphens' });
+      throw new ValidationError('Filename must be 1–60 letters, digits, or hyphens');
     }
 
     const basename = `${Date.now()}-${slug}.${ext}`;
@@ -62,9 +63,13 @@ export default async function handler(req, res) {
     console.log('[cms] image uploaded');
     res.status(200).json({ ok: true, url: `/images/cms/${basename}` });
   } catch (e) {
-    if (e?.status) return res.status(e.status).json(e.body);
-    // Validation errors were handled above with explicit 400s; anything here is
-    // a GitHub/network failure — do not leak internals.
+    if (e instanceof ValidationError) {
+      return res.status(400).json({ ok: false, error: e.message });
+    }
+    if (e?.status) {
+      return res.status(e.status).json(e.body);
+    }
+    // GitHub/network failure — do not leak internals.
     console.error('[cms] upload error:', e?.message || 'unknown');
     res.status(500).json({ ok: false, error: 'Could not upload image. Please try again.' });
   }

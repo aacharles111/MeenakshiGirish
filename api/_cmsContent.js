@@ -30,6 +30,18 @@ export const SLUG_RE = /^[a-z0-9-]+$/;
 // Cap URLs well below any abuse-the-string limit.
 const MAX_URL = 2048;
 
+// Validator error: thrown by every validate* function below (and by the
+// requireClean helper). Carries a human-readable message that the CMS write
+// endpoints surface to the admin as HTTP 400. Distinct from plain Error so
+// the endpoint catch can tell validator failures (→ 400 + message) apart
+// from GitHub/infra failures (plain Error → generic 500, no internals).
+export class ValidationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'ValidationError';
+  }
+}
+
 // Returns the validated URL string, or null if invalid. Trims first and
 // strips any stray angle brackets via clean() so they cannot be used to
 // bypass the charset test.
@@ -49,7 +61,7 @@ function uid(input) {
 // Throws if value is missing/empty after cleaning; returns the cleaned value.
 function requireClean(v, max, label) {
   const c = clean(v, max);
-  if (!c) throw new Error(`${label} is required`);
+  if (!c) throw new ValidationError(`${label} is required`);
   return c;
 }
 
@@ -84,23 +96,23 @@ function sanitizeBodyHtml(html) {
 }
 
 export function validateBlog(input, existingBlogs = []) {
-  if (!input || typeof input !== 'object') throw new Error('Blog body is required');
+  if (!input || typeof input !== 'object') throw new ValidationError('Blog body is required');
 
   const title = requireClean(input.title, 200, 'Title');
 
   const slug = clean(input.slug, 80);
-  if (!slug) throw new Error('Slug is required');
-  if (!SLUG_RE.test(slug)) throw new Error('Slug must be lowercase letters, digits, and hyphens only');
+  if (!slug) throw new ValidationError('Slug is required');
+  if (!SLUG_RE.test(slug)) throw new ValidationError('Slug must be lowercase letters, digits, and hyphens only');
 
   if (input.status !== 'draft' && input.status !== 'published') {
-    throw new Error('Status must be "draft" or "published"');
+    throw new ValidationError('Status must be "draft" or "published"');
   }
   const status = input.status;
 
   // Body: defense-in-depth XSS strip at save time (see sanitizeBodyHtml).
   // Render-time DOMPurify is the authoritative sanitizer.
   const body = sanitizeBodyHtml(input.body);
-  if (!body.trim()) throw new Error('Body is required');
+  if (!body.trim()) throw new ValidationError('Body is required');
 
   const metaTitle = clean(input.metaTitle, 60);
   const metaDescription = clean(input.metaDescription, 160);
@@ -115,14 +127,14 @@ export function validateBlog(input, existingBlogs = []) {
   const clash = Array.isArray(existingBlogs)
     ? existingBlogs.find((b) => b && b.slug === slug && b.id !== id)
     : null;
-  if (clash) throw new Error('Slug already in use');
+  if (clash) throw new ValidationError('Slug already in use');
 
   const now = new Date().toISOString();
   const publishedAt = typeof input.publishedAt === 'string' && input.publishedAt.trim()
     ? input.publishedAt.trim()
     : (status === 'published' ? now : '');
   if (publishedAt && !ISO_DATE_RE.test(publishedAt)) {
-    throw new Error('publishedAt must be a valid ISO 8601 datetime');
+    throw new ValidationError('publishedAt must be a valid ISO 8601 datetime');
   }
 
   return {
@@ -144,13 +156,13 @@ export function validateBlog(input, existingBlogs = []) {
 
 // ── Gallery ────────────────────────────────────────────────────────────────
 export function validateGallery(input) {
-  if (!input || typeof input !== 'object') throw new Error('Gallery body is required');
+  if (!input || typeof input !== 'object') throw new ValidationError('Gallery body is required');
   const arr = Array.isArray(input.images) ? input.images : [];
-  if (arr.length > 500) throw new Error('Gallery cannot exceed 500 images');
+  if (arr.length > 500) throw new ValidationError('Gallery cannot exceed 500 images');
   const images = arr.map((img, i) => {
-    if (!img || typeof img !== 'object') throw new Error(`Image ${i + 1} is invalid`);
+    if (!img || typeof img !== 'object') throw new ValidationError(`Image ${i + 1} is invalid`);
     const src = clean(img.src, 500);
-    if (!src) throw new Error(`Image ${i + 1} is missing a src`);
+    if (!src) throw new ValidationError(`Image ${i + 1} is missing a src`);
     const alt = clean(img.alt, 300);
     return { src, alt };
   });
@@ -159,11 +171,11 @@ export function validateGallery(input) {
 
 // ── Testimonials ───────────────────────────────────────────────────────────
 export function validateTestimonials(input) {
-  if (!input || typeof input !== 'object') throw new Error('Testimonials body is required');
+  if (!input || typeof input !== 'object') throw new ValidationError('Testimonials body is required');
   const arr = Array.isArray(input.testimonials) ? input.testimonials : [];
-  if (arr.length > 200) throw new Error('Testimonials cannot exceed 200 entries');
+  if (arr.length > 200) throw new ValidationError('Testimonials cannot exceed 200 entries');
   const testimonials = arr.map((t, i) => {
-    if (!t || typeof t !== 'object') throw new Error(`Testimonial ${i + 1} is invalid`);
+    if (!t || typeof t !== 'object') throw new ValidationError(`Testimonial ${i + 1} is invalid`);
     const id = uid(t);
     const quote = requireClean(t.quote, 1000, `Testimonial ${i + 1} quote`);
     const author = requireClean(t.author, 120, `Testimonial ${i + 1} author`);
@@ -175,15 +187,15 @@ export function validateTestimonials(input) {
 
 // ── Featured ───────────────────────────────────────────────────────────────
 export function validateFeatured(input) {
-  if (!input || typeof input !== 'object') throw new Error('Featured body is required');
+  if (!input || typeof input !== 'object') throw new ValidationError('Featured body is required');
   const arr = Array.isArray(input.items) ? input.items : [];
-  if (arr.length > 100) throw new Error('Featured items cannot exceed 100 entries');
+  if (arr.length > 100) throw new ValidationError('Featured items cannot exceed 100 entries');
   const items = arr.map((it, i) => {
-    if (!it || typeof it !== 'object') throw new Error(`Featured item ${i + 1} is invalid`);
+    if (!it || typeof it !== 'object') throw new ValidationError(`Featured item ${i + 1} is invalid`);
     const id = uid(it);
     const label = requireClean(it.label, 160, `Featured item ${i + 1} label`);
     const url = cleanUrl(it.url);
-    if (url === null) throw new Error(`Featured item ${i + 1} has an invalid URL`);
+    if (url === null) throw new ValidationError(`Featured item ${i + 1} has an invalid URL`);
     return { id, label, url };
   });
   return { items };
@@ -193,34 +205,34 @@ export function validateFeatured(input) {
 const SOCIAL_ICONS = new Set(['linkedin', 'instagram', 'youtube', 'spotify']);
 
 export function validateSettings(input) {
-  if (!input || typeof input !== 'object') throw new Error('Settings body is required');
+  if (!input || typeof input !== 'object') throw new ValidationError('Settings body is required');
 
   const book = (input.book && typeof input.book === 'object') ? input.book : {};
   // Reject non-number prices (booleans, strings, etc.) up front so true/'499'
   // cannot sneak through Number() coercion. Integer + ≥1 enforced below.
   if (typeof book.priceInr !== 'number') {
-    throw new Error('Price must be a number');
+    throw new ValidationError('Price must be a number');
   }
   const priceRaw = book.priceInr;
   if (!Number.isFinite(priceRaw) || !Number.isInteger(priceRaw) || priceRaw < 1) {
-    throw new Error('Price must be at least ₹1');
+    throw new ValidationError('Price must be at least ₹1');
   }
   const bookTitle = requireClean(book.title, 200, 'Book title');
   const buyCtaLabel = requireClean(book.buyCtaLabel, 60, 'Buy CTA label');
 
   const contact = (input.contact && typeof input.contact === 'object') ? input.contact : {};
   const email = clean(contact.email, 320);
-  if (!EMAIL_RE.test(email)) throw new Error('Contact email is invalid');
+  if (!EMAIL_RE.test(email)) throw new ValidationError('Contact email is invalid');
 
   const socialsArr = Array.isArray(input.socials) ? input.socials : [];
-  if (socialsArr.length > 20) throw new Error('Socials cannot exceed 20 entries');
+  if (socialsArr.length > 20) throw new ValidationError('Socials cannot exceed 20 entries');
   const socials = socialsArr.map((s, i) => {
-    if (!s || typeof s !== 'object') throw new Error(`Social ${i + 1} is invalid`);
+    if (!s || typeof s !== 'object') throw new ValidationError(`Social ${i + 1} is invalid`);
     const label = requireClean(s.label, 60, `Social ${i + 1} label`);
     const url = cleanUrl(s.url);
-    if (url === null) throw new Error(`Social ${i + 1} has an invalid URL`);
+    if (url === null) throw new ValidationError(`Social ${i + 1} has an invalid URL`);
     const icon = typeof s.icon === 'string' ? s.icon : '';
-    if (!SOCIAL_ICONS.has(icon)) throw new Error(`Social ${i + 1} has an invalid icon`);
+    if (!SOCIAL_ICONS.has(icon)) throw new ValidationError(`Social ${i + 1} has an invalid icon`);
     return { label, url, icon };
   });
 

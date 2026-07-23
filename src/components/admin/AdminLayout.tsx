@@ -24,6 +24,7 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { LogOut, ExternalLink, Check, Loader2, AlertCircle, CloudUpload } from 'lucide-react'
 import type { CmsContent } from '../../lib/cmsApi'
+import GalleryPanel from './GalleryPanel'
 
 type TabId = 'blogs' | 'gallery' | 'testimonials' | 'featured' | 'book' | 'contact'
 
@@ -172,11 +173,10 @@ export default function AdminLayout({ content, onSaved, onLogout }: AdminLayoutP
           />
         )
       case 'gallery':
-        // Task 9: return <GalleryPanel content={content} />
         return (
-          <ComingSoonPanel
-            label="Gallery"
-            summary={`${content.gallery.images.length} ${content.gallery.images.length === 1 ? 'image' : 'images'}`}
+          <GalleryPanel
+            images={content.gallery.images}
+            onSaved={onSaved}
           />
         )
       case 'testimonials':

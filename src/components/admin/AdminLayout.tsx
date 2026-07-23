@@ -22,10 +22,14 @@ import {
 } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { LogOut, ExternalLink, Check, Loader2, AlertCircle, CloudUpload } from 'lucide-react'
+import { LogOut, ExternalLink, Check, Loader2, AlertCircle } from 'lucide-react'
 import type { CmsContent } from '../../lib/cmsApi'
 import BlogsPanel from './BlogsPanel'
 import GalleryPanel from './GalleryPanel'
+import TestimonialsPanel from './TestimonialsPanel'
+import FeaturedPanel from './FeaturedPanel'
+import BookBuyPanel from './BookBuyPanel'
+import ContactSocialsPanel from './ContactSocialsPanel'
 
 type TabId = 'blogs' | 'gallery' | 'testimonials' | 'featured' | 'book' | 'contact'
 
@@ -180,37 +184,13 @@ export default function AdminLayout({ content, onSaved, onLogout }: AdminLayoutP
           />
         )
       case 'testimonials':
-        // Task 10: return <TestimonialsPanel content={content} />
-        return (
-          <ComingSoonPanel
-            label="Testimonials"
-            summary={`${content.testimonials.testimonials.length} entries`}
-          />
-        )
+        return <TestimonialsPanel testimonials={content.testimonials.testimonials} />
       case 'featured':
-        // Task 10: return <FeaturedPanel content={content} />
-        return (
-          <ComingSoonPanel
-            label="Featured In"
-            summary={`${content.featured.items.length} links`}
-          />
-        )
+        return <FeaturedPanel items={content.featured.items} />
       case 'book':
-        // Task 11: return <BookBuyPanel content={content} />
-        return (
-          <ComingSoonPanel
-            label="Book & Buy"
-            summary={content.settings.book?.title || 'Not configured'}
-          />
-        )
+        return <BookBuyPanel settings={content.settings} />
       case 'contact':
-        // Task 11: return <ContactSocialsPanel content={content} />
-        return (
-          <ComingSoonPanel
-            label="Contact & Socials"
-            summary={`${content.settings.socials?.length ?? 0} ${content.settings.socials?.length === 1 ? 'social' : 'socials'}`}
-          />
-        )
+        return <ContactSocialsPanel settings={content.settings} />
       default:
         return null
     }
@@ -316,31 +296,6 @@ export default function AdminLayout({ content, onSaved, onLogout }: AdminLayoutP
         </SaveContext.Provider>
       </main>
     </section>
-  )
-}
-
-/* ─── Placeholder panel (Tasks 9–11 swap with real components) ─── */
-
-function ComingSoonPanel({ label, summary }: { label: string; summary: string }) {
-  return (
-    <div className="bg-card rounded-[2rem] p-8 md:p-12 border border-border/50 shadow-[0_4px_20px_hsl(30_15%_80%_/_0.15)] text-center">
-      <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
-        <CloudUpload size={26} className="text-primary" />
-      </div>
-      <h2
-        className="font-bold italic text-foreground mb-1"
-        style={{ fontFamily: 'var(--font-playfair)', fontSize: '1.4rem' }}
-      >
-        {label}
-      </h2>
-      <p className="text-xs uppercase tracking-[0.15em] text-primary/80 font-medium mb-4">
-        {summary}
-      </p>
-      <p className="text-muted-foreground text-sm max-w-md mx-auto">
-        This panel is built in the next task. The content loads here and saves through the
-        shared status flow.
-      </p>
-    </div>
   )
 }
 

@@ -24,6 +24,7 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { LogOut, ExternalLink, Check, Loader2, AlertCircle, CloudUpload } from 'lucide-react'
 import type { CmsContent } from '../../lib/cmsApi'
+import BlogsPanel from './BlogsPanel'
 import GalleryPanel from './GalleryPanel'
 
 type TabId = 'blogs' | 'gallery' | 'testimonials' | 'featured' | 'book' | 'contact'
@@ -165,11 +166,10 @@ export default function AdminLayout({ content, onSaved, onLogout }: AdminLayoutP
   const renderPanel = (tab: TabId): ReactNode => {
     switch (tab) {
       case 'blogs':
-        // Task 9: return <BlogsPanel content={content} />
         return (
-          <ComingSoonPanel
-            label="Blogs"
-            summary={`${content.blogs.length} ${content.blogs.length === 1 ? 'post' : 'posts'}`}
+          <BlogsPanel
+            blogs={content.blogs}
+            onSaved={onSaved}
           />
         )
       case 'gallery':

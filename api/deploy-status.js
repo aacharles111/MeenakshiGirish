@@ -43,7 +43,9 @@ export default async function handler(req, res) {
     const state = String(dep.state || '').toLowerCase();
     return res.status(200).json({ ok: true, state, createdAt: dep.createdAt });
   } catch (e) {
-    console.error('[deploy-status] error:', e?.message || 'unknown');
+    // Static by default; detail only when DEBUG is set, so Vercel API errors
+    // (which may echo project/org metadata) never reach the logs unbidden.
+    console.error(process.env.DEBUG ? `[deploy-status] error: ${e?.message || 'unknown'}` : '[deploy-status] error');
     return res.status(200).json({ ok: true, state: 'unknown' });
   }
 }

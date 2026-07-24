@@ -34,6 +34,10 @@ screenshot_*.png
 
 .vercel
 
+# Generated at build time by scripts/build-runtime-config.mjs from
+# src/content/site-settings.json. Regenerated every deploy — never committed.
+api/_runtimeConfig.js
+
 # Local environment variables (never commit secrets)
 .env
 .env.*

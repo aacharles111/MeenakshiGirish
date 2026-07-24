@@ -12,6 +12,7 @@ import SplineBook from '../components/SplineBook';
 import Marquee from '../components/Marquee';
 import DotField from '../components/DotField';
 import TextReveal from '../components/TextReveal';
+import testimonialsData from '../content/testimonials.json';
 
 const forWho: { icon: LucideIcon; title: string; body: string; color: string }[] = [
   { icon: Sparkles, title: 'The "Where Do I Even Start" Beginner.', body: "If you're curious but clueless, welcome! I don't use scary jargon. I'll walk you through the absolute basics.", color: 'hsl(175 35% 55%)' },
@@ -26,11 +27,9 @@ const differentiators: { icon: LucideIcon; label: string; desc: string }[] = [
   { icon: Coffee, label: "It's Friendly.", desc: "I wrote this like I was talking to a friend over coffee. I'm here to help you, not show off." },
 ];
 
-const testimonials = [
-  { quote: "Loved your candid thoughts on writing and becoming an author, ma'am.", author: 'Aspiring Author', role: 'Talk Attendee' },
-  { quote: "I finished your book today and it has so many insights. I want to start freelancing and support my family but didn't know it's possible for students. Thank you.", author: 'Book Reader', role: 'Student' },
-  { quote: "I have just started writing my book but thought nobody will buy a book on spirituality written by a college student. But your session gave me the confidence to give it a try anyway. Thanks so much, ma'am.", author: 'Aspiring Author', role: 'Student' },
-];
+// Shared admin-managed testimonial pool (same source as the home carousel
+// and the Speaking page — PRD §10).
+const testimonials = testimonialsData.testimonials;
 
 // TODO: replace with real Amazon Kindle and catalog URLs
 const purchaseLinks = [

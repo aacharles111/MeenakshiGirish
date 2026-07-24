@@ -196,7 +196,13 @@ export function validateFeatured(input) {
     const label = requireClean(it.label, 160, `Featured item ${i + 1} label`);
     const url = cleanUrl(it.url);
     if (url === null) throw new ValidationError(`Featured item ${i + 1} has an invalid URL`);
-    return { id, label, url };
+    // Optional press headline (preserves real titles across CMS saves).
+    // Cleaned + capped ≤200; omitted from the returned object when empty so
+    // the JSON stays tidy and the type stays `title?: string`.
+    const title = clean(it.title, 200);
+    const entry = { id, label, url };
+    if (title) entry.title = title;
+    return entry;
   });
   return { items };
 }

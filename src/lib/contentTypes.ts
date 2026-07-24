@@ -31,6 +31,10 @@ export interface FeaturedItem {
   id: string;
   label: string;
   url: string;
+  // Optional press headline rendered as the big italic title (preserves the
+  // 8 real headlines from the previous hardcoded FeaturedIn). May be empty
+  // for items that only have a source label.
+  title?: string;
 }
 
 export interface SiteSettings {

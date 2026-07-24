@@ -10,12 +10,17 @@ import SplineBook from '../components/SplineBook';
 import CountUp from '../components/CountUp';
 import Marquee from '../components/Marquee';
 import { createOrder, checkout, verifyPayment } from '../lib/razorpay';
+import siteSettings from '../content/site-settings.json';
 
-// Paperback price in INR. (Currently using Razorpay TEST keys — swap to LIVE keys for real sales.)
-const BOOK_PRICE_INR = 549;
+// Book pricing + display strings come from the admin-managed site-settings
+// JSON (CMS). The server mirrors bookPriceInr at build time into
+// api/_runtimeConfig.js and uses it to validate order amounts end-to-end.
+const BOOK_PRICE_INR = siteSettings.book.priceInr;
+const BOOK_TITLE = siteSettings.book.title;
+const BUY_CTA_LABEL = siteSettings.book.buyCtaLabel;
 
 const bookDetails = [
-  { icon: BookHeart, label: 'Title', value: "The Freelancer's Mindset" },
+  { icon: BookHeart, label: 'Title', value: BOOK_TITLE },
   { icon: User, label: 'Author', value: 'Meenakshi Girish (Hey, that\'s me!)' },
   { icon: Package, label: 'Format', value: 'Paperback (Audiobook in the oven)' },
   { icon: MessageSquare, label: 'Language', value: 'English' },
@@ -26,8 +31,8 @@ const copyOptions = [1, 2, 3, 5];
 
 export default function BuyPage() {
   useSEO({
-    title: "Buy The Freelancer's Mindset — Meenakshi Girish",
-    description: "Buy The Freelancer's Mindset by Meenakshi Girish. Order a signed paperback shipped to your door or get the Kindle edition instantly on Amazon.",
+    title: `Buy ${BOOK_TITLE} — Meenakshi Girish`,
+    description: `Buy ${BOOK_TITLE} by Meenakshi Girish. Order a signed paperback shipped to your door or get the Kindle edition instantly on Amazon.`,
     path: '/buy',
   });
   const [status, setStatus] = useState<'idle' | 'processing' | 'paid' | 'error'>('idle');
@@ -71,11 +76,11 @@ export default function BuyPage() {
       const result = await checkout({
         orderId: order.id,
         amount,
-        name: "The Freelancer's Mindset",
+        name: BOOK_TITLE,
         prefillName: name,
         prefillContact: phone,
         email,
-        description: `${copies} ${copies > 1 ? 'copies' : 'copy'} of The Freelancer's Mindset`,
+        description: `${copies} ${copies > 1 ? 'copies' : 'copy'} of ${BOOK_TITLE}`,
       });
       const verification = await verifyPayment(result);
       if (verification?.verified) {
@@ -100,8 +105,8 @@ export default function BuyPage() {
   return (
     <>
       <PageHero
-        eyebrow="Order Your Copy"
-        title="Get Your Hands on The Freelancer's Mindset"
+        eyebrow={BUY_CTA_LABEL}
+        title={`Get Your Hands on ${BOOK_TITLE}`}
         subtitle="Fill out the boring form below, pay the piper, and I'll make sure a fresh copy heads your way. Easy!"
       />
 

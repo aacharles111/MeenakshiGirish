@@ -4,38 +4,10 @@ import { Quote, User } from 'lucide-react';
 import SectionHeader from './SectionHeader';
 import FadeUp from './FadeUp';
 import AbstractDeco from './AbstractDeco';
+import testimonialsData from '../content/testimonials.json';
+import type { Testimonial } from '../lib/contentTypes';
 
-interface Testimonial {
-  text: string;
-  author: string;
-}
-
-const testimonials: Testimonial[] = [
-  {
-    text: 'I heard Dave say you were looking for voice modulation and clarity. You succeeded in BOTH. Outstanding.',
-    author: 'Speech Attendee',
-  },
-  {
-    text: 'Your talk on personal branding was SO GOOD. I have been posting on LinkedIn for the past 7 months but didn\u2019t get any traction. Now I have a better idea how to start again and do it right.',
-    author: 'Personal Branding Session',
-  },
-  {
-    text: 'My parents didn\u2019t believe my goal to earn money by writing content online. You are the first person who accepted my belief and told me to keep going. This really means a lot and I won\u2019t forget you.',
-    author: 'Student Attendee',
-  },
-  {
-    text: 'Meenakshi, thank you for sharing your gifts. I am very grateful.',
-    author: 'Audience Member',
-  },
-  {
-    text: 'Excellent speech and great topic.',
-    author: 'Talk Attendee',
-  },
-  {
-    text: 'You did an excellent job with your speech.',
-    author: 'Event Attendee',
-  },
-];
+const testimonials: Testimonial[] = testimonialsData.testimonials;
 
 const chatMessages = [
   { text: 'The draft looks amazing! 🔥', rotate: '-2deg' },
@@ -125,7 +97,7 @@ export default function Testimonials() {
                     fontSize: 'clamp(1.1rem, 2.5vw, 1.35rem)',
                   }}
                 >
-                  &ldquo;{testimonials[currentIndex].text}&rdquo;
+                  &ldquo;{testimonials[currentIndex].quote}&rdquo;
                 </p>
                 <p className="font-medium text-sm text-muted-foreground">
                   &mdash; {testimonials[currentIndex].author}

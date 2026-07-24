@@ -17,6 +17,7 @@ import ExpandableCard from '../components/ExpandableCard';
 import TextReveal from '../components/TextReveal';
 import FeaturedIn from '../components/FeaturedIn';
 import gallery from '../content/gallery.json';
+import testimonialsData from '../content/testimonials.json';
 
 const TOPMATE_URL = 'https://topmate.io/meenakshi_girish';
 
@@ -51,11 +52,10 @@ const whatWeDo = [
   { icon: PenLine, text: 'Find a way for you to create content without losing your mind.' },
 ];
 
-const testimonials = [
-  { quote: 'What a great speech, I enjoyed listening to you because your energy was fantastic. You spoke with authority and clarity. Your speech was very organized and easy for me to follow along.', author: 'Audience Member', role: 'Speech Feedback' },
-  { quote: 'Excellent inspirational speech full of tips, well done Meenakshi and thank you!', author: 'Talk Attendee', role: 'Inspirational Session' },
-  { quote: "Your talk was very clear and you answered my questions very well. Thanks for your patience and I am surely going to try freelancing.", author: 'Event Attendee', role: 'Q&A Session' },
-];
+// Shared admin-managed testimonial pool (same source as the home carousel
+// and the Book page reviews — PRD §10). Per-section lists were merged into
+// this single pool: editing testimonials.json updates all three sections.
+const testimonials = testimonialsData.testimonials;
 
 const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
 const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } } };

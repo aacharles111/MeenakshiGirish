@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom';
-import { Mail, Linkedin, Instagram, Youtube, Music2, BookOpen } from 'lucide-react';
+import { Mail, Linkedin, Instagram, Youtube, Music2 } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import AbstractDeco from './AbstractDeco';
+import siteSettings from '../content/site-settings.json';
 
-const socialLinks = [
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/meenakshi-girish/', title: 'LinkedIn' },
-  { icon: Instagram, href: 'https://www.instagram.com/meenakshigirish31/', title: 'Instagram' },
-  { icon: BookOpen, href: 'https://www.instagram.com/meenugirish31/', title: 'Bookstagram' },
-  { icon: Youtube, href: 'https://www.youtube.com/@TFMShortcast/videos', title: 'YouTube' },
-  { icon: Music2, href: 'https://open.spotify.com/show/55C8g0qgxeROYP0X6m8inn', title: 'Spotify' },
-];
+// Map the social icon string stored in site-settings.json to a lucide icon.
+// Unknown icons fall back to a generic globe-ish label-only link (none of the
+// current socials hit this, but it keeps the footer robust to CMS edits).
+const iconFor: Record<string, LucideIcon> = {
+  linkedin: Linkedin,
+  instagram: Instagram,
+  youtube: Youtube,
+  spotify: Music2,
+};
+
+const { email } = siteSettings.contact;
+const socials = siteSettings.socials;
 
 export default function Footer() {
   return (
@@ -37,11 +44,11 @@ export default function Footer() {
           {/* Center — Contact */}
           <div className="flex flex-col gap-2">
             <a
-              href="mailto:meenakshigirish31@gmail.com"
+              href={`mailto:${email}`}
               className="flex items-center gap-2 text-[13px] text-foreground/80 hover:text-primary transition-colors"
             >
               <Mail size={14} className="text-primary" />
-              meenakshigirish31@gmail.com
+              {email}
             </a>
           </div>
 
@@ -51,18 +58,18 @@ export default function Footer() {
               FOLLOW ME
             </p>
             <div className="flex gap-3">
-              {socialLinks.map((link, i) => {
-                const Icon = link.icon;
+              {socials.map((s, i) => {
+                const Icon = iconFor[s.icon];
                 return (
                   <a
                     key={i}
-                    href={link.href}
+                    href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    title={link.title}
+                    title={s.label}
                     className="w-9 h-9 rounded-full border border-primary/20 flex items-center justify-center text-primary/60 hover:bg-primary hover:text-primary-foreground transition-all duration-200"
                   >
-                    <Icon size={16} />
+                    {Icon ? <Icon size={16} /> : <span className="text-[10px] font-bold uppercase">{s.label.slice(0, 2)}</span>}
                   </a>
                 );
               })}

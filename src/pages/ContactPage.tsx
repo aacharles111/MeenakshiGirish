@@ -11,14 +11,40 @@ import AbstractDeco from '../components/AbstractDeco';
 import TiltCard from '../components/TiltCard';
 import TextReveal from '../components/TextReveal';
 import CurvedLoop from '../components/CurvedLoop';
+import siteSettings from '../content/site-settings.json';
 
-const socials: { icon: LucideIcon; label: string; desc: string; href: string; color: string }[] = [
-  { icon: Linkedin, label: 'LinkedIn', desc: 'My professional-ish alter ego', href: 'https://www.linkedin.com/in/meenakshi-girish/', color: 'hsl(210 60% 50%)' },
-  { icon: Instagram, label: 'Instagram (Books)', desc: 'Where I geek out over my reading list', href: 'https://www.instagram.com/meenugirish31/', color: 'hsl(340 60% 55%)' },
-  { icon: Instagram, label: 'Instagram (Personal)', desc: 'Where I post about writing and life', href: 'https://www.instagram.com/meenakshigirish31/', color: 'hsl(290 50% 55%)' },
-  { icon: Youtube, label: 'YouTube', desc: 'Watch me ramble on TFM Shortcast', href: 'https://www.youtube.com/@TFMShortcast/videos', color: 'hsl(0 70% 55%)' },
-  { icon: Music2, label: 'Spotify', desc: 'Listen to me ramble on TFM Shortcast', href: 'https://open.spotify.com/show/55C8g0qgxeROYP0X6m8inn', color: 'hsl(140 60% 45%)' },
-];
+// Map the social icon string in site-settings.json → lucide icon.
+const iconFor: Record<string, LucideIcon> = {
+  linkedin: Linkedin,
+  instagram: Instagram,
+  youtube: Youtube,
+  spotify: Music2,
+};
+
+// Presentation-only metadata keyed by label. Content (label/url/icon) comes
+// from site-settings.json; these short descriptions + per-card colors are a
+// visual concern so they live here, not in the content model. New/renamed
+// socials fall back to the brand teal + a generic description.
+const presentationByLabel: Record<string, { desc: string; color: string }> = {
+  LinkedIn: { desc: 'My professional-ish alter ego', color: 'hsl(210 60% 50%)' },
+  'Instagram (Books)': { desc: 'Where I geek out over my reading list', color: 'hsl(340 60% 55%)' },
+  'Instagram (Personal)': { desc: 'Where I post about writing and life', color: 'hsl(290 50% 55%)' },
+  YouTube: { desc: 'Watch me ramble on TFM Shortcast', color: 'hsl(0 70% 55%)' },
+  Spotify: { desc: 'Listen to me ramble on TFM Shortcast', color: 'hsl(140 60% 45%)' },
+};
+const fallbackPresentation = { desc: 'Find me online', color: 'hsl(175 35% 45%)' };
+
+const { email } = siteSettings.contact;
+const socials = siteSettings.socials.map((s) => {
+  const p = presentationByLabel[s.label] ?? fallbackPresentation;
+  return {
+    icon: iconFor[s.icon] ?? ExternalLink,
+    label: s.label,
+    desc: p.desc,
+    href: s.url,
+    color: p.color,
+  };
+});
 
 const subjectOptions = ['Hire Me', 'Speaking & Mentoring', 'Book Stuff', 'Just saying hi'];
 
@@ -28,7 +54,7 @@ const itemVariants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 
 export default function ContactPage() {
   useSEO({
     title: 'Contact Meenakshi Girish — Hire or Book a Session',
-    description: 'Hire a freelance content writer or content strategist, book a mentoring session, or invite Meenakshi to speak. Email meenakshigirish31@gmail.com.',
+    description: `Hire a freelance content writer or content strategist, book a mentoring session, or invite Meenakshi to speak. Email ${email}.`,
     path: '/contact',
   });
   const [formState, setFormState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
@@ -106,7 +132,7 @@ export default function ContactPage() {
                     If you want to hire me to write, invite me to your event, or book a 1-on-1 call, poke me here. I usually reply within 48 hours (unless I'm lost in a good book).
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
-                    <a href="mailto:meenakshigirish31@gmail.com" className="bg-primary text-primary-foreground font-semibold text-xs uppercase tracking-wide rounded-full px-6 py-3 text-center hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2">
+                    <a href={`mailto:${email}`} className="bg-primary text-primary-foreground font-semibold text-xs uppercase tracking-wide rounded-full px-6 py-3 text-center hover:bg-[hsl(175_35%_50%)] hover:-translate-y-px hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2">
                       <Mail size={14} /> Email Me
                     </a>
                     <a href="https://topmate.io/meenakshi_girish/" target="_blank" rel="noopener noreferrer" className="border-2 border-primary text-primary font-semibold text-xs uppercase tracking-wide rounded-full px-6 py-3 text-center hover:bg-primary hover:text-primary-foreground transition-all duration-200 inline-flex items-center justify-center gap-2">

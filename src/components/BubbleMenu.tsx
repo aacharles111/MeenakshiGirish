@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
+import blogsData from '../content/blogs.json';
+import type { Blog } from '../lib/contentTypes';
 import './BubbleMenu.css';
 
 interface NavItem {
@@ -9,11 +11,17 @@ interface NavItem {
   hoverColor: string;
 }
 
+// "Blog" only appears in the nav once at least one post is published.
+const hasPublishedBlog = (blogsData.blogs as Blog[]).some((b) => b.status === 'published');
+
 const navItems: NavItem[] = [
   { label: 'Home', href: '/', hoverColor: 'hsl(175 35% 55%)' },
   { label: 'About', href: '/about', hoverColor: 'hsl(35 55% 55%)' },
   { label: 'Freelancing', href: '/freelancing', hoverColor: 'hsl(200 40% 55%)' },
   { label: 'The Book', href: '/the-book', hoverColor: 'hsl(15 55% 70%)' },
+  ...(hasPublishedBlog
+    ? [{ label: 'Blog', href: '/blog', hoverColor: 'hsl(175 35% 55%)' }]
+    : []),
   { label: 'Speaking', href: '/speaking', hoverColor: 'hsl(320 30% 55%)' },
   { label: 'Contact', href: '/contact', hoverColor: 'hsl(140 35% 55%)' },
 ];

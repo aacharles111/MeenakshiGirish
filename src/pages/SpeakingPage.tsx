@@ -16,6 +16,7 @@ import CountUp from '../components/CountUp';
 import ExpandableCard from '../components/ExpandableCard';
 import TextReveal from '../components/TextReveal';
 import FeaturedIn from '../components/FeaturedIn';
+import gallery from '../content/gallery.json';
 
 const TOPMATE_URL = 'https://topmate.io/meenakshi_girish';
 
@@ -54,38 +55,6 @@ const testimonials = [
   { quote: 'What a great speech, I enjoyed listening to you because your energy was fantastic. You spoke with authority and clarity. Your speech was very organized and easy for me to follow along.', author: 'Audience Member', role: 'Speech Feedback' },
   { quote: 'Excellent inspirational speech full of tips, well done Meenakshi and thank you!', author: 'Talk Attendee', role: 'Inspirational Session' },
   { quote: "Your talk was very clear and you answered my questions very well. Thanks for your patience and I am surely going to try freelancing.", author: 'Event Attendee', role: 'Q&A Session' },
-];
-
-const mentoringImages = [
-  '/images/events/event-01.jpeg',
-  '/images/events/event-02.jpeg',
-  '/images/events/event-03.jpg',
-  '/images/events/event-04.jpeg',
-  '/images/events/event-05.jpeg',
-  '/images/events/event-06.jpeg',
-  '/images/events/event-07.jpeg',
-  '/images/events/event-08.jpg',
-  '/images/events/event-09.jpeg',
-  '/images/events/event-10.jpg',
-  '/images/events/event-11.jpg',
-  '/images/events/event-12.jpeg',
-  '/images/events/event-13.jpeg',
-  '/images/events/event-14.webp',
-  '/images/events/event-15.jpg',
-  '/images/events/event-16.jpg',
-  '/images/events/event-17.jpeg',
-  '/images/events/event-18.jpeg',
-  '/images/events/event-19.jpeg',
-  '/images/events/event-20.jpeg',
-  '/images/events/event-21.jpeg',
-  '/images/events/event-22.jpeg',
-  '/images/events/event-23.jpeg',
-  '/images/events/event-24.jpeg',
-  '/images/events/event-25.jpeg',
-  '/images/events/event-26.jpeg',
-  '/images/events/event-27.jpeg',
-  '/images/events/event-28.jpeg',
-  '/images/events/event-29.jpeg',
 ];
 
 const containerVariants = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
@@ -205,7 +174,7 @@ export default function SpeakingPage() {
         </div>
         <div style={{ height: 'clamp(260px, 50vh, 600px)', position: 'relative' }}>
           <DomeGallery
-            images={mentoringImages}
+            images={gallery.images}
             grayscale={false}
             fit={0.55}
             padFactor={0.12}

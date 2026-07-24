@@ -43,6 +43,8 @@ const MAX_META_TITLE = 60
 const MAX_META_DESC = 160
 const MAX_EXCERPT = 200
 const DEFAULT_AUTHOR = 'Meenakshi Girish'
+// Mirror the server's 2 MiB upload cap (api/cms-upload.js).
+const MAX_IMAGE_BYTES = 2 * 1024 * 1024
 
 /**
  * slugify — lowercase · trim · non-alnum → `-` · collapse repeats · strip
@@ -189,6 +191,10 @@ export default function BlogsPanel({ blogs }: BlogsPanelProps) {
     const file = e.target.files?.[0]
     if (bannerInputRef.current) bannerInputRef.current.value = ''
     if (!file || !draft) return
+    if (file.size > MAX_IMAGE_BYTES) {
+      setBannerError('Image is too large (max 2MB).')
+      return
+    }
     setBannerError(null)
     setBannerUploading(true)
     try {
@@ -227,10 +233,18 @@ export default function BlogsPanel({ blogs }: BlogsPanelProps) {
     setIsNew(false)
   }
 
+  // True when another post already owns this slug. Hoisted above canSave so
+  // the save gate can short-circuit; the editor view below reuses this same
+  // value for its inline warning.
+  const slugCollision =
+    !!draft &&
+    blogs.some((b) => b.id !== draft.id && b.slug === draft.slug.trim())
+
   const canSave =
     !!draft &&
     draft.title.trim().length > 0 &&
     !isBodyEmpty(draft.body) &&
+    !slugCollision &&
     !bannerUploading &&
     !saving
 
@@ -363,9 +377,6 @@ export default function BlogsPanel({ blogs }: BlogsPanelProps) {
   }
 
   // ── Render: editor ──
-  const slugCollision = blogs.some(
-    (b) => b.id !== draft.id && b.slug === draft.slug.trim(),
-  )
   const published = draft.status === 'published'
   const persisted = blogs.some((b) => b.id === draft.id)
 

@@ -23,8 +23,9 @@ interface FeaturedPanelProps {
   items: FeaturedItem[]
 }
 
-// Accept http(s):// or a `#` placeholder anchor.
-const URL_RE = /^(https?:\/\/.+|#.*)$/
+// Accept http(s):// or a `#` placeholder anchor. Mirrors the server's URL_RE
+// (api/_cmsContent.js) exactly.
+const URL_RE = /^(https?:\/\/[^\s<>"']+|#)$/
 
 function cloneList(list: FeaturedItem[]): FeaturedItem[] {
   return list.map((it) => ({ ...it }))
@@ -62,7 +63,8 @@ export default function FeaturedPanel({ items }: FeaturedPanelProps) {
   const dirty = !sameList(local, items)
   const saving = status.state === 'saving'
   const serverError = status.state === 'error' ? status.message : null
-  const canSave = dirty && !saving
+  const allUrlsValid = local.every((it) => URL_RE.test(it.url.trim()))
+  const canSave = dirty && allUrlsValid && !saving
 
   const add = () => setLocal((prev) => [...prev, emptyItem()])
 

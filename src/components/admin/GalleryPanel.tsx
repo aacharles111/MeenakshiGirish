@@ -75,6 +75,9 @@ function sameImages(a: GalleryImage[], b: GalleryImage[]): boolean {
   return true
 }
 
+// Mirror the server's 2 MiB upload cap (api/cms-upload.js).
+const MAX_IMAGE_BYTES = 2 * 1024 * 1024
+
 export default function GalleryPanel({ images }: GalleryPanelProps) {
   const { runSave, status } = useCmsSave()
   const [localImages, setLocalImages] = useState<LocalImage[]>(() => withIds(images))
@@ -151,7 +154,20 @@ export default function GalleryPanel({ images }: GalleryPanelProps) {
     if (files.length === 0) return
     setGlobalError(null)
 
-    const staged: AddQueueEntry[] = files.map((file) => ({
+    // Drop oversized files before they hit the network; the server rejects
+    // them anyway, this just gives instant feedback.
+    const oversized = files.filter((file) => file.size > MAX_IMAGE_BYTES)
+    const accepted = files.filter((file) => file.size <= MAX_IMAGE_BYTES)
+    if (oversized.length > 0 && accepted.length === 0) {
+      setGlobalError(
+        `Skipped ${oversized.length} file${
+          oversized.length === 1 ? '' : 's'
+        } over 2MB.`,
+      )
+      return
+    }
+
+    const staged: AddQueueEntry[] = accepted.map((file) => ({
       id: nextId(),
       filename: file.name,
       status: { state: 'uploading' },
@@ -159,7 +175,7 @@ export default function GalleryPanel({ images }: GalleryPanelProps) {
     setAddQueue((prev) => [...prev, ...staged])
 
     const results = await Promise.allSettled(
-      files.map((file) => cmsApi.uploadImage(file)),
+      accepted.map((file) => cmsApi.uploadImage(file)),
     )
 
     const successes: GalleryImage[] = []
@@ -188,14 +204,25 @@ export default function GalleryPanel({ images }: GalleryPanelProps) {
         .map((entry) => ({ ...entry, status: failureById[entry.id] })),
     )
 
+    // Note about oversized files dropped before upload, appended to whatever
+    // summary the outcome below produces.
+    const skippedNote =
+      oversized.length > 0
+        ? ` Skipped ${oversized.length} file${
+            oversized.length === 1 ? '' : 's'
+          } over 2MB.`
+        : ''
+
     if (successes.length === 0) {
-      setGlobalError('No files uploaded. See errors below and retry.')
+      setGlobalError(`No files uploaded. See errors below and retry.${skippedNote}`)
     } else if (Object.keys(failureById).length > 0) {
       setGlobalError(
-        `Added ${successes.length} of ${files.length} file${
-          files.length === 1 ? '' : 's'
-        }. Some failed — see below.`,
+        `Added ${successes.length} of ${accepted.length} file${
+          accepted.length === 1 ? '' : 's'
+        }. Some failed — see below.${skippedNote}`,
       )
+    } else if (skippedNote) {
+      setGlobalError(`Added ${successes.length} file${successes.length === 1 ? '' : 's'}.${skippedNote}`)
     }
   }
 
@@ -215,6 +242,13 @@ export default function GalleryPanel({ images }: GalleryPanelProps) {
     if (replaceInputRef.current) replaceInputRef.current.value = ''
     replaceTargetRef.current = null
     if (!id || !file) return
+    if (file.size > MAX_IMAGE_BYTES) {
+      setReplaceState((prev) => ({
+        ...prev,
+        [id]: { state: 'error', message: 'Image is too large (max 2MB).' },
+      }))
+      return
+    }
     setGlobalError(null)
     setReplaceState((prev) => ({ ...prev, [id]: { state: 'uploading' } }))
     try {

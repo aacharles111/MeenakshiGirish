@@ -119,6 +119,12 @@ export default function TipTapEditor({
       editor.chain().focus().extendMarkRange('link').unsetLink().run()
       return
     }
+    // Allow http(s):, mailto:, tel: only. Render DOMPurify is the real gate;
+    // this just avoids storing bad hrefs in the first place.
+    if (!/^(https?|mailto|tel):/i.test(url)) {
+      window.alert('Links must start with http://, https://, mailto:, or tel:')
+      return
+    }
     editor
       .chain()
       .focus()

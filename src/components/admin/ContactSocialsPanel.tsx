@@ -82,6 +82,9 @@ function emptySocial(): LocalSocial {
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+// Mirror the server's URL rule (api/_cmsContent.js URL_RE). Accepts http(s)://
+// URLs or a bare `#` placeholder.
+const URL_RE = /^(https?:\/\/[^\s<>"']+|#)$/
 
 export default function ContactSocialsPanel({
   settings,
@@ -108,7 +111,8 @@ export default function ContactSocialsPanel({
   const dirty = email !== incomingEmail || !sameSocials(socials, incomingSocials)
 
   const emailValid = EMAIL_RE.test(email.trim())
-  const canSave = dirty && emailValid && !saving
+  const allSocialUrlsValid = socials.every((s) => URL_RE.test(s.url.trim()))
+  const canSave = dirty && emailValid && allSocialUrlsValid && !saving
 
   const addSocial = () => setSocials((prev) => [...prev, emptySocial()])
 
@@ -318,6 +322,12 @@ export default function ContactSocialsPanel({
                         placeholder="https://…"
                         className="mt-1 w-full bg-input border border-border rounded-lg px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                       />
+                      {s.url.trim().length > 0 &&
+                        !URL_RE.test(s.url.trim()) && (
+                          <p className="mt-1 text-[0.7rem] text-red-600">
+                            Enter a valid https:// URL (or #).
+                          </p>
+                        )}
                     </label>
                     <button
                       type="button"

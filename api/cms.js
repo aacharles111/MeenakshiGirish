@@ -1,25 +1,26 @@
 // Vercel Serverless Function — CMS catch-all router (admin-only).
 //
-// Consolidates every CMS content operation behind ONE function so the
-// deployment stays under Vercel's per-deployment serverless-function cap.
-// Route: /api/cms/<action>
+// ONE top-level function serves every CMS content op (avoids Vercel's
+// per-deployment serverless-function cap AND the nested-dynamic-route quirk
+// that let the SPA's catch-all rewrite swallow /api/cms/<action>). The action
+// is selected by the `?action=` query param:
 //
-//   GET  /api/cms/content          → { ok, blogs, gallery, testimonials, featured, settings }
-//   POST /api/cms/blogs            { <blog> }            upsert by id
-//   POST /api/cms/delete-blog      { id }                idempotent delete
-//   POST /api/cms/gallery          { images:[...] }
-//   POST /api/cms/testimonials     { testimonials:[...] }
-//   POST /api/cms/featured         { items:[...] }
-//   POST /api/cms/settings         { book, contact, socials }
-//   POST /api/cms/upload           { filename, contentType, dataB64 } → { ok, url }
+//   GET  /api/cms?action=content       → { ok, blogs, gallery, testimonials, featured, settings }
+//   POST /api/cms?action=blogs         { <blog> }            upsert by id
+//   POST /api/cms?action=delete-blog   { id }                idempotent delete
+//   POST /api/cms?action=gallery       { images:[...] }
+//   POST /api/cms?action=testimonials  { testimonials:[...] }
+//   POST /api/cms?action=featured      { items:[...] }
+//   POST /api/cms?action=settings      { book, contact, socials }
+//   POST /api/cms?action=upload        { filename, contentType, dataB64 } → { ok, url }
 //
 // Auth: requireAdmin on every action (401/403 on missing/bad session or CSRF).
 // Errors: ValidationError → 400 + message; auth {status,body} → that status;
 // anything else (GitHub down, etc.) → generic 500 with the real detail only in
 // server logs. No internals leak to the client.
 
-import { requireAdmin } from '../_cmsAuth.js';
-import { readJson, writeJson, writeFile } from '../_github.js';
+import { requireAdmin } from './_cmsAuth.js';
+import { readJson, writeJson, writeFile } from './_github.js';
 import {
   validateBlog,
   validateGallery,
@@ -27,8 +28,8 @@ import {
   validateFeatured,
   validateSettings,
   ValidationError,
-} from '../_cmsContent.js';
-import { parseBody } from '../_cmsUtil.js';
+} from './_cmsContent.js';
+import { parseBody } from './_cmsUtil.js';
 
 const PATHS = {
   blogs: 'src/content/blogs.json',
@@ -57,7 +58,7 @@ const GENERIC_500 = {
   'delete-blog': 'Could not delete. Please try again.',
 };
 
-// Upload validation (mirrors the former api/cms-upload.js exactly).
+// Upload validation.
 const MAX_BYTES = 2 * 1024 * 1024; // 2 MiB
 const SLUG_RE = /^[a-zA-Z0-9-]{1,60}$/;
 const EXT_BY_TYPE = {

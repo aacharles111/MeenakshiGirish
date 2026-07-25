@@ -3,15 +3,16 @@
 // automatically via credentials:'same-origin'). Every method throws an Error
 // on a non-ok response so callers can surface the server's message directly.
 //
-// Endpoint shape notes (matching the serverless functions in /api):
-//   GET  /api/cms-content          → { ok, blogs:{blogs:Blog[]}, gallery, testimonials, featured, settings }
-//   POST /api/cms-blogs            { blog }
-//   POST /api/cms-blogs-delete     { id }
-//   POST /api/cms-gallery          { images }
-//   POST /api/cms-testimonials     { testimonials }
-//   POST /api/cms-featured         { items }
-//   POST /api/cms-settings         { settings }
-//   POST /api/cms-upload           { filename, contentType, dataB64 } → { ok, url }
+// All CMS content ops are served by ONE catch-all router (api/cms/[action].js)
+// to stay under Vercel's per-deployment serverless-function limit:
+//   GET  /api/cms/content          → { ok, blogs:{blogs:Blog[]}, gallery, testimonials, featured, settings }
+//   POST /api/cms/blogs            { <blog> }              body IS the blog object
+//   POST /api/cms/delete-blog      { id }
+//   POST /api/cms/gallery          { images }
+//   POST /api/cms/testimonials     { testimonials }
+//   POST /api/cms/featured         { items }
+//   POST /api/cms/settings         { <settings> }          body IS the settings object
+//   POST /api/cms/upload           { filename, contentType, dataB64 } → { ok, url }
 //
 // `CmsContent.blogs` is exposed as a flat Blog[] (unwrapped from the server's
 // `{blogs:Blog[]}` wrapper) so panel consumers deal with one canonical array.
@@ -66,7 +67,7 @@ async function postJSON<T extends PostResponse>(path: string, body: unknown): Pr
 
 /** Load all CMS content in one round-trip. Throws Error(serverError) on failure. */
 export async function getContent(): Promise<CmsContent> {
-  const res = await fetch('/api/cms-content', { credentials: 'same-origin' })
+  const res = await fetch('/api/cms/content', { credentials: 'same-origin' })
   const data = (await res.json().catch(() => ({}))) as CmsContentResponse
   if (!res.ok || !data?.ok) {
     throw new Error(data?.error || 'Could not load content. Please try again.')
@@ -81,34 +82,34 @@ export async function getContent(): Promise<CmsContent> {
   }
 }
 
-/** Upsert a single blog post (matched by id). */
+/** Upsert a single blog post (matched by id). Body is the blog object itself. */
 export async function saveBlog(blog: Blog): Promise<void> {
-  await postJSON('/api/cms-blogs', { blog })
+  await postJSON('/api/cms/blogs', blog)
 }
 
 /** Idempotent delete of a single blog post by id. */
 export async function deleteBlog(id: string): Promise<void> {
-  await postJSON('/api/cms-blogs-delete', { id })
+  await postJSON('/api/cms/delete-blog', { id })
 }
 
 /** Full-list replace for gallery images. */
 export async function saveGallery(images: GalleryImage[]): Promise<void> {
-  await postJSON('/api/cms-gallery', { images })
+  await postJSON('/api/cms/gallery', { images })
 }
 
 /** Full-list replace for testimonials. */
 export async function saveTestimonials(list: Testimonial[]): Promise<void> {
-  await postJSON('/api/cms-testimonials', { testimonials: list })
+  await postJSON('/api/cms/testimonials', { testimonials: list })
 }
 
 /** Full-list replace for featured-in links. */
 export async function saveFeatured(items: FeaturedItem[]): Promise<void> {
-  await postJSON('/api/cms-featured', { items })
+  await postJSON('/api/cms/featured', { items })
 }
 
-/** Replace site settings (book / contact / socials). */
+/** Replace site settings (book / contact / socials). Body is the settings object itself. */
 export async function saveSettings(settings: SiteSettings): Promise<void> {
-  await postJSON('/api/cms-settings', { settings })
+  await postJSON('/api/cms/settings', settings)
 }
 
 /**
@@ -124,7 +125,7 @@ export async function uploadImage(file: File): Promise<string> {
   const filename = slugifyFilename(file.name)
   const contentType = file.type || detectedContentType
   if (!filename) throw new Error('Image filename is empty after slugifying.')
-  const data = await postJSON<{ url?: string }>('/api/cms-upload', {
+  const data = await postJSON<{ url?: string }>('/api/cms/upload', {
     filename,
     contentType,
     dataB64,

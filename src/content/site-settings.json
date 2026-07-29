@@ -2,7 +2,7 @@
   "book": {
     "priceInr": 549,
     "title": "The Freelancer's Mindset",
-    "buyCtaLabel": "Buy the Book [T]"
+    "buyCtaLabel": "Buy the Book"
   },
   "contact": {
     "email": "meenakshigirish31@gmail.com"
@@ -32,11 +32,6 @@
       "label": "Spotify",
       "url": "https://open.spotify.com/show/55C8g0qgxeROYP0X6m8inn",
       "icon": "spotify"
-    },
-    {
-      "label": "CMS Test Social",
-      "url": "#",
-      "icon": "linkedin"
     }
   ]
 }

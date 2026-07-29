@@ -22,6 +22,9 @@ export default function Testimonials() {
 
   const startInterval = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
+    // No auto-advance when there's 0 or 1 testimonial. Without this, an empty
+    // list makes `(prev + 1) % 0` → NaN and the carousel indexes `undefined`.
+    if (testimonials.length <= 1) return;
     intervalRef.current = setInterval(() => {
       if (!isHovered.current) {
         setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -40,6 +43,26 @@ export default function Testimonials() {
     setCurrentIndex(index);
     startInterval();
   };
+
+  // Empty pool (admin deleted every entry) → render a graceful shell instead of
+  // indexing `testimonials[0]` (undefined) and white-screening the home page.
+  if (testimonials.length === 0) {
+    return (
+      <section className="bg-background py-24 lg:py-32 relative overflow-hidden">
+        <AbstractDeco
+          src="/abstract/teal-shape-1.svg"
+          className="-left-48 top-10 w-[400px] h-[400px]"
+          opacity={0.9}
+        />
+        <FadeUp>
+          <SectionHeader label="PEOPLE SAYING NICE THINGS" heading="Don't just take my word for it" />
+          <p className="text-base text-foreground/75 leading-[1.75] max-w-[560px] mx-auto text-center px-6">
+            Kind words are on the way — check back soon for what readers, attendees, and clients have to say.
+          </p>
+        </FadeUp>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-background py-24 lg:py-32 relative overflow-hidden">

@@ -122,9 +122,11 @@ per-failed-login server delay.
 - **No secrets in the client bundle.** Username lives server-side; the password
   is PBKDF2-hashed server-side; `SESSION_SECRET` / `GITHUB_TOKEN` are
   server-only env vars. Verify anytime with the grep in the next section.
-- **All writes are server-enforced.** Every `/api/cms-*` and `/api/cms-upload`
-  verifies the signed `httpOnly` session cookie (HMAC, 8h expiry) and a
-  same-origin check. A downloaded bundle grants zero write access.
+- **All writes are server-enforced.** Every `/api/cms` action
+  verifies the signed `httpOnly` session cookie (HMAC; the cookie is a
+  browser-session cookie — dropped when the browser closes — and the signed
+  token also expires after 8h as a backstop) and a same-origin check. A
+  downloaded bundle grants zero write access.
 - **Input is validated** before it's committed (length caps, URL scheme
   allowlists, image type/size caps) and blog bodies are sanitized with
   DOMPurify at render time before `dangerouslySetInnerHTML`.
@@ -146,8 +148,9 @@ grep -RIn "ADMIN_PASSWORD_HASH\|SESSION_SECRET\|GITHUB_TOKEN\|github_pat_\|RAZOR
 ## Rotating secrets
 
 - **Password:** re-run `node scripts/hash-password.mjs`, update
-  `ADMIN_PASSWORD_HASH` in Vercel, redeploy. (Old sessions stay valid until
-  their 8h expiry or until `SESSION_SECRET` rotates.)
+  `ADMIN_PASSWORD_HASH` in Vercel, redeploy. (Existing cookies are dropped when
+  each admin's browser closes; the signed token also expires after 8h, or
+  immediately if `SESSION_SECRET` rotates.)
 - **Force logout everyone:** change `SESSION_SECRET` in Vercel + redeploy — all
   existing signed cookies become invalid instantly.
 - **GitHub PAT:** revoke at GitHub, generate a new fine-grained PAT, update

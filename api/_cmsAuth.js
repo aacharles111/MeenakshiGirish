@@ -72,8 +72,11 @@ function constantTimeEq(a, b) {
 }
 
 export async function issueSessionCookie(res) {
+  // Session cookie: no Max-Age/Expires, so the browser drops it when it closes
+  // (closing the browser = logged out). The signed token still carries an `exp`
+  // (MAX_AGE) as a server-side backstop, so a copied cookie is useless past that.
   const token = await signSession({ iat: Date.now(), exp: Date.now() + MAX_AGE * 1000 });
-  res.setHeader('Set-Cookie', `${COOKIE}=${token}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=${MAX_AGE}`);
+  res.setHeader('Set-Cookie', `${COOKIE}=${token}; HttpOnly; Secure; SameSite=Lax; Path=/`);
 }
 export function clearSessionCookie(res) {
   res.setHeader('Set-Cookie', `${COOKIE}=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0`);

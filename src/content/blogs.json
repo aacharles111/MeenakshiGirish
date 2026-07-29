@@ -1,3 +1,19 @@
 {
-  "blogs": []
+  "blogs": [
+    {
+      "id": "f968cc63-1660-4e80-8056-1d4cd0eebe06",
+      "slug": "cms-smoke-test",
+      "title": "CMS Smoke Test",
+      "metaTitle": "",
+      "metaDescription": "",
+      "excerpt": "",
+      "banner": "",
+      "bannerAlt": "",
+      "body": "<p>This is a CMS smoke-test post. If you can read this, the blog publish flow works end to end.</p>",
+      "status": "published",
+      "publishedAt": "2026-07-29T05:43:04.010Z",
+      "updatedAt": "2026-07-29T05:43:06.514Z",
+      "author": "Meenakshi Girish"
+    }
+  ]
 }

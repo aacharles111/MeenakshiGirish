@@ -32,6 +32,11 @@
       "label": "Spotify",
       "url": "https://open.spotify.com/show/55C8g0qgxeROYP0X6m8inn",
       "icon": "spotify"
+    },
+    {
+      "label": "CMS Test Social",
+      "url": "#",
+      "icon": "linkedin"
     }
   ]
 }
